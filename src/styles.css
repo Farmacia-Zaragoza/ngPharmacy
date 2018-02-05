@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~font-awesome/css/font-awesome.min.css";
+
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
+
+body {
+    font-family: 'Open Sans', 'sans-serif';
+    font-size: 1.5em;
+}
+h1, h2, h3{
+    margin:0;
+}
+ul ul, ol ul{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+h2{
+    font-size: 2.1em;
+}

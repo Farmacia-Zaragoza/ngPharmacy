@@ -1,0 +1,85 @@
+<nav>
+
+  <div class="logo">
+    <a href="">Pharmachy</a>
+  </div>
+
+  <div class="mainMenu">
+    <i 
+      [hidden]="!isDesktop" 
+      (mouseover)="slideRight($event)"
+      (mouseleave)="slideStop($event)"
+      class="fa fa-angle-left"></i>
+    <ul class="sliderContainer">
+      <li>
+        <a href="#">Cosmetics</a>
+      </li>
+      <li class="pullDownItem">
+        <a href="#">Nutritions</a>
+        <div class="pullDown">
+          <div class="pullDownContainer">
+              <i class="fa fa-angle-up"></i>
+              <ul class="sliderContainer">
+                <li><a href="#">Category#1</a></li>
+                <li><a href="#">Category#2</a></li>
+                <li><a href="#">Category#3</a></li>
+                <li><a href="#">Category#4</a></li>
+                <li><a href="#">Category#5</a></li>
+                <li><a href="#">Category#6</a></li>
+                <li><a href="#">Category#7</a></li>
+              </ul>
+              <i class="fa fa-angle-down"></i>
+          </div>
+          <div class="pullDownMeta">
+            <i class="fa fa-plus-circle"></i>
+            <h2>Nutritions</h2>
+          </div>
+        </div>
+      </li>
+      <li>
+        <a href="#">Herbalist</a>
+      </li>
+      <li>
+        <a href="#">Childish</a>
+      </li>
+      <li>
+        <a href="#">Hygene</a>
+      </li>
+      <li>
+        <a href="#">Orthopedics</a>
+      </li>
+      <li>
+        <a href="#">Perfumery</a>
+      </li>
+      <li>
+        <a href="#">Optics</a>
+      </li>
+      <li>
+        <a href="#">DemoOption</a>
+      </li>
+      <li>
+        <a href="#">DemoOption</a>
+      </li>
+      <li>
+        <a href="#">DemoOption</a>
+      </li>
+      <li>
+        <a href="#">DemoOption</a>
+      </li>
+    </ul>
+    <i 
+      [hidden]="!isDesktop" 
+      (mouseover)="slideLeft($event)"
+      (mouseleave)="slideStop($event)"
+      class="fa fa-angle-right"></i>
+  </div>
+
+  <div class="nav-right">
+    <ul>
+      <li><a href="#"><i class="fa fa-search"></i></a></li>
+      <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+      <li><a href="#"><i class="fa fa-user"></i></a></li>
+    </ul>
+  </div>
+
+</nav>

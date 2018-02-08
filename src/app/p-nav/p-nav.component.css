@@ -1,0 +1,89 @@
+
+a{
+    color: #13D7D6;
+}
+i:hover{
+    cursor: pointer;
+}
+nav{
+    display: flex;
+    padding: 5px 20px;
+    color: #13D7D6;
+    background-color: #E8FCFB;
+}
+nav>div{
+    display: flex;
+    margin: auto 0;
+}
+.logo{
+    width: 10%;
+    font-size: 18px;
+}
+.mainMenu{
+    width: 65%;
+    font-size: 15px;
+    position: relative;
+}
+.mainMenu > i{
+    margin: auto 0;
+    font-size: 30px;
+}
+.nav-right{
+    width: 25%;
+    justify-content: flex-end;
+}
+.mainMenu > ul{
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 0 10px 0 5px;
+}
+.mainMenu > ul > li{
+    display: inline-block;
+    padding: 15px;
+}
+
+.nav-right > ul > li{
+    display: inline-block;
+    padding: 15px;
+}
+
+.pullDown{
+    position: absolute;
+    background-color: #000;
+    display: flex;
+    height: 250px;
+    display: none;
+    top: 52px;
+}
+.pullDownContainer{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    border-right: 5px solid transparent;
+}
+
+.pullDownContainer> i{
+    margin: 0 auto;
+    font-size: 25px;
+}
+.pullDownContainer> ul{
+    margin: 5px auto;
+    overflow: hidden;
+}
+.pullDownContainer> ul > li{
+    display: block;
+    padding: 5px;
+}
+
+.pullDownMeta{
+    width: 40px;
+    display: flex;
+    flex-direction: column;
+}
+.pullDownMeta h2{
+    transform: rotate(90deg);
+}
+.pullDownMeta i.fa{
+    font-size: 25px;
+    margin: 10px auto;
+}

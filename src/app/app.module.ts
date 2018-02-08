@@ -3,15 +3,15 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
 import { TempComponent } from './temp/temp.component';
+import { PNavComponent } from './p-nav/p-nav.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    TempComponent
+    TempComponent,
+    PNavComponent
   ],
   imports: [
     BrowserModule

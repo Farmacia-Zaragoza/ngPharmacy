@@ -2,6 +2,9 @@
 a{
     color: #13D7D6;
 }
+ul.sliderContainer{
+    overflow: hidden;
+}
 i:hover{
     cursor: pointer;
 }
@@ -86,4 +89,76 @@ nav>div{
 .pullDownMeta i.fa{
     font-size: 25px;
     margin: 10px auto;
+}
+
+.third-lvl-menu, .pullDownMeta i.fa-asterisk, .pullDownContainer>i.fa-angle-right, .pullDownContainer>i.fa-angle-left{
+    display: none;
+}
+
+.expanded{
+    width: 100%;
+    flex-direction: column;
+    border-radius: 5px;
+    box-shadow: 10px 10px 15px rgba(0,0,0,0.15);
+    height: 300px;
+    transition: box-shadow .5s ease-out ;
+}
+.expanded.sticky{
+    box-shadow: 10px 10px 15px rgba(0,0,0,0.5);
+}
+.expanded .pullDownContainer>i.fa-angle-up, .expanded .pullDownContainer>i.fa-angle-down {
+    display: none;
+}
+.expanded .pullDownMeta i.fa-asterisk, .expanded .pullDownContainer>i.fa-angle-right, .expanded .pullDownContainer>i.fa-angle-left{
+    display: block;
+}
+
+.expanded .pullDownContainer{
+    flex-direction: row;
+    height: 250px;
+    width: 80%;
+    padding: 10px 10px 0 10px;
+}
+
+.expanded .pullDownContainer > ul{
+    padding: 0;
+    margin: 0 8px 0 2px;
+}
+
+.expanded .pullDownContainer > ul > li {
+    display:inline-flex;
+    flex-direction: column;
+    width: 200px;
+    height: 100%;
+    text-align: center;
+    padding: 0 5px;
+}
+
+.expanded .pullDownMeta{
+    flex-direction: row;
+    width: 40%;
+    margin: 0 auto;
+    justify-content: space-evenly;
+    height: 50px;
+}
+.expanded .pullDownMeta h2 {
+    transform: rotate(0);
+    margin: auto 0;
+}
+.expanded .pullDownMeta i{
+    margin: auto 0;
+}
+
+.expanded .third-lvl-menu {
+    display: inline-flex;
+    flex-direction: column;
+    padding-top: 10px;
+}
+
+.third-lvl-menu i {
+    font-size: 25px;
+}
+
+.expanded .third-lvl-menu ul > li {
+    padding: 10px 0;
 }

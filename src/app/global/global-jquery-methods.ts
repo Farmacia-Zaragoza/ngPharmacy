@@ -12,7 +12,9 @@ export function test(e) {
 }
 
 export function slideLeft(btn) {
-    hSliderContainerInit(btn);
+    sliderContainer = $(btn).siblings('.sliderContainer');
+    remLength = $(sliderContainer)[0].scrollWidth - $(sliderContainer).width();
+    scrollable = remLength - $(sliderContainer).scrollLeft();
 
     $(sliderContainer).animate({
         scrollLeft: remLength
@@ -20,7 +22,7 @@ export function slideLeft(btn) {
 }
 
 export function slideRight(btn) {
-    hSliderContainerInit(btn);
+    sliderContainer = $(btn).siblings('.sliderContainer');
 
     $(sliderContainer).animate({
         scrollLeft: 0
@@ -28,7 +30,9 @@ export function slideRight(btn) {
 }
 
 export function slideDown(btn) {
-    vSliderContainerInit(btn)
+    sliderContainer = $(btn).siblings('.sliderContainer');
+    remLength = $(sliderContainer)[0].scrollHeight - $(sliderContainer).height();
+    scrollable = remLength - $(sliderContainer).scrollTop();
 
     $(sliderContainer).animate({
         scrollTop: remLength
@@ -36,7 +40,7 @@ export function slideDown(btn) {
 }
 
 export function slideUp(btn) {
-    vSliderContainerInit(btn)
+    sliderContainer = $(btn).siblings('.sliderContainer');
 
     $(sliderContainer).animate({
         scrollTop: 0
@@ -45,16 +49,4 @@ export function slideUp(btn) {
 
 export function slideStop(btn){
     $(btn).siblings('.sliderContainer').stop();
-}
-
-function hSliderContainerInit(btn) {
-    sliderContainer = $(btn).siblings('.sliderContainer');
-    remLength = $(sliderContainer)[0].scrollWidth - $(sliderContainer).width();
-    scrollable = remLength - $(sliderContainer).scrollLeft();
-}
-
-function vSliderContainerInit(btn){
-    sliderContainer = $(btn).siblings('.sliderContainer');
-    remLength = $(sliderContainer)[0].scrollHeight - $(sliderContainer).height();
-    scrollable = remLength - $(sliderContainer).scrollTop();
 }

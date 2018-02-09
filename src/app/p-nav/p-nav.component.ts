@@ -1,7 +1,7 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import * as jqMethods from '../global/global-jquery-methods';
 
-declare var $:any;
+declare var $: any;
 
 @Component({
   selector: 'p-nav',
@@ -9,70 +9,91 @@ declare var $:any;
   styleUrls: ['./p-nav.component.css']
 })
 export class PNavComponent implements OnInit {
-  isDesktop:boolean;
+  isDesktop: boolean;
 
-  constructor() { 
-    this.isDesktop = window.screen.width >=1025 ? true : false;
+  constructor() {
+    this.isDesktop = window.screen.width >= 1025 ? true : false;
   }
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
-    this.isDesktop = event.target.innerWidth >=1025 ? true : false;
+    this.isDesktop = event.target.innerWidth >= 1025 ? true : false;
   }
 
-  slideLeft(event) {
-    jqMethods.slideLeft(event.target)
-  }
-
-  slideRight(event) {
-    jqMethods.slideRight(event.target)
-  }
-
-  slideStop(event) {
-    jqMethods.slideStop(event.target);
-  }
 
   ngOnInit() {
-    $(".pullDownItem").hover(
-      function() {
-          //return if it's mobile or tablet device
-          if($(window).width() <= 1024)
-            return;  
+    $(".pullDownItem").hover( //Pull Down on hover
+      function () {
+        //return if it's mobile or tablet device
+        if ($(window).width() <= 1024)
+          return;
 
-          //preventing other event if one dropdown is opened already
-          // if($('.dropdown-menu-wrapper .itemName span i.starButton').hasClass('extended'))
-          //     return;
+        //preventing other event if any dropdown is sticky already
+        if($('.pullDown').hasClass('sticky'))
+          return;
 
-          // dropdown position fixed
-          if($(this).children('.pullDown').hasClass('expanded'))
-              $(this).children('.pullDown').css('left', 0+'px');
-          else
-              $(this).children('.pullDown').css('left', $(this).position().left+'px');
-          
+        // dropdown position fixing
+        if ($(this).children('.pullDown').hasClass('expanded'))
+          $(this).children('.pullDown').css('left', 0 + 'px');
+        else
+          $(this).children('.pullDown').css('left', $(this).position().left + 'px');
 
-          $('.pullDown', this).stop(true,true).slideDown("400").css('display','flex');
+
+        $('.pullDown', this).stop(true, true).slideDown("400").css('display', 'flex');
       },
-      function() {
-          //prevent other event if dropdown is sticky
-          // if($(this).children('.dropdown-menu-wrapper').children('.itemName').children('span').children('i.starButton').hasClass('extended'))
-          //     return;
-          $('.pullDown', this).stop(true,true).slideUp("400");
+      function () {
+        //return if it's mobile or tablet device
+        if ($(window).width() <= 1024)
+          return;
+
+        //preventing other event if any dropdown is sticky already
+        if($('.pullDown').hasClass('sticky'))
+          return;
+
+        $('.pullDown', this).stop(true, true).slideUp("400");
       }
     );
+    
+    
 
-    $(".pullDownContainer>i").hover(  //second level menu slider slide behaviour
-      function(){ 
-        if($(this).hasClass("fa-angle-up")){
+    $("i.sliderControls").hover( // menu slider slide behaviour
+      function () {
+        if ($(this).hasClass("fa-angle-up")) {
           jqMethods.slideUp(this);
-        } else if($(this).hasClass("fa-angle-down")) {
-          console.log('down')
+        } else if ($(this).hasClass("fa-angle-down")) {
           jqMethods.slideDown(this);
+        } else if ($(this).hasClass("fa-angle-right")) {
+          jqMethods.slideLeft(this);
+        } else if ($(this).hasClass("fa-angle-left")) {
+          jqMethods.slideRight(this);
         }
       },
-      function(){
+      function () {
         jqMethods.slideStop(this);
       }
     );
+
+    $(".pullDownMeta>i.expandButton").click(function () {
+      let pullDown = $(this).closest('.pullDown');
+
+      if ($(this).hasClass('fa-plus-circle')) {
+        $(this).removeClass('fa-plus-circle').addClass('fa-minus-circle');
+        $(pullDown).addClass("expanded sticky").css('left', 0);
+        $(this).siblings('i.fa-asterisk').addClass('extended');
+      } else {
+        $(this).removeClass('fa-minus-circle').addClass('fa-plus-circle');
+        $(pullDown).removeClass('expanded sticky').css('left', $(pullDown).parent('.pullDownItem').position().left + 'px');
+        // if($(pullDown).hasClass("sticky")) $(pullDown).removeClass("sticky");
+        $(this).siblings('i.fa-asterisk').removeClass('extended');
+      }
+    })
+
+    $(".pullDownMeta>i.fa-asterisk").click(function(){
+      let pullDown = $(this).closest('.pullDown');
+
+      // $(this).toggleClass("extended");      
+      $(pullDown).toggleClass("sticky");
+    });
 
   }
 

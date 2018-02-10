@@ -1,19 +1,23 @@
 <nav>
+  <div id="mainMenuToggleButton">
+    <i class="fa fa-bars"></i>
+  </div>
 
   <div class="logo">
     <a href="">Pharmachy</a>
   </div>
 
   <div class="mainMenu">
-    <i 
-      [hidden]="!isDesktop"
-      class="sliderControls fa fa-angle-left"></i>
+    <div class="responsiveMenuHeader"> <h4>Pharmachy Menu</h4> <i class="fa fa-times-circle-o" aria-hidden="true"></i></div>
+    <i [hidden]="!isDesktop" class="sliderControls fa fa-angle-left"></i>
+    <i [hidden]="isDesktop" class="sliderControls fa fa-angle-up"></i>
     <ul class="sliderContainer">
       <li>
         <a href="#">Cosmetics</a>
       </li>
       <li class="pullDownItem">
         <a href="#">Nutritions</a>
+        
         <div class="pullDown">
           <div class="pullDownContainer">
               <i class="sliderControls fa fa-angle-up"></i>
@@ -72,6 +76,8 @@
             <h2>Nutritions</h2>
           </div>
         </div>
+        <i class="fa fa-plus-circle"></i>
+
       </li>
       <li>
         <a href="#">Herbalist</a>
@@ -81,6 +87,7 @@
       </li>
       <li class="pullDownItem">
         <a href="#">Hygene</a>
+
         <div class="pullDown">
           <div class="pullDownContainer">
               <i class="sliderControls fa fa-angle-up"></i>
@@ -139,6 +146,8 @@
             <h2>Hygene</h2>
           </div>
         </div>
+        <i class="fa fa-plus-circle"></i>
+        
       </li>
       <li>
         <a href="#">Orthopedics</a>
@@ -162,9 +171,8 @@
         <a href="#">DemoOption</a>
       </li>
     </ul>
-    <i 
-      [hidden]="!isDesktop"
-      class="sliderControls fa fa-angle-right"></i>
+    <i [hidden]="!isDesktop" class="sliderControls fa fa-angle-right"></i>
+    <i [hidden]="isDesktop" class="sliderControls fa fa-angle-down"></i>
   </div>
 
   <div class="nav-right">

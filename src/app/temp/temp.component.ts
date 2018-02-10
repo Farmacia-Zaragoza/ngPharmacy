@@ -15,13 +15,11 @@ export class TempComponent implements OnInit {
   }
 
   ngOnInit() {
-    $("#cbtn").click(function(){
-      console.log("test1");
+    $(".btn").click(function(){
+      alert("added")
+      let btn = $(this).clone();
+      $(this).after(btn);
     });
-
-    $("#cbtn").click(function(){
-      console.log("test2");
-    })
   }
 
 }

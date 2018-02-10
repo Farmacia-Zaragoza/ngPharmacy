@@ -12,7 +12,7 @@ export class PNavComponent implements OnInit {
   isDesktop: boolean;
 
   constructor() {
-    this.isDesktop = window.screen.width >= 1025 ? true : false;
+    this.isDesktop = window.innerWidth >= 1025 ? true : false;
   }
 
   @HostListener('window:resize', ['$event'])
@@ -73,7 +73,7 @@ export class PNavComponent implements OnInit {
       }
     );
 
-    $(".pullDownMeta>i.expandButton").click(function () {
+    $(".pullDownMeta>i.expandButton").click(function () { // Expand Button Behaviour
       let pullDown = $(this).closest('.pullDown');
 
       if ($(this).hasClass('fa-plus-circle')) {
@@ -88,12 +88,35 @@ export class PNavComponent implements OnInit {
       }
     })
 
-    $(".pullDownMeta>i.fa-asterisk").click(function(){
+    $(".pullDownMeta>i.fa-asterisk").click(function(){ //Sticky Button Behaviour
       let pullDown = $(this).closest('.pullDown');
 
       // $(this).toggleClass("extended");      
       $(pullDown).toggleClass("sticky");
     });
+
+    $(".responsiveMenuHeader > i, #mainMenuToggleButton > i").click(function(){ //main menu toggle in mobile device
+      $(".mainMenu").toggleClass("mView");
+    })
+
+    $(".pullDownItem > i").click(function(){ // PullDown menu toggle in mobile device
+      if($(this).hasClass("fa-plus-circle")){
+        $(this).parent(".pullDownItem").toggleClass("mExpanded");
+        $(this).removeClass("fa-plus-circle").addClass("fa-minus-circle");
+        $(this).siblings('.pullDown').stop(true, true).slideDown("400", "swing", function(){
+          $(this).siblings("a").toggleClass("titled");
+        }).css('display', 'flex');
+      } else {
+        $(this).removeClass("fa-minus-circle").addClass("fa-plus-circle");
+        $(this).siblings("a").toggleClass("titled");
+        $(this).siblings('.pullDown').stop(true, true).slideUp("400",'swing',function(){
+          $(this).parent(".pullDownItem").toggleClass("mExpanded");
+        });
+        // .siblings("a").css("display", "block")
+      }
+      
+      // $(this).parent(".pullDownItem").toggleClass("mExpanded");
+    })
 
   }
 

@@ -22,6 +22,33 @@ export class PNavComponent implements OnInit {
 
 
   ngOnInit() {
+
+    //Moving the active Flag out of the Container
+    var activeFlag = $('.flagsContainer li.active a img').detach().addClass('activeFlag');
+    $(activeFlag).insertBefore('.flagsContainer');
+    $(".flagsContainer li.active").remove();
+
+
+    $("#lang").hover(
+      function(){
+        //return if it's mobile or tablet device
+        if ($(window).width() <= 1024)
+          return;
+
+        $(".flagsContainer", this).stop(true, true).slideDown("400");
+      },
+
+      function(){
+        //return if it's mobile or tablet device
+        if ($(window).width() <= 1024)
+          return;
+        
+        $(".flagsContainer", this).stop(true, true).slideUp("400");
+      }
+    )
+
+
+
     $(".pullDownItem").hover( //Pull Down on hover
       function () {
         //return if it's mobile or tablet device

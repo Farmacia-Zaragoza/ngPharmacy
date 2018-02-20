@@ -61,6 +61,7 @@ nav>div{
     height: 250px;
     display: none;
     top: 52px;
+    z-index: 5;
 }
 .pullDownContainer{
     padding: 10px;
@@ -175,7 +176,7 @@ nav>div{
 
 
 
-/* Flag Container */
+/* Flag */
 
 #lang{
     position: relative;
@@ -189,6 +190,7 @@ nav>div{
     height: 250px;
     width: 70px;
     overflow-y: scroll;
+    z-index: 5;
 }
 
 .activeFlag{
@@ -211,8 +213,8 @@ nav>div{
 
 @media screen and (max-width:1024px) {
     
-    .pullDownMeta{
-        display: none;
+    .pullDownMeta, #lang, .expanded .third-lvl-menu, .expanded > i{
+        display: none; 
     }
     
     nav{
@@ -228,6 +230,8 @@ nav>div{
         height: 500px;
         width: 350px;
         transition: left .5s ease-in-out;
+        z-index: 10;
+        background-color: #fff;
     }
 
     .mainMenu > i {
@@ -236,6 +240,11 @@ nav>div{
 
     .logo {
         font-size: 30px;
+        width: 50%;
+    }
+    
+    .logo>a{
+        margin: 0 auto;
     }
 
     .nav-right ul li {
@@ -355,4 +364,24 @@ nav>div{
         font-weight: bold;
     }
 
+}
+
+
+@media only screen and (max-width: 767px) {
+    
+    #mainMenuToggleButton{
+        width: 10%;
+    }
+
+    .logo>a{
+        font-size: 25px;
+    }
+
+    .nav-right{
+        width: 35%;
+    }
+
+    .nav-right ul li {
+        padding: 10px;
+    }
 }

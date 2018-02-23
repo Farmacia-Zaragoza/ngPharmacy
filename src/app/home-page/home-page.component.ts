@@ -24,6 +24,26 @@ export class HomePageComponent implements OnInit {
       prevArrow: `<i class="fa fa-angle-left"></i>`,
       nextArrow: `<i class="fa fa-angle-right"></i>`,
       autoPlay: true,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 5
+          }
+        },
+        {
+          breakpoint: 767,
+          settings: {
+            slidesToShow: 3
+          }
+        },
+        {
+          breakpoint: 500,
+          settings: {
+            slidesToShow: 1
+          }
+        }
+      ]
       
     });
 
@@ -42,6 +62,27 @@ export class HomePageComponent implements OnInit {
         //set active class for current slide
         $('.slider-nav .slick-slide').eq(i).addClass('slick-active');  
       }
+    });
+
+    $('.productSlider').slick({
+      slidesToShow: 3,
+      slidesToScroll: 3,
+      infinite: true,
+      prevArrow: `<i class="fa fa-angle-left prevButton" aria-hidden="true"></i>`,
+      nextArrow: `<i class="fa fa-angle-right nextButton" aria-hidden="true"></i>`,
+      responsive: [
+        {
+          breakpoint: 767,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2
+          }
+        }
+      ]
+    });
+
+    $(".productSlider .slick-arrow").mouseenter(function(){
+      $(this).trigger("click");
     });
   }
 

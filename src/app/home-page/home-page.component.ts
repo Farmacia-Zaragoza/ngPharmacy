@@ -1,7 +1,9 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, AfterViewInit, QueryList, ViewChildren } from '@angular/core';
+import { PromoGalary } from '../model/promoGalary.model';
+import '../../assets/slick/slick.min.js';
+import { HomePageService } from './home-page.service';
 declare var $:any;
 declare var jquery:any;
-import '../../assets/slick/slick.min.js';
 
 @Component({
   selector: 'home-page',
@@ -9,12 +11,61 @@ import '../../assets/slick/slick.min.js';
   styleUrls: ['./home-page.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class HomePageComponent implements OnInit {
+export class HomePageComponent implements OnInit, AfterViewInit {
 
-  constructor() { }
+  promoGalary: Array<PromoGalary>;
+  @ViewChildren('promoSlider') promoSlider: QueryList<any>;
+  
+
+  constructor( private service: HomePageService ) {}
+
+
+
 
   ngOnInit() {
+
+    this.service.getPromoGalary()
+      .subscribe(response => {
+        this.promoGalary = response.json();
+      })
     
+  }
+
+  ngAfterViewInit(){
+    this.promoSlider.changes.subscribe( t => {
+      this.initPromoSlider();
+    })
+    
+    $('.productSlider').slick({
+      slidesToShow: 3,
+      slidesToScroll: 3,
+      infinite: true,
+      prevArrow: `<i class="fa fa-angle-left prevButton" aria-hidden="true"></i>`,
+      nextArrow: `<i class="fa fa-angle-right nextButton" aria-hidden="true"></i>`,
+      responsive: [
+        {
+          breakpoint: 767,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2
+          }
+        },
+        {
+          breakpoint: 500,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+      ]
+    });
+
+    $(".productSlider .slick-arrow").mouseenter(function(){
+      $(this).trigger("click");
+    });
+  }
+
+  initPromoSlider(){
     $('#promoSliderNav').slick({
       slidesToShow: 7,
       slidesToScroll: 1,
@@ -55,6 +106,7 @@ export class HomePageComponent implements OnInit {
       asNavFor: '#promoSliderNav',
       autoplay: true,
       autoplaySpeed: 5000,
+      
 
       onAfterChange:function(slickSlider,i){
         //remove all active class
@@ -62,27 +114,6 @@ export class HomePageComponent implements OnInit {
         //set active class for current slide
         $('.slider-nav .slick-slide').eq(i).addClass('slick-active');  
       }
-    });
-
-    $('.productSlider').slick({
-      slidesToShow: 3,
-      slidesToScroll: 3,
-      infinite: true,
-      prevArrow: `<i class="fa fa-angle-left prevButton" aria-hidden="true"></i>`,
-      nextArrow: `<i class="fa fa-angle-right nextButton" aria-hidden="true"></i>`,
-      responsive: [
-        {
-          breakpoint: 767,
-          settings: {
-            slidesToShow: 2,
-            slidesToScroll: 2
-          }
-        }
-      ]
-    });
-
-    $(".productSlider .slick-arrow").mouseenter(function(){
-      $(this).trigger("click");
     });
   }
 

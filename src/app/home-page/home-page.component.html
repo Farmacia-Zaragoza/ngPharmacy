@@ -57,79 +57,27 @@
     </div> <!-- Left Vertical Slider End -->
 
 
-    <div class="container">
+    <div class="container responsiveGlitch">
       <div class="row">
         <div class="col-md-12">
-          <div class="promoSlider">
+          <div *ngIf="promoGalary" class="promoSlider">
             <div id="promoSliderNav">
-              <div class="promoNavItem"><p>Cosmetics</p></div>
-              <div class="promoNavItem"><p>Nutritions</p></div>
-              <div class="promoNavItem"><p>Herbalist</p></div>
-              <div class="promoNavItem"><p>Hygene</p></div>
-              <div class="promoNavItem"><p>Orthopedics</p></div>
-              <div class="promoNavItem"><p>Perfumery</p></div>
-              <div class="promoNavItem"><p>Optics</p></div>
-              <div class="promoNavItem"><p>DemoOption</p></div>
-              <div class="promoNavItem"><p>DemoOption</p></div>
-              <div class="promoNavItem"><p>DemoOption</p></div>
+              <div  
+                *ngFor="let menu of promoGalary"
+                class="promoNavItem"
+              ><p>{{ menu.item }}</p></div>
             </div>
       
             <div id="promoSliderGalery">
-              <div class="galleryImgContiner" style="background-image: url('../../assets/images/banner.jpg')">
-                <p>La Semana de la</p>
-                <h2>Farmacia</h2>
-                <span>2018</span>
+              <div
+                #promoSlider
+                *ngFor="let menu of promoGalary"
+                class="galleryImgContiner" 
+                [ngStyle]="{'background-image': 'url(' + menu.imageURL +')'}">
+                <p>{{ menu.metaP }}</p>
+                <h2>{{ menu.metaH2 }}</h2>
+                <span>{{ menu.metaSpan }}</span>
               </div>
-        
-              <div class="galleryImgContiner" style="background-image: url('../../assets/images/banner.jpg')">
-                <p>La Semana de la</p>
-                <h2>Farmacia 2</h2>
-                <span>2018</span>
-              </div>
-        
-              <div class="galleryImgContiner" style="background-image: url('../../assets/images/banner.jpg')">
-                <p>La Semana de la</p>
-                <h2>Farmacia 3</h2>
-                <span>2018</span>
-              </div>
-        
-              <div class="galleryImgContiner" style="background-image: url('../../assets/images/banner.jpg')">
-                <p>La Semana de la</p>
-                <h2>Farmacia 4</h2>
-                <span>2018</span>
-              </div>
-              
-        
-              <div class="galleryImgContiner" style="background-image: url('../../assets/images/banner.jpg')">
-                <p>La Semana de la</p>
-                <h2>Farmacia 5</h2>
-                <span>2018</span>
-              </div>
-        
-              <div class="galleryImgContiner" style="background-image: url('../../assets/images/banner.jpg')">
-                <p>La Semana de la</p>
-                <h2>Farmacia 6</h2>
-                <span>2018</span>
-              </div>
-        
-              <div class="galleryImgContiner" style="background-image: url('../../assets/images/banner.jpg')">
-                <p>La Semana de la</p>
-                <h2>Farmacia 7</h2>
-                <span>2018</span>
-              </div>
-        
-              <div class="galleryImgContiner" style="background-image: url('../../assets/images/banner.jpg')">
-                <p>La Semana de la</p>
-                <h2>Farmacia 8</h2>
-                <span>2018</span>
-              </div>
-        
-              <div class="galleryImgContiner" style="background-image: url('../../assets/images/banner.jpg')">
-                <p>La Semana de la</p>
-                <h2>Farmacia 9</h2>
-                <span>2018</span>
-              </div>
-        
         
             </div>
           </div>

@@ -90,6 +90,7 @@ nav>div{
 }
 .pullDownMeta h2{
     transform: rotate(90deg);
+    margin: 5px;
 }
 .pullDownMeta i.fa{
     font-size: 25px;
@@ -305,6 +306,7 @@ nav>div{
         position: absolute;
         right: 0;
         margin: 8px 10px 0px 0px;
+        z-index: 5;
     }
     
 

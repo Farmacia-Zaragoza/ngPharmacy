@@ -1,5 +1,6 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, ViewChildren, QueryList, AfterViewInit } from '@angular/core';
 import * as jqMethods from '../global/global-jquery-methods';
+import { PNavService } from './p-nav.service';
 
 declare var $: any;
 
@@ -8,10 +9,14 @@ declare var $: any;
   templateUrl: './p-nav.component.html',
   styleUrls: ['./p-nav.component.css']
 })
-export class PNavComponent implements OnInit {
+export class PNavComponent implements OnInit, AfterViewInit {
   isDesktop: boolean;
 
-  constructor() {
+  menus = [];
+
+  @ViewChildren('mainMenu') mainMenu: QueryList<any>;
+
+  constructor(private service: PNavService) {
     this.isDesktop = window.innerWidth >= 1025 ? true : false;
   }
 
@@ -20,8 +25,20 @@ export class PNavComponent implements OnInit {
     this.isDesktop = event.target.innerWidth >= 1025 ? true : false;
   }
 
+  ngAfterViewInit(){
+    this.mainMenu.changes.subscribe( t => {
+      this.mainMenuInit();
+      console.log("changed")
+    })
+
+    
+  }
 
   ngOnInit() {
+    this.service.getMenus()
+      .subscribe( response => {
+        this.menus = response.json()
+      });
 
     //Moving the active Flag out of the Container
     var activeFlag = $('.flagsContainer li.active a img').detach().addClass('activeFlag');
@@ -46,9 +63,9 @@ export class PNavComponent implements OnInit {
         $(".flagsContainer", this).stop(true, true).slideUp("400");
       }
     )
+  }
 
-
-
+  mainMenuInit() {
     $(".pullDownItem").hover( //Pull Down on hover
       function () {
         //return if it's mobile or tablet device
@@ -81,8 +98,6 @@ export class PNavComponent implements OnInit {
       }
     );
     
-    
-
     $("i.sliderControls").hover( // menu slider slide behaviour
       function () {
         if ($(this).hasClass("fa-angle-up")) {
@@ -126,7 +141,7 @@ export class PNavComponent implements OnInit {
       $(".mainMenu").toggleClass("mView");
     })
 
-    $(".pullDownItem > i").click(function(){ // PullDown menu toggle in mobile device
+    $(".pullDownItem > i").click(function(){ // pullDown menu toggle in mobile device
       if($(this).hasClass("fa-plus-circle")){
         $(this).parent(".pullDownItem").toggleClass("mExpanded");
         $(this).removeClass("fa-plus-circle").addClass("fa-minus-circle");
@@ -142,9 +157,8 @@ export class PNavComponent implements OnInit {
         // .siblings("a").css("display", "block")
       }
       
-      // $(this).parent(".pullDownItem").toggleClass("mExpanded");
+      // $(this).parent(".pullDown"Item"").toggleClass("mExpanded");
     })
-
   }
 
 }

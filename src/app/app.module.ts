@@ -8,6 +8,7 @@ import { TempComponent } from './temp/temp.component';
 import { PNavComponent } from './p-nav/p-nav.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { HomePageService } from './home-page/home-page.service';
+import { PNavService } from './p-nav/p-nav.service';
 
 @NgModule({
   declarations: [
@@ -17,11 +18,12 @@ import { HomePageService } from './home-page/home-page.service';
     HomePageComponent
   ],
   imports: [
-    BrowserModule,
+  BrowserModule,
     HttpModule
   ],
   providers: [
     HomePageService,
+    PNavService
   ],
   bootstrap: [AppComponent]
 })

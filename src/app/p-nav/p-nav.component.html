@@ -12,164 +12,43 @@
     <i [hidden]="!isDesktop" class="sliderControls fa fa-angle-left"></i>
     <i [hidden]="isDesktop" class="sliderControls fa fa-angle-up"></i>
     <ul class="sliderContainer">
-      <li>
-        <a href="#">Cosmetics</a>
-      </li>
-      <li class="pullDownItem">
-        <a href="#">Nutritions</a>
-        
-        <div class="pullDown">
+
+      <li 
+        #mainMenu
+        *ngFor="let menu of menus" 
+        [class.pullDownItem]="menu.pulldown">
+        <a href="{{menu.link}}">{{menu.item}}</a>
+
+        <div *ngIf="menu.pulldown" class="pullDown">
           <div class="pullDownContainer">
               <i class="sliderControls fa fa-angle-up"></i>
               <i class="sliderControls fa fa-angle-left"></i>
               <ul class="sliderContainer">
-                <li>
-                  <a href="#">Category#1</a>
 
-                  <div class="third-lvl-menu">
+                <li *ngFor="let seclvl of menu.pulldown">
+                  <a href="{{seclvl.link}}">{{seclvl.item}}</a>
+
+                  <div *ngIf="seclvl.thirdLvl" class="third-lvl-menu">
                     <i class="sliderControls fa fa-angle-up"></i>
                     <ul class="sliderContainer">
-                      <li><a href="#">SubMenu#1</a></li>
-                      <li><a href="#">SubMenu#2</a></li>
-                      <li><a href="#">SubMenu#3</a></li>
-                      <li><a href="#">SubMenu#4</a></li>
-                      <li><a href="#">SubMenu#5</a></li>
-                      <li><a href="#">SubMenu#6</a></li>
-                      <li><a href="#">SubMenu#7</a></li>
-                      <li><a href="#">SubMenu#8</a></li>
+                      <li *ngFor="let thrdlvl of seclvl.thirdLvl"><a href="{{thrdlvl.link}}">{{thrdlvl.item}}</a></li>
                     </ul>
                     <i class="sliderControls fa fa-angle-down"></i>                    
                   </div>
-
                 </li>
-                <li>
-                  <a href="#">Category#2</a>
-
-                  <div class="third-lvl-menu">
-                    <i class="sliderControls fa fa-angle-up"></i>
-                    <ul class="sliderContainer">
-                      <li><a href="#">SubMenu#1</a></li>
-                      <li><a href="#">SubMenu#2</a></li>
-                      <li><a href="#">SubMenu#3</a></li>
-                      <li><a href="#">SubMenu#4</a></li>
-                      <li><a href="#">SubMenu#5</a></li>
-                      <li><a href="#">SubMenu#6</a></li>
-                      <li><a href="#">SubMenu#7</a></li>
-                      <li><a href="#">SubMenu#8</a></li>
-                    </ul>
-                    <i class="sliderControls fa fa-angle-down"></i>                    
-                  </div>
-                  
-                </li>
-                <li><a href="#">Category#3</a></li>
-                <li><a href="#">Category#4</a></li>
-                <li><a href="#">Category#5</a></li>
-                <li><a href="#">Category#6</a></li>
-                <li><a href="#">Category#7</a></li>
               </ul>
               <i class="sliderControls fa fa-angle-down"></i>
               <i class="sliderControls fa fa-angle-right"></i>
           </div>
           <div class="pullDownMeta">
-            <i class="expandButton fa fa-plus-circle"></i>
+            <i *ngIf="menu.pulldown[0].thirdLvl" class="expandButton fa fa-plus-circle"></i>
             <i class="fa fa-asterisk"></i>
-            <h2>Nutritions</h2>
+            <h2>{{menu.item}}</h2>
           </div>
         </div>
-        <i class="fa fa-plus-circle"></i>
+        <i *ngIf="menu.pulldown" class="fa fa-plus-circle"></i>
+      </li>
 
-      </li>
-      <li>
-        <a href="#">Herbalist</a>
-      </li>
-      <li>
-        <a href="#">Childish</a>
-      </li>
-      <li class="pullDownItem">
-        <a href="#">Hygene</a>
-
-        <div class="pullDown">
-          <div class="pullDownContainer">
-              <i class="sliderControls fa fa-angle-up"></i>
-              <i class="sliderControls fa fa-angle-left"></i>
-              <ul class="sliderContainer">
-                <li>
-                  <a href="#">Category#1</a>
-
-                  <div class="third-lvl-menu">
-                    <i class="sliderControls fa fa-angle-up"></i>
-                    <ul class="sliderContainer">
-                      <li><a href="#">SubMenu#1</a></li>
-                      <li><a href="#">SubMenu#2</a></li>
-                      <li><a href="#">SubMenu#3</a></li>
-                      <li><a href="#">SubMenu#4</a></li>
-                      <li><a href="#">SubMenu#5</a></li>
-                      <li><a href="#">SubMenu#6</a></li>
-                      <li><a href="#">SubMenu#7</a></li>
-                      <li><a href="#">SubMenu#8</a></li>
-                    </ul>
-                    <i class="sliderControls fa fa-angle-down"></i>                    
-                  </div>
-
-                </li>
-                <li>
-                  <a href="#">Category#2</a>
-
-                  <div class="third-lvl-menu">
-                    <i class="sliderControls fa fa-angle-up"></i>
-                    <ul class="sliderContainer">
-                      <li><a href="#">SubMenu#1</a></li>
-                      <li><a href="#">SubMenu#2</a></li>
-                      <li><a href="#">SubMenu#3</a></li>
-                      <li><a href="#">SubMenu#4</a></li>
-                      <li><a href="#">SubMenu#5</a></li>
-                      <li><a href="#">SubMenu#6</a></li>
-                      <li><a href="#">SubMenu#7</a></li>
-                      <li><a href="#">SubMenu#8</a></li>
-                    </ul>
-                    <i class="sliderControls fa fa-angle-down"></i>                    
-                  </div>
-                  
-                </li>
-                <li><a href="#">Category#3</a></li>
-                <li><a href="#">Category#4</a></li>
-                <li><a href="#">Category#5</a></li>
-                <li><a href="#">Category#6</a></li>
-                <li><a href="#">Category#7</a></li>
-              </ul>
-              <i class="sliderControls fa fa-angle-down"></i>
-              <i class="sliderControls fa fa-angle-right"></i>
-          </div>
-          <div class="pullDownMeta">
-            <i class="expandButton fa fa-plus-circle"></i>
-            <i class="fa fa-asterisk"></i>
-            <h2>Hygene</h2>
-          </div>
-        </div>
-        <i class="fa fa-plus-circle"></i>
-        
-      </li>
-      <li>
-        <a href="#">Orthopedics</a>
-      </li>
-      <li>
-        <a href="#">Perfumery</a>
-      </li>
-      <li>
-        <a href="#">Optics</a>
-      </li>
-      <li>
-        <a href="#">DemoOption</a>
-      </li>
-      <li>
-        <a href="#">DemoOption</a>
-      </li>
-      <li>
-        <a href="#">DemoOption</a>
-      </li>
-      <li>
-        <a href="#">DemoOption</a>
-      </li>
     </ul>
     <i [hidden]="!isDesktop" class="sliderControls fa fa-angle-right"></i>
     <i [hidden]="isDesktop" class="sliderControls fa fa-angle-down"></i>

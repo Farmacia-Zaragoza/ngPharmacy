@@ -28,7 +28,7 @@ export class PNavComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(){
     this.mainMenu.changes.subscribe( t => {
       this.mainMenuInit();
-      console.log("changed")
+      // console.log("changed")
     })
 
     

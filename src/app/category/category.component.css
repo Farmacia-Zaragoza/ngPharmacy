@@ -161,16 +161,24 @@
 			color: #F36438;
 			font-weight: bold;
 		}
+
 		.viewAs span:nth-child(2){
 			margin-right: 7px;
 		}
+		.viewAs span.active{
+			color: #F36438;
+		}
+		.viewAs span:focus, .viewAs span:active{
+			outline: none;
+		}
+		/*
 		.viewAs input[type="radio"], .dualPanel input[type="radio"]{
 			position: absolute;
 			left: -99999px;
 		}
 		.viewAs input[type="radio"]:checked + label{
 			color: #F36438;
-		}
+		} */
 	/* view as end */
 
 	/* ZoomRange Start */
@@ -219,6 +227,10 @@
 		.dualPanel [type="radio"]:checked + label{
 			display: none;
 		}
+		.dualPanel input[type="radio"]{
+			position: absolute;
+			left: -99999px;
+		}
 	/* DualPanel End */
 
 	.mainCart{
@@ -245,127 +257,128 @@
 /* Controls Section end */
 
 /* List Start */
+	
 	.product_list .boxedCheckbox [type="checkbox"]:not(:checked) + label, .product_list .boxedCheckbox [type="checkbox"]:checked + label{
 		border-color: #F3B24A;
 	}
 	.product_list .boxedCheckbox [type="checkbox"]:not(:checked) + label:after, .product_list .boxedCheckbox [type="checkbox"]:checked + label:after{
 		color: #F3B24A;
 	}
-	.product_list .single_product:nth-child(2n+1){
+	.product_list.listView .single_product:nth-child(2n+1){
 		background-color: #FAFAFA;
 	}
 	
-	.single_product{
+	.product_list.listView .single_product{
 		display: flex;
 		padding: 5px 15px;
 		justify-content: space-between;
 		box-sizing: border-box;
 	}
-	.single_product>div{
+	.product_list.listView .single_product>div{
 		display: flex;
 		justify-content: space-between;
 	}
 	
 	
 	/* checkboxWithPimage Start */
-		.checkboxWithPimage{
+	    .product_list.listView .checkboxWithPimage{
 			width: 100px
 		}
-		.checkboxWithPimage>.boxedCheckbox{
+		.product_list.listView .checkboxWithPimage>.boxedCheckbox{
 			margin: auto 0;
 		}
-		.checkboxWithPimage>img{
+		.product_list.listView .checkboxWithPimage>img{
 			margin: auto 5px auto 0;
 		}
 		
 	/* checkboxWithPimage End */
 	
-	.productText{
+	.product_list.listView .productText{
 		width: calc(100% - 185px);
 		font-size: 1.2em;
 	    position: relative;
 	}
-	.productText>div{
+	.product_list.listView .productText>div{
 		display: flex;
 	}
-	.productText>div>p{
+	.product_list.listView .productText>div>p{
 		margin:auto 10px;
 	}
 
 	/* pName Start */
-		.pName{
+		.product_list.listView .pName{
 			flex:2;
 		}
-		.pName p a:hover{
+		.product_list.listView .pName p a:hover{
 			text-decoration: none;
 		}
-		.pName p a{
+		.product_list.listView .pName p a{
 			color: #000;
 		}
 	/* pName End */
 
 	/* pDescription Start */
-		.pDescription{
+		.product_list.listView .pDescription{
 			flex:2;
 		}
 	/* pDescription End */
 		
 	/* TextField1 Start */
-		.TextField1{
+		.product_list.listView .TextField1{
 			flex:2;
 		}
 	/* TextField1 End */
 
 	/* TextField2 Start */
-		.TextField2{
+		.product_list.listView .TextField2{
 			flex:2;
 		}
 	/* TextField2 End */
 
-	.productText .mainCart label{
+		.product_list.listView .productText .mainCart label{
 		margin: auto;
 		font-size: .8em;
 		font-weight: 400;
 	}
 
 	/* pQuantity Start */
-		.pQuantity{
+		.product_list.listView .pQuantity{
 			flex: 0.5;
 		}
 
-		.pQuantity select{
+		.product_list.listView .pQuantity select{
 			-webkit-appearance: none;
 		    -moz-appearance: none;
 		    text-indent: 1px;
 		    margin: auto;
 		    background-color: transparent;
 		}
-		.pQuantity select::-ms-expand{
+		.product_list.listView .pQuantity select::-ms-expand{
 			display:none;
 		}
 	/* pQuantity End */
 
 	/* pPrice Start */
-		.pPrice{
+		.product_list.listView .pPrice{
 			flex:1;
 		}
-		.pPrice p span{
+		.product_list.listView .pPrice p span{
 			margin-right: 5px;
 		}
-		.productText .pPrice p{
+		.product_list.listView .productText .pPrice p{
 			margin-left: auto;
 		}
 	/* pPrice End */
 
 	/* Cart Filed Start */
-		.checkedImage{
+		.product_list.listView .checkedImage{
 			width: 85px;
 		}
-		.checkedImage .cartfilled{
+		.product_list.listView .checkedImage .cartfilled{
 			margin: auto auto auto 8px;
 			display: flex;
 		}
-		.checkedImage .cartfilled img{
+		.product_list.listView .checkedImage .cartfilled img{
 			width: 55px;
 			height: 45px;
 			margin: auto 0 auto auto;
@@ -381,22 +394,97 @@
 			visibility: hidden;
 		}
 
-		.editButton {
+		.product_list.listView .editButton {
 		    margin: auto 0 auto auto;
 		    font-size: 30px;
 		    color: #F3AE40;
 		}
-		.editButton:hover {
+		.product_list.listView .editButton:hover {
 		    cursor: pointer;
 		}
-		.checkedImage .cartfilled img {
+		.product_list.listView .checkedImage .cartfilled img {
 		    width: 35px;
 		    height: 30px;
 		    margin: auto;
 		}
 	/* Cart Filed End */
+	.product_list.listView .single_product>.gridViewText{
+		display: none;
+	}
 
 /* List End */
+
+/* Grid Start */
+
+	
+	.product_list.gridView{
+		display: flex;
+		flex-wrap: wrap;
+	}
+	.product_list.gridView .checkedImage .editButton, .product_list.gridView .productText{
+		display: none;
+	}
+
+	.product_list.gridView .single_product{
+		width: 200px;
+		height: 200px;
+		position: relative;
+		margin: 10px 15px;
+	}
+
+	.product_list.gridView .checkboxWithPimage .boxedCheckbox{
+		position: absolute;
+		top: 5px;
+		left: 0;
+	}
+	.product_list.gridView .checkboxWithPimage img{
+		width: 100%;
+		height: 100%;
+	}
+	.product_list.gridView .checkedImage .cartfilled{
+		height: 100%;
+	}
+	.product_list.gridView .checkedImage{
+		position: absolute;
+		width: 40px;
+		height: 40px;
+		top: 0;
+		right: 0;
+	}
+	.product_list.gridView .checkedImage .cartfilled input[type="checkbox"]:checked + img {
+		width: 100%;
+		height: 100%;
+	}
+
+	.product_list.gridView .gridViewText{
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+	}
+	.product_list.gridView .gridViewText p{
+		margin-bottom: 0;
+	}
+	.product_list.gridView .gridViewText .normalView p{
+		padding: 0 5px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	.product_list.gridView .gridViewText .normalView{
+		display: flex;
+		justify-content: space-between;
+		background-color: rgba(18,197,195,.7);
+	}
+	.product_list.gridView .gridViewText .normalView span{
+		display: block;
+	}
+	.product_list.gridView .gridViewText .extendedView{
+		display: none;
+	}
+
+
+	
+/* Grid End */
 
 /* Responsive Start */
 	/* only for Desktop */
@@ -421,26 +509,26 @@
 		}
 
 		/* display none for tablet screen */
-		.sortFor span, .viewAs span:first-child, .mainCart p span, .productText>.pQuantity,.editButton{
+		.sortFor span, .viewAs span:first-child, .mainCart p span, .product_list.listView .productText>.pQuantity, .product_list.listView .editButton{
 			display: none;
 		}
-		.checkboxWithPimage {
+		.product_list.listView .checkboxWithPimage {
 		    width: 90px;
 		}
-		.productText>div>p {
+		.product_list.listView .productText>div>p {
 		    margin: auto 8px;
 		}
-		.productText{
+		.product_list.listView .productText{
 			width: calc(100% - 150px);
 			font-size: 1.1em;
 		}
-		.checkedImage .cartfilled{
+		.product_list.listView .checkedImage .cartfilled{
 			margin: auto 0 auto auto;
 		}
-		.checkedImage {
+		.product_list.listView .checkedImage {
 		    width: 60px;
 		}
-		.list_controls .mainCart p i,{
+		.list_controls .mainCart p i{
 			margin: 0;
 		}
 		.list_controls>div {
@@ -482,12 +570,12 @@
 		    font-size: 1.5em;
 		}
 		/* Display None in mobile */
-		.sortFor button,.dualPanel,#zoomRangeInput,.viewAs input[type="radio"]:checked + label,.productText>.pDescription,.productText>.TextField2,.productText>.TextField1{
+		.sortFor button, .dualPanel,#zoomRangeInput, .viewAs input[type="radio"]:checked + label, .product_list.listView .productText>.pDescription,.product_list.listView .productText>.TextField2, .product_list.listView .productText>.TextField1{
 			display: none;
 		}
 
 		.viewAs span{
-			margin: auto 0 !important;
+			/* margin: auto 0 !important; */
 		}
 		.sortFor form select{
 			-webkit-appearance: none;
@@ -500,31 +588,31 @@
 		.list_controls>div{
 			padding: 3px 3px;
 		}
-		.checkedImage .cartfilled img {
+		.product_list.listView .checkedImage .cartfilled img {
 		    width: 35px;
 		    height: 32px;
 	    }
 
-	    .single_product{
+	    .product_list.listView .single_product{
 	    	padding: 5px 5px;
 	    }
-	    .checkboxWithPimage {
+	    .product_list.listView .checkboxWithPimage {
 		    width: 70px;
 		}
-		.checkedImage {
+		.product_list.listView .checkedImage {
 		    width: 40px;
 		}
-		.productText {
+		.product_list.listView .productText {
 		    width: calc(100% - 110px);
 		    font-size: 1.1em;
 		}
-		.productText>div>p {
+		.product_list.listView .productText>div>p {
 		    margin: auto 0px;
 		}
-		.productText .mainCart{
+		.product_list.listView .productText .mainCart{
 			flex: 0.5;
 		}
-		.pPrice {
+		.product_list.listView .pPrice {
 		    flex: 0.5;
 		}
 

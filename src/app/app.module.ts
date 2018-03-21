@@ -12,6 +12,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { CategoryComponent } from './category/category.component';
 import { HomePageService } from './home-page/home-page.service';
 import { PNavService } from './p-nav/p-nav.service';
+import { ResponsiveTextComponent } from './responsive-text/responsive-text.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { PNavService } from './p-nav/p-nav.service';
     TempComponent,
     PNavComponent,
     HomePageComponent,
-    CategoryComponent
+    CategoryComponent,
+    ResponsiveTextComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,62 @@
+/* Responsive Text Start */
+.responsiveText {
+    overflow:hidden;
+    position: relative;
+    display: flex;
+}
+/* .responsiveText .sliderContainer{
+    display: flex;
+    width: 100%;
+} */
+/* .responsiveText .sliderContainer p{
+    white-space: nowrap;
+    margin: auto 0;
+}
+
+.responsiveText .sliderContainer p{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+} */
+.responsiveText i.sliderControls{
+    display: none;
+}
+.responsiveText.rCollaps i{
+    margin: auto;
+    font-size: 1.30em;
+    padding: 5px;
+}
+.responsiveText.rCollaps i.responsiveTextExpandButton{
+    
+    color: #F78D6C;
+}
+.responsiveText.rCollaps i.responsiveText_controls{
+    
+}
+.rTexpanded{
+    position: absolute;
+    width: calc(100% + 85px);
+    left: 0;
+    height: 100%;
+    background-color: #fff;
+    z-index: 999
+}
+.rTexpanded>.sliderContainer{
+    overflow:hidden;
+    display: flex;
+}
+.rTexpanded>.sliderContainer>p{
+    margin: auto;
+}
+@media only screen and (max-width: 1024px){
+    .rTexpanded{
+        width: calc(100% + 60px);
+    }
+}
+
+@media only screen and (max-width: 767px){
+    .rTexpanded{
+        width: calc(100% + 40px);
+    }
+}
+/* Responsive Text End */

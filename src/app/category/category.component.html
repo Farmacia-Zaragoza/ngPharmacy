@@ -84,7 +84,7 @@
   >
 
 
-      <div class="single_product" *ngFor="let product of products">
+      <div #singleProduct class="single_product" *ngFor="let product of products">
           <div class="checkboxWithPimage">
             <div class="boxedCheckbox">
               <input class="allProductCheckbox" type="checkbox" name="productID-{{product.id}}-selectBox" id="productID-{{product.id}}">
@@ -128,8 +128,8 @@
               </p>
             </div>
             <div class="extendedView">
-              <p class="pEdes"><a href="">{{product.name}}</a></p>
-              <p>
+              <p class="pEname"><a href="">{{product.name}}</a></p>
+              <p class="pEprice">
                 <span class="pEoldPrice">{{product.oldPrice}} $</span>
                 <span class="pEnewPrice">{{product.price}} $</span>
               </p>

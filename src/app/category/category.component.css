@@ -416,7 +416,47 @@
 
 /* Grid Start */
 
-	
+	/* styles for '...' */ 
+	.secendLineEllipsis {
+		/* hide text if it more than N lines  */
+		overflow: hidden;
+		/* for set '...' in absolute position */
+		position: relative; 
+		/* use this value to count block height */
+		line-height: 1.2em;
+		/* max-height = line-height (1.2) * lines max number (3) */
+		max-height: 2.4em; 
+		/* fix problem when last visible word doesn't adjoin right side  */
+		text-align: justify;  
+		/* place for '...' */
+		margin-right: -1em;
+		padding-right: 1em;
+	}
+	/* create the ... */
+	.secendLineEllipsis:before {
+		/* points in the end */
+		content: '...';
+		/* absolute position */
+		position: absolute;
+		/* set position to right bottom corner of block */
+		right: 0;
+		bottom: 0;
+	}
+	/* hide ... if we have text, which is less than or equal to max lines */
+	.secendLineEllipsis:after {
+		/* points in the end */
+		content: '';
+		/* absolute position */
+		position: absolute;
+		/* set position to right bottom corner of text */
+		right: 0;
+		/* set width and height */
+		width: 1em;
+		height: 1em;
+		margin-top: 0.2em;
+		/* bg color = bg color under block */
+		background: white;
+	}
 	.product_list.gridView{
 		display: flex;
 		flex-wrap: wrap;
@@ -430,6 +470,7 @@
 		height: 200px;
 		position: relative;
 		margin: 10px 15px;
+		overflow: hidden;
 	}
 
 	.product_list.gridView .checkboxWithPimage .boxedCheckbox{
@@ -459,27 +500,106 @@
 	.product_list.gridView .gridViewText{
 		position: absolute;
 		left: 0;
-		bottom: 0;
+		bottom: -200px;
 		width: 100%;
+		transition: bottom .4s ease-out;
+	}
+	.product_list.gridView .gridViewText:hover{
+		bottom: 0;
+	}
+	.product_list.gridView .gridViewText:hover .normalView{
+		opacity: 0;
 	}
 	.product_list.gridView .gridViewText p{
 		margin-bottom: 0;
 	}
+	.product_list.gridView .gridViewText .normalView p.pNname{
+		color: #fff;
+		margin: auto 0;
+	}
+	.pNoldPrice{
+		color: #577373;
+		text-align: center;
+		text-decoration: line-through;
+	}
+	.pNnewPrice{
+		font-weight: bold;
+		font-size: 1.3em;
+	}
 	.product_list.gridView .gridViewText .normalView p{
 		padding: 0 5px;
-		overflow: hidden;
-		text-overflow: ellipsis;
 	}
 	.product_list.gridView .gridViewText .normalView{
 		display: flex;
 		justify-content: space-between;
 		background-color: rgba(18,197,195,.7);
+		transition: opacity .4s ease-out;
 	}
 	.product_list.gridView .gridViewText .normalView span{
 		display: block;
 	}
+
+
+	/* Hover View */
 	.product_list.gridView .gridViewText .extendedView{
-		display: none;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		height: 200px;
+		width: 100%;
+		text-align: center;
+		background-color: rgba(107,217,216, .7);
+	}
+	.pEname{
+		padding: 5px;
+	}
+	.pEname a{
+		color: #fff;
+	}
+	.pEprice{
+		display: flex;
+		justify-content: space-evenly;
+		font-size: 1.2em;
+	}
+	.pEoldPrice{
+		color: #577373;
+		text-decoration: line-through;
+		margin: auto 0;
+	}
+	.pEnewPrice{
+		font-size: 1.1em;
+		font-weight: bold;
+		color: #fff;
+	}
+
+	.pErating span{
+		margin-left: 5px;
+	}
+	.pErating i{
+		color: #BA6124
+	}
+	.pErating span{
+		color: #fff;
+	}
+	.pEaddToCart{
+		height: 45px;
+		background-color: #24C9C7;
+		display: flex;
+	}
+	.pEaddToCart label{
+		padding: 5px 30px;
+		margin: auto;
+		background: #fff;
+		border-radius: 25px;
+		color: #BA6124;
+		font-weight: 600;
+		transition: .3s ease-out;
+	}
+	.pEaddToCart label:hover{
+		background: #ddd;
+	}
+	.pEaddToCart label i{
+		margin-right: 10px;
 	}
 
 

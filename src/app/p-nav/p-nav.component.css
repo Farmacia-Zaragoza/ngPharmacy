@@ -123,7 +123,7 @@ nav>div{
 
 .expanded .pullDownContainer{
     flex-direction: row;
-    height: 250px;
+    height: calc(100% - 50px);
     width: 80%;
     padding: 10px 10px 0 10px;
 }
@@ -131,12 +131,13 @@ nav>div{
 .expanded .pullDownContainer > ul{
     padding: 0;
     margin: 0 8px 0 2px;
+    width: 90%;
 }
 
 .expanded .pullDownContainer > ul > li {
     display:inline-flex;
     flex-direction: column;
-    width: 200px;
+    width: 25%;
     height: 100%;
     text-align: center;
     padding: 0 5px;
@@ -211,6 +212,31 @@ nav>div{
 
 
 /* Responsive Code Goes Here */
+
+  /* 4K Responsive */
+  @media (min-width: 2049px){
+      .mainMenu{
+          font-size: 1.2em;
+      }
+      .mainMenu > ul > li{
+        padding: 25px;
+      }
+      .logo{
+          font-size: 1.3em;
+      }
+      .mainMenu > i{
+          font-size: 1.6em;
+      }
+      .pullDown{
+          top: 105px;
+      }
+      .pullDownContainer > i{
+          font-size: 1.5em;
+      }
+      .expanded, .pullDown{
+          height: 500px;
+      }
+  }
 
 @media screen and (max-width:1024px) {
     

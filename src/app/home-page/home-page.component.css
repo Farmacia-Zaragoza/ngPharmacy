@@ -132,6 +132,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    font-size: 2.5em;
 }
 
 .galleryImgContiner p{
@@ -304,7 +305,50 @@
     right: -50px;
   }
 
+  /* 4K Responsive */
+  @media (min-width: 2049px){
+    #promoSliderGalery .galleryImgContiner{
+        height: 1080px;
+    }
+    #promoSliderNav > i {
+        font-size: 50px;
+        padding: 20px 25px;
+    }
+    .promoNavItem p{
+        font-size: 47px;
+    }
+    .singleProduct{
+        height: 450px;
+    }
 
+    .verticalLeftSlider {
+        height: 800px;
+        padding: 0 0 0 30px;
+        top: calc(50% - 400px);
+    }
+    .verticalLeftSlider ul li a{
+        font-size: 3em;
+    }
+    .verticalLeftSlider>i {
+        background-color: rgba(255, 255, 255, 0.5);
+        border-radius: 50%;
+        font-size: 75px;
+        width: 75px;
+        line-height: 74px;
+        color: #78c55f;
+        -webkit-transition: .5s;
+        transition: .5s;
+        margin: 5px auto;
+        padding-left: 12px;
+    }
+    .productSlider .slick-arrow {
+        font-size: 45px;
+        border: 2px solid #fff;
+        width: 50px;
+        height: 50px;
+        line-height: 47px;
+    }
+  }
 
   @media only screen and (min-width: 1025px) and (max-width: 1330px){
     .responsiveGlitch{

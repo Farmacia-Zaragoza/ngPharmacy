@@ -24,3 +24,13 @@ a:hover{
     color: inherit;
 }
 
+@media (min-width: 2049px){
+    body{
+        font-size: 30px;
+    }
+
+    .container {
+        max-width: 85%;
+    }
+}
+

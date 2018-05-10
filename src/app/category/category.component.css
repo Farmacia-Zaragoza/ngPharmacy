@@ -460,6 +460,7 @@
 	.product_list.gridView{
 		display: flex;
 		flex-wrap: wrap;
+		justify-content: space-between;
 	}
 	.product_list.gridView .checkedImage .editButton, .product_list.gridView .productText{
 		display: none;

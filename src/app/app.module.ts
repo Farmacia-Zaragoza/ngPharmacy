@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule, Http } from '@angular/http';
 import { RouterModule } from '@angular/router';
+import { StarRatingModule } from 'angular-star-rating';
 
 
 import { AppComponent } from './app.component';
@@ -13,6 +14,7 @@ import { CategoryComponent } from './category/category.component';
 import { HomePageService } from './home-page/home-page.service';
 import { PNavService } from './p-nav/p-nav.service';
 import { ResponsiveTextComponent } from './responsive-text/responsive-text.component';
+import { TextLimitDirective } from './directives/text-limit.directive';
 
 @NgModule({
   declarations: [
@@ -21,11 +23,13 @@ import { ResponsiveTextComponent } from './responsive-text/responsive-text.compo
     PNavComponent,
     HomePageComponent,
     CategoryComponent,
-    ResponsiveTextComponent
+    ResponsiveTextComponent,
+    TextLimitDirective
   ],
   imports: [
     BrowserModule,
     HttpModule,
+    StarRatingModule.forRoot(),
     [RouterModule.forRoot([
       { path: '', component: HomePageComponent },
       { path: 'category/:name', component: CategoryComponent}

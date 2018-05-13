@@ -11,7 +11,9 @@ declare var $:any;
 export class CategoryComponent implements OnInit, AfterViewInit {
 
   view = "list";
+  allProducts = [];
   products = [];
+  
 
   @ViewChildren("singleProduct") singleProduct : QueryList<any>;
 
@@ -42,15 +44,31 @@ export class CategoryComponent implements OnInit, AfterViewInit {
     });
   }
 
+  loadProduct(){
+    let length = this.allProducts.length;
+    if(length == 0)
+      return;
+
+    let numberOfProducts = length > 16 ? 16 : length;
+    let products = this.allProducts.splice(0,numberOfProducts);
+    products.forEach((product)=>{
+      this.products.push(product);
+    })
+  }
+
   changeView(toBe){
     this.view = toBe;
   }
 
   ngOnInit() {
-    this.http.get("http://farma.dbrqx.com/index1/assets/products/example_products_2018.json")
+    this.http.get("https://farma.dbrqx.com/index1/assets/products/example_products_2018.json")
       .subscribe(response => {
-        this.products = response.json();
-      })
+        this.allProducts = response.json();
+
+        this.products = this.allProducts.splice(0,32);
+      });
+    
+    
 
     this.route.queryParamMap
       .subscribe( params => {
@@ -64,6 +82,21 @@ export class CategoryComponent implements OnInit, AfterViewInit {
     this.singleProduct.changes.subscribe( t => {
       console.log(t);
       this.responsiveTextInit();
+      let that = this;
+
+
+      // infinite loading....
+      window.onscroll = () => {
+        let scrollHeight = $('body').prop('scrollHeight');
+        let clientHeight = $(window).height();
+        let scrollTop = $(window).scrollTop();
+        let singleProductHeight = $('.single_product').prop('clientHeight');
+        // console.log(scrollHeight, clientHeight, scrollTop, singleProductHeight);
+        if(clientHeight + scrollTop >= scrollHeight - singleProductHeight) {
+          that.loadProduct();
+        }
+      };
+
     })
     
   }

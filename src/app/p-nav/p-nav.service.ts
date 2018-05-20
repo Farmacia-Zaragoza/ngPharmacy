@@ -7,7 +7,7 @@ export class PNavService {
   constructor(private http: Http) { }
 
   getMenus(){
-    return this.http.get('https://farma.dbrqx.com/ang/mainMenu.json');
+    return this.http.get('http://farma.vbrqx.com/ang/mainMenu.json');
   }
 
 }

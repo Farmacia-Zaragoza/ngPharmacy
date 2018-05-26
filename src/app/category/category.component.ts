@@ -46,8 +46,9 @@ export class CategoryComponent implements OnInit, AfterViewInit {
 
   loadProduct(){
     let length = this.allProducts.length;
-    if(length == 0)
-      return;
+    if(length == 0){
+      this.allProducts = this.products.slice();
+    }
 
     let numberOfProducts = length > 16 ? 16 : length;
     let products = this.allProducts.splice(0,numberOfProducts);
@@ -61,7 +62,7 @@ export class CategoryComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    this.http.get("https://farma.dbrqx.com/index1/assets/products/example_products_2018.json")
+    this.http.get("http://farma.vbrqx.com/ang/example_products_2018.json")
       .subscribe(response => {
         this.allProducts = response.json();
 

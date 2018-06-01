@@ -7,7 +7,7 @@ export class HomePageService {
   constructor(private http: Http) { }
 
   getPromoGalary(){
-    return this.http.get("http://farma.vbrqx.com/ang/promoGalary.json");
+    return this.http.get("https://farma.vbrqx.com/ang/promoGalary.json");
   }
 
 }

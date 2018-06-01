@@ -62,7 +62,7 @@ export class CategoryComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    this.http.get("http://farma.vbrqx.com/ang/example_products_2018.json")
+    this.http.get("https://farma.vbrqx.com/ang/example_products_2018.json")
       .subscribe(response => {
         this.allProducts = response.json();
 

@@ -15,6 +15,7 @@ import { HomePageService } from './home-page/home-page.service';
 import { PNavService } from './p-nav/p-nav.service';
 import { ResponsiveTextComponent } from './responsive-text/responsive-text.component';
 import { TextLimitDirective } from './directives/text-limit.directive';
+import { PFooterComponent } from './p-footer/p-footer.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { TextLimitDirective } from './directives/text-limit.directive';
     HomePageComponent,
     CategoryComponent,
     ResponsiveTextComponent,
-    TextLimitDirective
+    TextLimitDirective,
+    PFooterComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,14 @@
+
 <footer class="row">
   <div class="container-fluid">
-    <div class="col-md-12">
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore sit veritatis voluptas inventore mollitia eos. Cumque maxime optio molestiae esse.</p>
+    <div class="col-12">
+      <div id="promoSliderNav" class="footernav">
+        <div #footerMenu *ngFor="let menu of menuItems" class="promoNavItem">
+          <p>{{ menu.item }}</p>
+        </div>
+      </div>
+
     </div>
   </div>
+
 </footer>

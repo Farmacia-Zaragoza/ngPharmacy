@@ -1,10 +1,15 @@
 
-<footer class="row">
+<footer id="footer" [ngClass]="{'visible': visible}">
   <div class="container-fluid">
+    <button (click)="toggleFooter()" id="footerToggle">
+      <i class="fa fa-angle-up"></i>
+    </button>
+
     <div class="col-12">
-      <div id="promoSliderNav" class="footernav">
-        <div #footerMenu *ngFor="let menu of menuItems" class="promoNavItem">
-          <p>{{ menu.item }}</p>
+
+      <div id="footerNav" class="footernav">
+        <div #footerMenu *ngFor="let menu of menuItems" class="footerNavItem">
+          <a class="noselect" href="">{{ menu.item }}</a>
         </div>
       </div>
 

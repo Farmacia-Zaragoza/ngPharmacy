@@ -9,6 +9,7 @@
     background: url("../../assets/images/bg.jpg") center no-repeat;
     -webkit-background-size: cover;
     background-size: cover;
+    padding-bottom: 40px;
 }
 
 .homePage:after {

@@ -1,13 +1,73 @@
-:host{
+#footer{
     position: fixed;
-    bottom: 0;
+    bottom: -30px;
     left: 0;
-    width: 100%;
     background: #000;
     color: #13D7D6;
     font-weight: 600;
+    z-index: 99;
+    display: block;
+    width: 100%;
+    transition: .5s ease-out;
+}
+#footer.visible{
+    bottom: 0;
 }
 
-#promoSliderNav.footerNav i.footerArrow{
-    color: red
+#footer .slick-list{
+    width: 95%;
+    margin: auto 0;
+    overflow: hidden;
 }
+
+#footerNav{
+    display: flex;
+    justify-content: space-between;
+}
+
+.footerNavItem a{
+    color: #13D7D6;
+}
+
+#footerNav i{
+    color: #13D7D6;
+    font-size: 30px;
+    margin: auto 0;
+    padding: 7.5px;
+    margin-left: auto
+}
+#footerNav i:hover{
+    cursor: pointer;
+}
+
+.footerNavItem{
+    display: inline-block;
+}
+
+#footerToggle{
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    border: none;
+    z-index: 100;
+    background-color: #000;
+    border-radius: 5px;
+}
+#footerToggle:focus{
+    outline: none;
+}
+#footerToggle:hover{
+    cursor: pointer;
+}
+#footerToggle i{
+    color: #13D7D6;
+    padding: 0px 25px;
+    font-size: 30px;
+    transition-delay: .5s;
+    transition: 1s ease-out;
+}
+
+#footer.visible #footerToggle i{
+    transform: rotateX(180deg);
+}
+

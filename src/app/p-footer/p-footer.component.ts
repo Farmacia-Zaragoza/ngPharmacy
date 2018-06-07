@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit, ViewChildren, QueryList, ViewEncapsulation } from '@angular/core';
-import { HomePageService } from '../home-page/home-page.service';
-import { PromoGalary } from '../model/promoGalary.model';
+import { footerNav } from '../model/footerNav.model';
+import { PFooterService } from './p-footer.service';
 declare var $:any;
 
 @Component({
@@ -10,12 +10,13 @@ declare var $:any;
   encapsulation: ViewEncapsulation.None
 })
 export class PFooterComponent implements OnInit, AfterViewInit {
-  menuItems: Array<PromoGalary>;
+  menuItems: Array<footerNav>;
   visible = false;
 
-  constructor(private service: HomePageService) { }
+  constructor(private service: PFooterService) { }
 
   @ViewChildren('footerMenu') footerMenu: QueryList<any>;
+
 
   toggleFooter(){
     this.visible = !this.visible;
@@ -23,7 +24,7 @@ export class PFooterComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
 
-    this.service.getPromoGalary()
+    this.service.getFooterNav()
       .subscribe(response => {
         this.menuItems = response.json();
         console.log(this.menuItems)
@@ -40,11 +41,9 @@ export class PFooterComponent implements OnInit, AfterViewInit {
   menuInit() {
     $('#footerNav').slick({
       slidesToShow: 7,
-      slidesToScroll: 1,
-      centerMode: true,
-      autoplay: true,
+      slidesToScroll: 4,
+      speed: 3000,
       infinite: true,
-      autoplaySpeed: 2000,
       prevArrow: `<i class="fa fa-angle-left footerArrow"></i>`,
       nextArrow: `<i class="fa fa-angle-right footerArrow"></i>`,
       responsive: [
@@ -57,17 +56,23 @@ export class PFooterComponent implements OnInit, AfterViewInit {
         {
           breakpoint: 767,
           settings: {
-            slidesToShow: 3
+            slidesToShow: 3,
+            slidesToScroll: 3
           }
         },
         {
           breakpoint: 500,
           settings: {
-            slidesToShow: 1
+            slidesToShow: 1,
+            slidesToScroll: 1
           }
         }
       ]
       
+    });
+
+    $(".footernav .slick-arrow").mouseenter(function(){
+      $(this).trigger("click");
     });
   }
 

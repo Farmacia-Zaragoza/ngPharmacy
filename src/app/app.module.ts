@@ -17,6 +17,7 @@ import { ResponsiveTextComponent } from './responsive-text/responsive-text.compo
 import { TextLimitDirective } from './directives/text-limit.directive';
 import { PFooterComponent } from './p-footer/p-footer.component';
 import { ScrollToTopComponent } from './scroll-to-top/scroll-to-top.component';
+import { PFooterService } from './p-footer/p-footer.service';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { ScrollToTopComponent } from './scroll-to-top/scroll-to-top.component';
   ],
   providers: [
     HomePageService,
-    PNavService
+    PNavService,
+    PFooterService
   ],
   bootstrap: [AppComponent]
 })

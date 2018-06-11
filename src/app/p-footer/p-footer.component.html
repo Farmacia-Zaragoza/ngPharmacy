@@ -5,14 +5,14 @@
       <i class="fa fa-angle-up"></i>
     </button>
 
-    <div class="col-12">
-
-      <div id="footerNav" class="footernav">
-        <div #footerMenu *ngFor="let menu of menuItems" class="footerNavItem">
+    <div id="footerNav" >
+      <i class="sliderControls fa fa-angle-left"></i>
+      <ul class="sliderContainer">
+        <li #footerMenu *ngFor="let menu of menuItems" class="footerNavItem">
           <a class="noselect" href="{{menu.link}}">{{ menu.item }}</a>
-        </div>
-      </div>
-
+        </li>
+      </ul>
+      <i class="sliderControls fa fa-angle-right"></i>
     </div>
   </div>
 

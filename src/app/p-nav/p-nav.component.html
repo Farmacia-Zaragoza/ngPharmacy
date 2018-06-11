@@ -8,37 +8,39 @@
   </div>
 
   <div class="mainMenu">
-    <div class="responsiveMenuHeader"> <h4>Pharmachy Menu</h4> <i class="fa fa-times-circle-o" aria-hidden="true"></i></div>
+    <div class="responsiveMenuHeader">
+      <h4>Pharmachy Menu</h4>
+      <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+    </div>
     <i [hidden]="!isDesktop" class="sliderControls fa fa-angle-left"></i>
     <i [hidden]="isDesktop" class="sliderControls fa fa-angle-up"></i>
     <ul class="sliderContainer">
 
-      <li 
-        #mainMenu
-        *ngFor="let menu of menus" 
-        [class.pullDownItem]="menu.pulldown">
+      <li #mainMenu *ngFor="let menu of menus" [class.pullDownItem]="menu.pulldown">
         <a href="{{menu.link}}">{{menu.item}}</a>
 
         <div *ngIf="menu.pulldown" class="pullDown">
           <div class="pullDownContainer">
-              <i class="sliderControls fa fa-angle-up"></i>
-              <i class="sliderControls fa fa-angle-left"></i>
-              <ul class="sliderContainer">
+            <i class="sliderControls fa fa-angle-up"></i>
+            <i class="sliderControls fa fa-angle-left"></i>
+            <ul class="sliderContainer">
 
-                <li *ngFor="let seclvl of menu.pulldown">
-                  <a href="{{seclvl.link}}">{{seclvl.item}}</a>
+              <li *ngFor="let seclvl of menu.pulldown">
+                <a href="{{seclvl.link}}">{{seclvl.item}}</a>
 
-                  <div *ngIf="seclvl.thirdLvl" class="third-lvl-menu">
-                    <i class="sliderControls fa fa-angle-up"></i>
-                    <ul class="sliderContainer">
-                      <li *ngFor="let thrdlvl of seclvl.thirdLvl"><a href="{{thrdlvl.link}}">{{thrdlvl.item}}</a></li>
-                    </ul>
-                    <i class="sliderControls fa fa-angle-down"></i>                    
-                  </div>
-                </li>
-              </ul>
-              <i class="sliderControls fa fa-angle-down"></i>
-              <i class="sliderControls fa fa-angle-right"></i>
+                <div *ngIf="seclvl.thirdLvl" class="third-lvl-menu">
+                  <i class="sliderControls fa fa-angle-up"></i>
+                  <ul class="sliderContainer">
+                    <li *ngFor="let thrdlvl of seclvl.thirdLvl">
+                      <a href="{{thrdlvl.link}}">{{thrdlvl.item}}</a>
+                    </li>
+                  </ul>
+                  <i class="sliderControls fa fa-angle-down"></i>
+                </div>
+              </li>
+            </ul>
+            <i class="sliderControls fa fa-angle-down"></i>
+            <i class="sliderControls fa fa-angle-right"></i>
           </div>
           <div class="pullDownMeta">
             <i *ngIf="menu.pulldown[0].thirdLvl" class="expandButton fa fa-plus-circle"></i>
@@ -56,20 +58,64 @@
 
   <div class="nav-right">
     <ul>
-      <li><a href="#"><i class="fa fa-search"></i></a></li>
-      <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-      <li><a href="#"><i class="fa fa-user"></i></a></li>
+      <li>
+        <a href="#">
+          <i class="fa fa-search"></i>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fa fa-shopping-cart"></i>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fa fa-user"></i>
+        </a>
+      </li>
       <li id="lang">
-          <ul class="flagsContainer">
-            <li><a href="#"><img src="assets/images/flags/brqx_flag_china_2016_320_200.png" alt=""></a></li>
-            <li><a href="#"><img src="assets/images/flags/brqx_flag_china_2016_320_200.png" alt=""></a></li>
-            <li class="active"><a href="#"><img src="assets/images/flags/brqx_flag_china_2016_320_200.png" alt=""></a></li>
-            <li><a href="#"><img src="assets/images/flags/brqx_flag_china_2016_320_200.png" alt=""></a></li>
-            <li><a href="#"><img src="assets/images/flags/brqx_flag_china_2016_320_200.png" alt=""></a></li>
-            <li><a href="#"><img src="assets/images/flags/brqx_flag_china_2016_320_200.png" alt=""></a></li>
-            <li><a href="#"><img src="assets/images/flags/brqx_flag_china_2016_320_200.png" alt=""></a></li>
-            <li><a href="#"><img src="assets/images/flags/brqx_flag_china_2016_320_200.png" alt=""></a></li>
-          </ul>
+        <ul class="flagsContainer">
+          <li>
+            <a href="#">
+              <img src="assets/images/flags/brqx_flag_china_2016_320_200.png" alt="">
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src="assets/images/flags/brqx_flag_china_2016_320_200.png" alt="">
+            </a>
+          </li>
+          <li class="active">
+            <a href="#">
+              <img src="assets/images/flags/brqx_flag_china_2016_320_200.png" alt="">
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src="assets/images/flags/brqx_flag_china_2016_320_200.png" alt="">
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src="assets/images/flags/brqx_flag_china_2016_320_200.png" alt="">
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src="assets/images/flags/brqx_flag_china_2016_320_200.png" alt="">
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src="assets/images/flags/brqx_flag_china_2016_320_200.png" alt="">
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src="assets/images/flags/brqx_flag_china_2016_320_200.png" alt="">
+            </a>
+          </li>
+        </ul>
       </li>
     </ul>
   </div>

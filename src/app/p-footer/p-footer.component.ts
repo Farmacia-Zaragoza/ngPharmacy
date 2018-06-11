@@ -6,8 +6,8 @@ declare var $:any;
 @Component({
   selector: 'p-footer',
   templateUrl: './p-footer.component.html',
-  styleUrls: ['./p-footer.component.css'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./p-footer.component.css']
+  // encapsulation: ViewEncapsulation.None
 })
 export class PFooterComponent implements OnInit, AfterViewInit {
   menuItems: Array<footerNav>;
@@ -34,7 +34,7 @@ export class PFooterComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(){
     this.footerMenu.changes.subscribe(t=>{
-      this.menuInit();
+      // this.menuInit();
     })
   }
 

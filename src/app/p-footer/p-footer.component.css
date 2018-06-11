@@ -2,9 +2,9 @@
     position: fixed;
     bottom: -30px;
     left: 0;
-    background: #000;
+    background: #E8FCFB;
     color: #13D7D6;
-    font-weight: 600;
+    font-weight: 400;
     z-index: 99;
     display: block;
     width: 100%;
@@ -14,35 +14,37 @@
     bottom: 0;
 }
 
-#footer .slick-list{
-    width: 95%;
-    margin: auto 0;
-    overflow: hidden;
-}
 
 #footerNav{
     display: flex;
-    justify-content: space-between;
 }
-
-.footerNavItem a{
-    color: #13D7D6;
-}
-
-#footerNav i{
-    color: #13D7D6;
-    font-size: 30px;
-    margin: auto 0;
-    padding: 7.5px;
-    margin-left: auto
-}
-#footerNav i:hover{
+#footerNav i.sliderControls:hover{
     cursor: pointer;
 }
-
-.footerNavItem{
-    display: inline-block;
+#footerNav i.sliderControls{
+    margin: auto 0;
+    font-size: 30px;
 }
+
+ul.sliderContainer{
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 0 10px 0 5px;
+}
+
+ul.sliderContainer li{
+    display: inline-block;
+    padding: 15px;
+}
+
+ul.sliderContainer li a{
+    color: #13D7D6;
+}
+
+
+
+
+
 
 #footerToggle{
     position: absolute;
@@ -50,7 +52,7 @@
     left: 50%;
     border: none;
     z-index: 100;
-    background-color: #000;
+    background-color: #E8FCFB;
     border-radius: 5px;
 }
 #footerToggle:focus{

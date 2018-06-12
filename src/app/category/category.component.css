@@ -3,10 +3,11 @@
 }
 
 /* Product Navigation start */
-	.product_navigation span {
+	.product_navigation a {
 	    position: relative;
 	    font-size: 1.4em;
-	    margin-right: 1.2em;
+		margin-right: 1.2em;
+		color: #212529;
 	}
 
 	.product_navigation {
@@ -14,7 +15,7 @@
 	    padding: 5px 15px;
 	}
 
-	.product_navigation span:after {
+	.product_navigation a:after {
 	    content: "\f105";
 	    font-family: FontAwesome;
 	    position: absolute;
@@ -22,10 +23,10 @@
 	    top: 0;
 	    left: calc(100% + 7px);
 	}
-	.product_navigation span:last-child{
+	.product_navigation a:last-child{
 		margin-right: 0px;
 	}
-	.product_navigation span:last-child:after{
+	.product_navigation a:last-child:after{
 		display: none;
 	}
 	.list_title h2{

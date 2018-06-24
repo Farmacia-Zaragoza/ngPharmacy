@@ -35,6 +35,10 @@
 	}
 /* Product Navigation end */
 
+mat-progress-bar{
+	margin-top: -5px;
+}
+
 
 /* CheckBox Start */
 	.boxedCheckbox{

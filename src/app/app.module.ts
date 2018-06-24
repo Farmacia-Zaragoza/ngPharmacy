@@ -1,8 +1,10 @@
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { HttpModule, Http } from '@angular/http';
 import { RouterModule } from '@angular/router';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { StarRatingModule } from 'angular-star-rating';
 
 
@@ -18,6 +20,10 @@ import { TextLimitDirective } from './directives/text-limit.directive';
 import { PFooterComponent } from './p-footer/p-footer.component';
 import { ScrollToTopComponent } from './scroll-to-top/scroll-to-top.component';
 import { PFooterService } from './p-footer/p-footer.service';
+import { CategoryService } from './category/category.service';
+
+//material
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
@@ -32,18 +38,22 @@ import { PFooterService } from './p-footer/p-footer.service';
     ScrollToTopComponent
   ],
   imports: [
-    BrowserModule,
+  BrowserModule,
+    FormsModule,
     HttpModule,
+    BrowserAnimationsModule,
+    MatProgressBarModule,
     StarRatingModule.forRoot(),
     [RouterModule.forRoot([
       { path: '', component: HomePageComponent },
-      { path: 'category/:name', component: CategoryComponent}
+      { path: 'category/:name', component: CategoryComponent }
     ])]
   ],
   providers: [
     HomePageService,
     PNavService,
-    PFooterService
+    PFooterService,
+    CategoryService
   ],
   bootstrap: [AppComponent]
 })

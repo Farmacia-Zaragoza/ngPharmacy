@@ -28,11 +28,9 @@
           <div class="sortFor">
             <span>Sort For</span>
             <form action="" method="">
-              <select>
+              <select (change)="filterBy($event)">
                 <option value="name">Name</option>
                 <option value="price">Price</option>
-                <option value="option1">Option1</option>
-                <option value="option2">Option2</option>
               </select>
               <button type="submit"><i class="fa fa-sort-amount-asc"></i></button>
             </form>
@@ -78,6 +76,8 @@
       </div>
 
   </div>
+
+  <mat-progress-bar *ngIf="loaderVisible" mode="indeterminate"></mat-progress-bar>
 
 
   <div 

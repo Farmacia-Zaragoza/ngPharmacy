@@ -1,6 +1,6 @@
 #footer{
     position: fixed;
-    bottom: -30px;
+    bottom: -35px;
     left: 0;
     background: #E8FCFB;
     color: #13D7D6;
@@ -29,12 +29,12 @@
 ul.sliderContainer{
     overflow: hidden;
     white-space: nowrap;
-    margin: 0 10px 0 5px;
+    margin: 0 30px;
 }
 
 ul.sliderContainer li{
     display: inline-block;
-    padding: 15px;
+    padding: 15px 35px;
 }
 
 ul.sliderContainer li a{

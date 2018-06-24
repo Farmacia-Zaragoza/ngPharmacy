@@ -1,6 +1,7 @@
 import { Http } from '@angular/http';
 import { Component, OnInit, ViewEncapsulation, AfterViewInit, QueryList, ViewChildren } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { CategoryService } from './category.service';
 declare var $:any;
 @Component({
   selector: 'app-category',
@@ -13,13 +14,14 @@ export class CategoryComponent implements OnInit, AfterViewInit {
   view = "list";
   allProducts = [];
   products = [];
+  loaderVisible = true;
   
 
   @ViewChildren("singleProduct") singleProduct : QueryList<any>;
 
   constructor(
     private route: ActivatedRoute,
-    private http: Http
+    private service: CategoryService
   ) { }
 
   checkAll(input: HTMLInputElement){
@@ -44,6 +46,22 @@ export class CategoryComponent implements OnInit, AfterViewInit {
     });
   }
 
+  filterBy(e){
+    let filter = e.target.value;
+    this.loaderVisible = true;
+
+    this.service.getProducts(filter)
+      .subscribe(response => {
+        this.allProducts = response.json();
+        this.loaderVisible = false;
+        this.products = this.allProducts.splice(0,32);
+      })
+
+    //call service.get by filter name
+    //on subscribe destroy loader
+    //replace allProducts array
+  }
+
   loadProduct(){
     let length = this.allProducts.length;
     if(length == 0){
@@ -62,10 +80,10 @@ export class CategoryComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    this.http.get("https://farma.vbrqx.com/ang/example_products_2018.json")
+    this.service.getProducts('name')
       .subscribe(response => {
         this.allProducts = response.json();
-
+        this.loaderVisible = false;
         this.products = this.allProducts.splice(0,32);
       });
     
@@ -81,7 +99,6 @@ export class CategoryComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(){
     this.singleProduct.changes.subscribe( t => {
-      console.log(t);
       this.responsiveTextInit();
       let that = this;
 

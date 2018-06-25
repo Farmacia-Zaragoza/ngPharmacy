@@ -15,6 +15,7 @@ export class CategoryComponent implements OnInit, AfterViewInit {
   allProducts = [];
   products = [];
   loaderVisible = true;
+  numberOfProducts = 32;
   
 
   @ViewChildren("singleProduct") singleProduct : QueryList<any>;
@@ -32,10 +33,9 @@ export class CategoryComponent implements OnInit, AfterViewInit {
     }
   }
 
-  rangeValueChange(input: HTMLInputElement){
-    let value = input.value;
-    $("#zoomRangeInput").val(value);
-    $("#zoomRangeValue").val(value);
+  rangeValueChange(){
+    let lenght = this.products.length;
+    this.products = this.allProducts.slice(0,this.numberOfProducts);
   }
 
   mainAddtoCart(){
@@ -54,25 +54,33 @@ export class CategoryComponent implements OnInit, AfterViewInit {
       .subscribe(response => {
         this.allProducts = response.json();
         this.loaderVisible = false;
-        this.products = this.allProducts.splice(0,32);
+        this.products = this.allProducts.slice(0,32);
       })
-
-    //call service.get by filter name
-    //on subscribe destroy loader
-    //replace allProducts array
   }
 
   loadProduct(){
-    let length = this.allProducts.length;
-    if(length == 0){
-      this.allProducts = this.products.slice();
+    let allLenght = this.allProducts.length;
+    let pLength = this.products.length;
+    let left = allLenght - pLength;
+    let products = [];
+    
+    if(allLenght == pLength) { //fake end of file implementation
+      console.log('end of allProduct');
+      products = this.allProducts.slice();
+      products.forEach((product, index, array)=>{
+        this.allProducts.push(product);
+      })
+    } else { // shouldn't be this else clause when loading from a json file.
+      let toBeAdded = left > 16 ? pLength+16 : pLength+left;
+      this.numberOfProducts+=toBeAdded;
+      products = this.allProducts.slice(pLength-1,toBeAdded-1);
+      products.forEach((product)=>{
+        this.products.push(product);
+      })
     }
 
-    let numberOfProducts = length > 16 ? 16 : length;
-    let products = this.allProducts.splice(0,numberOfProducts);
-    products.forEach((product)=>{
-      this.products.push(product);
-    })
+    
+
   }
 
   changeView(toBe){
@@ -84,7 +92,7 @@ export class CategoryComponent implements OnInit, AfterViewInit {
       .subscribe(response => {
         this.allProducts = response.json();
         this.loaderVisible = false;
-        this.products = this.allProducts.splice(0,32);
+        this.products = this.allProducts.slice(0,32);
       });
     
     
@@ -102,7 +110,7 @@ export class CategoryComponent implements OnInit, AfterViewInit {
       this.responsiveTextInit();
       let that = this;
 
-
+      // let controlsContainerTop = $('.controlsContainer').offset().top;
       // infinite loading....
       window.onscroll = () => {
         let scrollHeight = $('body').prop('scrollHeight');
@@ -110,6 +118,13 @@ export class CategoryComponent implements OnInit, AfterViewInit {
         let scrollTop = $(window).scrollTop();
         let singleProductHeight = $('.single_product').prop('clientHeight');
         // console.log(scrollHeight, clientHeight, scrollTop, singleProductHeight);
+        
+        // if(scrollTop >= controlsContainerTop){ // sticky controls
+        //   $('.controlsContainer').css('position','fixed')
+        // }else{
+        //   $('.controlsContainer').css('position','static')
+        // }
+
         if(clientHeight + scrollTop >= scrollHeight - singleProductHeight) {
           that.loadProduct();
         }

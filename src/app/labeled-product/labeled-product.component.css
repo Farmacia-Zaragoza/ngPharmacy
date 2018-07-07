@@ -1,0 +1,31 @@
+:host{
+    margin-top: 30px;
+    height: 350px;
+}
+#labeled-product-slider{
+    overflow: hidden;
+    margin: 0 auto;
+}
+.single-labeled-product{
+    position: relative;
+    /* width: 200px; */
+    height: 200px;
+    overflow: hidden;
+    float: left;
+    padding: 0 10px;
+}
+
+.productImage{
+    height: 100%;
+    width: 100%;
+}
+
+.label{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .6);
+    color: #fff;
+    padding: 5px;
+    border-radius: 2px 0 0 2px;
+}

@@ -24,6 +24,7 @@ import { CategoryService } from './category/category.service';
 
 //material
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { LabeledProductComponent } from './labeled-product/labeled-product.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     ResponsiveTextComponent,
     TextLimitDirective,
     PFooterComponent,
-    ScrollToTopComponent
+    ScrollToTopComponent,
+    LabeledProductComponent
   ],
   imports: [
   BrowserModule,

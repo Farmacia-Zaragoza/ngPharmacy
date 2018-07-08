@@ -1,6 +1,5 @@
-:host{
-    margin-top: 30px;
-    height: 350px;
+#component-wrapper{
+    padding: 20px 15px;
 }
 #labeled-product-slider{
     overflow: hidden;
@@ -12,7 +11,13 @@
     height: 200px;
     overflow: hidden;
     float: left;
-    padding: 0 10px;
+    margin: 0 10px;
+}
+
+.sliderControls{
+    font-size: 30px;
+    display: inline-table;
+    margin: auto;
 }
 
 .productImage{
@@ -28,4 +33,134 @@
     color: #fff;
     padding: 5px;
     border-radius: 2px 0 0 2px;
+}
+
+
+.cartfilled input[type="checkbox"]{
+    position: absolute;
+    right: 99999px;
+}
+.cartfilled{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+.cartfilled img{
+    height: 40px;
+    width: 40px;
+}
+.cartfilled input[type="checkbox"]:checked + img{
+    visibility: visible;
+}
+.cartfilled input[type="checkbox"]:not(:checked) + img{
+    visibility: hidden;
+}
+
+
+
+/* Copied Styles from category.component.css */
+
+.gridViewText{
+    position: absolute;
+    left: 0;
+    bottom: -200px;
+    width: 100%;
+    transition: bottom .4s ease-out;
+}
+.gridViewText:hover{
+    bottom: 0;
+}
+.gridViewText:hover .normalView{
+    opacity: 0;
+}
+.gridViewText p{
+    margin-bottom: 0;
+}
+.gridViewText .normalView p.pNname{
+    color: #fff;
+    margin: auto 0;
+}
+.pNoldPrice{
+    color: #577373;
+    text-align: center;
+    text-decoration: line-through;
+}
+.pNnewPrice{
+    font-weight: bold;
+    font-size: 1.3em;
+}
+.gridViewText .normalView p{
+    padding: 0 5px;
+}
+.gridViewText .normalView{
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(18,197,195,.7);
+    transition: opacity .4s ease-out;
+}
+.gridViewText .normalView span{
+    display: block;
+}
+
+
+/* Hover View */
+.gridViewText .extendedView{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 200px;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(107,217,216, .7);
+}
+.pEname{
+    padding: 5px;
+}
+.pEname a{
+    color: #fff;
+}
+.pEprice{
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 1.2em;
+}
+.pEoldPrice{
+    color: #577373;
+    text-decoration: line-through;
+    margin: auto 0;
+}
+.pEnewPrice{
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #fff;
+}
+
+.pErating span{
+    margin-left: 5px;
+}
+.pErating i{
+    color: #BA6124
+}
+.pErating span{
+    color: #fff;
+}
+.pEaddToCart{
+    height: 45px;
+    background-color: #24C9C7;
+    display: flex;
+}
+.pEaddToCart label{
+    padding: 5px 30px;
+    margin: auto;
+    background: #fff;
+    border-radius: 25px;
+    color: #BA6124;
+    font-weight: 600;
+    transition: .3s ease-out;
+}
+.pEaddToCart label:hover{
+    background: #ddd;
+}
+.pEaddToCart label i{
+    margin-right: 10px;
 }

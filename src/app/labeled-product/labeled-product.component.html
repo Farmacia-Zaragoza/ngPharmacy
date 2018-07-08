@@ -1,234 +1,61 @@
-<div class="container-fluid">
+<div class="container-fluid" id="component-wrapper">
   <div class="row">
+    <i class="fa fa-chevron-circle-left sliderControls" (mouseover)="slideLeft()"></i>
     <div id="labeled-product-slider" class="col-11">
-      <div class="single-labeled-product">
+      <div class="single-labeled-product" #labeledSlider *ngFor="let product of products">
         <img class="productImage" src="assets/images/product-1.jpg" alt="">
-        <p class="label">Top Rated</p>
-        <div class="shortDescription">
-          <p class="productTitle">Alcohol Interapothek Heridline 1000 ml</p>
-          <p class="price">
-            <s class="old">2.07$</s>
-            <span class="new">2.07$</span>
+        <p class="label">{{product.label}}</p>
+        <div class="cartfilled">
+          <input type="checkbox" name="cartfilled-id-{{product.id}}" id="cartfilled-id-{{product.id}}">
+          <img src="assets/images/brqx_2017_cart_filled_256.png" alt="" />
+        </div>
+        <div class="gridViewText">
+        <div class="normalView">
+          <p class="pNname" [TextLimit]="28">{{product.name}}</p>
+          <p>
+            <span class="pNoldPrice">{{product.oldPrice}}$</span>
+            <span class="pNnewPrice">{{product.price}}$</span>
           </p>
         </div>
-        <div class="longDescription">
-          <a href='#' class="productTitle">Alcohol Interapothek Heridline 1000 ml</a>
-          <div class="ValuableInfo">
-            <div class="rating">
+        <div class="extendedView">
+          <p class="pEname">
+            <a href="">{{product.name}}</a>
+          </p>
+          <p class="pEprice">
+            <span class="pEoldPrice">{{product.oldPrice}} $</span>
+            <span class="pEnewPrice">{{product.price}} $</span>
+          </p>
+          <div class="pErating">
+            <!-- <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <span>{{product.rating}}</span> -->
               <star-rating 
-                  [starType]="'svg'" 
-                  [rating]="4.2" 
-                  [showHalfStars]="true" 
-                  [readOnly]="true" 
-                  staticColor="ok"
-                  labelText="4.2"
-                  labelPosition="right"
-                  >
-                </star-rating>
-            </div>
-            <p class="price">
-              <s class="old">2.07$</s>
-              <span class="new">2.07$</span>
-            </p>
+              [starType]="'svg'" 
+              [rating]="(product.rating/20).toFixed(2)" 
+              [showHalfStars]="true" 
+              [readOnly]="true" 
+              staticColor="ok"
+              labelText="{{product.rating}}"
+              labelPosition="right"
+              >
+            </star-rating>
           </div>
-          <div class="atcButton">
-            <a href="#">
-              <i class="fa fa-shopping-cart"></i>
-              <span>Add to Cart</span>
-            </a>
+          <div class="pEaddToCart">
+            <label for="cartfilled-id-{{product.id}}">
+              <p>
+                <i class="fa fa-opencart" aria-hidden="true"></i>
+                <span>ADD TO CART</span>
+              </p>
+            </label>
           </div>
         </div>
       </div>
-      <div class="single-labeled-product">
-        <img class="productImage" src="assets/images/product-1.jpg" alt="">
-        <p class="label">Top Rated</p>
-        <div class="shortDescription">
-          <p class="productTitle">Alcohol Interapothek Heridline 1000 ml</p>
-          <p class="price">
-            <s class="old">2.07$</s>
-            <span class="new">2.07$</span>
-          </p>
-        </div>
-        <div class="longDescription">
-          <a href='#' class="productTitle">Alcohol Interapothek Heridline 1000 ml</a>
-          <div class="ValuableInfo">
-            <div class="rating">
-              <star-rating 
-                  [starType]="'svg'" 
-                  [rating]="4.2" 
-                  [showHalfStars]="true" 
-                  [readOnly]="true" 
-                  staticColor="ok"
-                  labelText="4.2"
-                  labelPosition="right"
-                  >
-                </star-rating>
-            </div>
-            <p class="price">
-              <s class="old">2.07$</s>
-              <span class="new">2.07$</span>
-            </p>
-          </div>
-          <div class="atcButton">
-            <a href="#">
-              <i class="fa fa-shopping-cart"></i>
-              <span>Add to Cart</span>
-            </a>
-          </div>
-        </div>
       </div>
-      <div class="single-labeled-product">
-        <img class="productImage" src="assets/images/product-1.jpg" alt="">
-        <p class="label">Top Rated</p>
-        <div class="shortDescription">
-          <p class="productTitle">Alcohol Interapothek Heridline 1000 ml</p>
-          <p class="price">
-            <s class="old">2.07$</s>
-            <span class="new">2.07$</span>
-          </p>
-        </div>
-        <div class="longDescription">
-          <a href='#' class="productTitle">Alcohol Interapothek Heridline 1000 ml</a>
-          <div class="ValuableInfo">
-            <div class="rating">
-              <star-rating 
-                  [starType]="'svg'" 
-                  [rating]="4.2" 
-                  [showHalfStars]="true" 
-                  [readOnly]="true" 
-                  staticColor="ok"
-                  labelText="4.2"
-                  labelPosition="right"
-                  >
-                </star-rating>
-            </div>
-            <p class="price">
-              <s class="old">2.07$</s>
-              <span class="new">2.07$</span>
-            </p>
-          </div>
-          <div class="atcButton">
-            <a href="#">
-              <i class="fa fa-shopping-cart"></i>
-              <span>Add to Cart</span>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="single-labeled-product">
-        <img class="productImage" src="assets/images/product-1.jpg" alt="">
-        <p class="label">Top Rated</p>
-        <div class="shortDescription">
-          <p class="productTitle">Alcohol Interapothek Heridline 1000 ml</p>
-          <p class="price">
-            <s class="old">2.07$</s>
-            <span class="new">2.07$</span>
-          </p>
-        </div>
-        <div class="longDescription">
-          <a href='#' class="productTitle">Alcohol Interapothek Heridline 1000 ml</a>
-          <div class="ValuableInfo">
-            <div class="rating">
-              <star-rating 
-                  [starType]="'svg'" 
-                  [rating]="4.2" 
-                  [showHalfStars]="true" 
-                  [readOnly]="true" 
-                  staticColor="ok"
-                  labelText="4.2"
-                  labelPosition="right"
-                  >
-                </star-rating>
-            </div>
-            <p class="price">
-              <s class="old">2.07$</s>
-              <span class="new">2.07$</span>
-            </p>
-          </div>
-          <div class="atcButton">
-            <a href="#">
-              <i class="fa fa-shopping-cart"></i>
-              <span>Add to Cart</span>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="single-labeled-product">
-        <img class="productImage" src="assets/images/product-1.jpg" alt="">
-        <p class="label">Top Rated</p>
-        <div class="shortDescription">
-          <p class="productTitle">Alcohol Interapothek Heridline 1000 ml</p>
-          <p class="price">
-            <s class="old">2.07$</s>
-            <span class="new">2.07$</span>
-          </p>
-        </div>
-        <div class="longDescription">
-          <a href='#' class="productTitle">Alcohol Interapothek Heridline 1000 ml</a>
-          <div class="ValuableInfo">
-            <div class="rating">
-              <star-rating 
-                  [starType]="'svg'" 
-                  [rating]="4.2" 
-                  [showHalfStars]="true" 
-                  [readOnly]="true" 
-                  staticColor="ok"
-                  labelText="4.2"
-                  labelPosition="right"
-                  >
-                </star-rating>
-            </div>
-            <p class="price">
-              <s class="old">2.07$</s>
-              <span class="new">2.07$</span>
-            </p>
-          </div>
-          <div class="atcButton">
-            <a href="#">
-              <i class="fa fa-shopping-cart"></i>
-              <span>Add to Cart</span>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="single-labeled-product">
-        <img class="productImage" src="assets/images/product-1.jpg" alt="">
-        <p class="label">Top Rated</p>
-        <div class="shortDescription">
-          <p class="productTitle">Alcohol Interapothek Heridline 1000 ml</p>
-          <p class="price">
-            <s class="old">2.07$</s>
-            <span class="new">2.07$</span>
-          </p>
-        </div>
-        <div class="longDescription">
-          <a href='#' class="productTitle">Alcohol Interapothek Heridline 1000 ml</a>
-          <div class="ValuableInfo">
-            <div class="rating">
-              <star-rating 
-                  [starType]="'svg'" 
-                  [rating]="4.2" 
-                  [showHalfStars]="true" 
-                  [readOnly]="true" 
-                  staticColor="ok"
-                  labelText="4.2"
-                  labelPosition="right"
-                  >
-                </star-rating>
-            </div>
-            <p class="price">
-              <s class="old">2.07$</s>
-              <span class="new">2.07$</span>
-            </p>
-          </div>
-          <div class="atcButton">
-            <a href="#">
-              <i class="fa fa-shopping-cart"></i>
-              <span>Add to Cart</span>
-            </a>
-          </div>
-        </div>
-      </div>
+      
     </div>
+    <i class="fa fa-chevron-circle-right sliderControls" (mouseover)="slideRight()"></i>
   </div>
 </div>

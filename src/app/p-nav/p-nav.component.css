@@ -176,41 +176,6 @@ nav>div{
 
 
 
-
-
-/* Flag */
-
-#lang{
-    position: relative;
-}
-
-.flagsContainer{
-    display: none;
-    position: absolute;
-    left: 0;
-    top: 55px;
-    height: 250px;
-    width: 70px;
-    overflow-y: scroll;
-    z-index: 5;
-}
-
-.activeFlag{
-    height: 25px;
-    width: 40px;
-}
-
-
-.flagsContainer img {
-    width: 50px;
-    height: 30px;
-}
-.flagsContainer li a {
-    padding: 5px 3px;
-    display: block;
-}
-
-
 /* Responsive Code Goes Here */
 
   /* 4K Responsive */

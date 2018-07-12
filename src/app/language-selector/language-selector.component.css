@@ -1,0 +1,79 @@
+/* Flag */
+
+#flag-selector-wrapper{
+    position: relative;
+    padding: 2px 8px 5px 5px;
+    border-radius: 4px 4px 0 0;
+}
+
+#flag-selector-wrapper:hover{
+    background: #F36438;
+}
+
+#flag-selector-wrapper:hover #active-lang span{
+    color: #fff;
+}
+#flag-selector-wrapper:hover #all-flags{
+    /* background: #000; */
+}
+
+#active-lang{
+    margin: 0;
+}
+#active-lang img{
+    height: 16px;
+    width: 22px;
+}
+
+#active-lang span, .flagsContainer span{
+    margin-left: 5px;
+}
+
+#all-flags{
+    position: absolute;
+    left: 0;
+    top: 28px;
+    height: 250px;
+    width: max-content;
+    z-index: 5;
+    display: none;
+    flex-direction: column;
+    background-color: #fff;
+    border: 3px solid #F36438;
+    border-radius: 0 4px 4px 4px;
+}
+#flag-selector-wrapper:hover #all-flags{
+    display: flex;
+}
+
+#all-flags i{
+    margin: 0 auto;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+
+.flagsContainer{
+    overflow: hidden;
+    padding: 0 2px;
+}
+
+
+
+.flagsContainer img {
+    width: 40px;
+    height: 25px;
+}
+.flagsContainer li a {
+    padding: 5px 8px;
+    display: block;
+    color: #000;
+    margin: 2px 0;
+    border-radius: 4px;
+    transition: .3s;
+}
+
+.flagsContainer li:hover a, .flagsContainer li.active a{
+    background-color: #ddd;
+    color: #F36438;
+}

@@ -26,6 +26,7 @@ import { CategoryService } from './category/category.service';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { LabeledProductComponent } from './labeled-product/labeled-product.component';
 import { LanguageSelectorComponent } from './language-selector/language-selector.component';
+import { CurencySelectorComponent } from './curency-selector/curency-selector.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { LanguageSelectorComponent } from './language-selector/language-selector
     PFooterComponent,
     ScrollToTopComponent,
     LabeledProductComponent,
-    LanguageSelectorComponent
+    LanguageSelectorComponent,
+    CurencySelectorComponent
   ],
   imports: [
   BrowserModule,

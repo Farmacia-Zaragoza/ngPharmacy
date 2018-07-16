@@ -32,7 +32,7 @@ nav>div{
     font-size: 30px;
 }
 .nav-right{
-    width: 25%;
+    width: 35%;
     justify-content: flex-end;
 }
 .mainMenu > ul{

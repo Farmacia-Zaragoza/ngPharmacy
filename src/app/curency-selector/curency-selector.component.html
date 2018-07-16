@@ -1,0 +1,76 @@
+<div id="currency-selector-wrapper">
+  <p id="active-currency">
+      $<span>Us Dollar</span>
+      <i class="fa fa-caret-down"></i>
+    </p>
+    <div id="all-currency">
+      <i (mouseover)="slideUp(upbtn)" #upbtn class="fa fa-angle-up"></i>
+      <ul class="currencyContainer sliderContainer">
+        
+        <li>
+          <a href="#">
+            €<span>Euro</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            $<span>Us Dollar</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#">
+            $<span>Peso Argentino</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#">
+            A$<span>Australian Dollar</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#">
+            R$<span>Real Brasileiro</span>
+          </a>
+        </li>
+        
+        <li>
+          <a href="#">
+            C$<span>Canadian Dollar</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#">
+            $<span>Peso Chileno</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#">
+            ¥<span>Chinese Yuan</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            COP<span>Peso Colombiano</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            ¥<span>Japanese Yen</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            $<span>Peso Mexicano</span>
+          </a>
+        </li>
+        
+      </ul>
+      <i (mouseover)="slideDown(downbtn)" #downbtn class="fa fa-angle-down"></i>
+    </div>      
+</div>
+

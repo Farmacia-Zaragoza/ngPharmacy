@@ -179,7 +179,7 @@ nav>div{
 /* Responsive Code Goes Here */
 
   /* 4K Responsive */
-  @media (min-width: 2049px){
+  @media only screen and (min-width: 2049px){
       .mainMenu{
           font-size: 1.2em;
       }
@@ -203,10 +203,19 @@ nav>div{
       }
   }
 
-@media screen and (max-width:1024px) {
+@media only screen and (min-width: 1025px) and (max-width: 1235px){
+    .nav-right>ul>li{
+        padding: 15px 5px;
+    }
+}
+
+@media only screen and (max-width:1024px) {
     
-    .pullDownMeta, #lang, .expanded .third-lvl-menu, .expanded > i{
+    .pullDownMeta, .expanded .third-lvl-menu, .expanded > i{
         display: none; 
+    }
+    #mainMenuToggleButton, .nav-right, .logo{
+        width: auto;
     }
     
     nav{
@@ -232,7 +241,6 @@ nav>div{
 
     .logo {
         font-size: 30px;
-        width: 50%;
     }
     
     .logo>a{
@@ -362,19 +370,20 @@ nav>div{
 
 @media only screen and (max-width: 767px) {
     
-    #mainMenuToggleButton{
-        width: 10%;
+    #mainMenuToggleButton, .nav-right, .logo{
+        width: auto;
     }
-
-    .logo>a{
+    #mainMenuToggleButton i{
         font-size: 25px;
     }
 
-    .nav-right{
-        width: 35%;
+
+    .logo>a{
+        font-size: 20px;
     }
 
+
     .nav-right ul li {
-        padding: 10px;
+        padding: 10px 5px;
     }
 }

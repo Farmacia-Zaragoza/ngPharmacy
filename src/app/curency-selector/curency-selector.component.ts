@@ -19,6 +19,10 @@ export class CurencySelectorComponent implements OnInit {
     jqMethods.slideDown(btn);
   }
 
+  slideStop(btn){
+    jqMethods.slideStop(btn);
+  }
+
   ngOnInit() {
   }
 

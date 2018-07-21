@@ -14,17 +14,11 @@
     color: #fff;
 }
 
-#currency-selector-wrapper:hover #all-currency{
-    /* background: #000; */
-}
 
 #active-currency{
     margin: 0;
 }
-#active-currency img{
-    height: 16px;
-    width: 22px;
-}
+
 
 #active-currency span, .currencyContainer span{
     margin-left: 7px;
@@ -60,11 +54,6 @@
 }
 
 
-
-.currencyContainer img {
-    width: 40px;
-    height: 25px;
-}
 .currencyContainer li a {
     padding: 5px 8px;
     display: block;
@@ -77,4 +66,41 @@
 .currencyContainer li:hover a, .currencyContainer li.active a{
     background-color: #ddd;
     color: #F36438;
+}
+
+
+
+/* 4k */
+@media only screen and (min-width: 2049px) {
+    #all-currency{
+        top: 52px;
+        height: 460px;
+    }
+
+    #all-currency i {
+        font-size: 65px
+    }
+}
+
+@media only screen and (max-width: 1700px) {
+    /* #active-currency span{
+        display: none;
+    } */
+    
+    
+}
+
+/* tablet */
+@media only screen and (max-width:1024px) {
+    
+}
+
+/* mobile */
+@media only screen and (max-width: 767px){
+    .currencyFull{
+        display: none;
+    }
+    #currency-selector-wrapper{
+        padding: 2px 5px 5px 5px;
+    }
 }

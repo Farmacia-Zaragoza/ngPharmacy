@@ -1,0 +1,1 @@
+export let host = "https://farma.vbrqx.com/ang/";

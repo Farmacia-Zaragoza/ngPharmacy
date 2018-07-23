@@ -7,7 +7,6 @@ declare var $:any;
   selector: 'p-footer',
   templateUrl: './p-footer.component.html',
   styleUrls: ['./p-footer.component.css']
-  // encapsulation: ViewEncapsulation.None
 })
 export class PFooterComponent implements OnInit, AfterViewInit {
   menuItems: Array<footerNav>;
@@ -27,7 +26,6 @@ export class PFooterComponent implements OnInit, AfterViewInit {
     this.service.getFooterNav()
       .subscribe(response => {
         this.menuItems = response.json();
-        console.log(this.menuItems)
       })
 
   }

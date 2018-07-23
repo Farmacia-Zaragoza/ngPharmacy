@@ -1,71 +1,15 @@
 <div id="currency-selector-wrapper">
   <p id="active-currency">
-    COP
+    {{activeCurrency.symbol}}
       <i class="fa fa-caret-down"></i>
     </p>
     <div id="all-currency">
       <i (mouseleave)="slideStop(upbtn)" (mouseover)="slideUp(upbtn)" #upbtn class="fa fa-angle-up"></i>
       <ul class="currencyContainer sliderContainer">
         
-        <li>
-          <a href="#">
-            €<span class="currencyFull">Euro</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            $<span class="currencyFull">Us Dollar</span>
-          </a>
-        </li>
-
-        <li>
-          <a href="#">
-            $<span class="currencyFull">Peso Argentino</span>
-          </a>
-        </li>
-
-        <li>
-          <a href="#">
-            A$<span class="currencyFull">Australian Dollar</span>
-          </a>
-        </li>
-
-        <li>
-          <a href="#">
-            R$<span class="currencyFull">Real Brasileiro</span>
-          </a>
-        </li>
-        
-        <li>
-          <a href="#">
-            C$<span class="currencyFull">Canadian Dollar</span>
-          </a>
-        </li>
-
-        <li>
-          <a href="#">
-            $<span class="currencyFull">Peso Chileno</span>
-          </a>
-        </li>
-
-        <li>
-          <a href="#">
-            ¥<span class="currencyFull">Chinese Yuan</span>
-          </a>
-        </li>
-        <li class="active">
-          <a href="#">
-            COP<span class="currencyFull">Peso Colombiano</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            ¥<span class="currencyFull">Japanese Yen</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            $<span class="currencyFull">Peso Mexicano</span>
+        <li *ngFor="let currency of allCurrency" [class.active]="currency.active" (click)="changeCurrency(currency)">
+          <a>
+            {{currency.symbol}}<span class="currencyFull">{{currency.full}}</span>
           </a>
         </li>
         

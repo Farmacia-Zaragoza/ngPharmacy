@@ -1,3 +1,4 @@
+import { LanguageSelectorService } from './language-selector/language-selector.service';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -27,6 +28,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { LabeledProductComponent } from './labeled-product/labeled-product.component';
 import { LanguageSelectorComponent } from './language-selector/language-selector.component';
 import { CurencySelectorComponent } from './curency-selector/curency-selector.component';
+import { CurrencySelectorService } from './curency-selector/currency-selector.service';
 
 @NgModule({
   declarations: [
@@ -59,7 +61,9 @@ import { CurencySelectorComponent } from './curency-selector/curency-selector.co
     HomePageService,
     PNavService,
     PFooterService,
-    CategoryService
+    CategoryService,
+    CurrencySelectorService,
+    LanguageSelectorService
   ],
   bootstrap: [AppComponent]
 })

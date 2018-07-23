@@ -76,6 +76,7 @@
 .flagsContainer li:hover a, .flagsContainer li.active a{
     background-color: #ddd;
     color: #F36438;
+    cursor: pointer;
 }
 
 

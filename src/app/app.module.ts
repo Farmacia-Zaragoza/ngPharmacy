@@ -29,6 +29,7 @@ import { LabeledProductComponent } from './labeled-product/labeled-product.compo
 import { LanguageSelectorComponent } from './language-selector/language-selector.component';
 import { CurencySelectorComponent } from './curency-selector/curency-selector.component';
 import { CurrencySelectorService } from './curency-selector/currency-selector.service';
+import { CookieService } from './global/cookie.service';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { CurrencySelectorService } from './curency-selector/currency-selector.se
     PFooterService,
     CategoryService,
     CurrencySelectorService,
-    LanguageSelectorService
+    LanguageSelectorService,
+    CookieService
   ],
   bootstrap: [AppComponent]
 })

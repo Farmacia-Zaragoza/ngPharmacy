@@ -1,3 +1,4 @@
+import { CookieService } from './../global/cookie.service';
 import { currency } from './../model/currency.model';
 import { Component, OnInit } from '@angular/core';
 import * as jqMethods from '../global/global-jquery-methods';
@@ -12,7 +13,7 @@ export class CurencySelectorComponent implements OnInit {
   allCurrency: Array<currency>;
   activeCurrency: currency;
 
-  constructor(private service: CurrencySelectorService) { }
+  constructor(private service: CurrencySelectorService, private cookie: CookieService) { }
 
   slideUp(btn){
     jqMethods.slideUp(btn);
@@ -30,14 +31,17 @@ export class CurencySelectorComponent implements OnInit {
   changeCurrency(currency: currency){
     this.activeCurrency.active = false;
     this.activeCurrency = currency;
-    currency.active = !currency.active
+    currency.active = !currency.active;
+
+    this.cookie.setCookie('pAc', currency.id, 2);
   }
 
   ngOnInit() {
-    this.allCurrency = this.service.getAllCurrency();
-
-
-    this.activeCurrency = this.service.getActiveCurrency();
+    this.service.getAllCurrency()
+      .subscribe((all) => {
+        this.allCurrency = all;
+        this.activeCurrency = this.service.getActiveCurrency();
+      });
   }
 
 }

@@ -1,28 +1,37 @@
+import { CookieService } from './../global/cookie.service';
+import { host } from './../global/configuration';
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { currency } from '../model/currency.model';
 
+import "rxjs/add/operator/map";
+
 @Injectable()
 
 export class CurrencySelectorService {
-  currency :Array<currency> = [
-    {"symbol": "€", "full": "Euro", "active": true},
-    {"symbol": "$", "full": "Us Dollar"},
-    {"symbol": "$", "full": "Peso Argentino"},
-    {"symbol": "A$", "full": "Australian Dollar"},
-    {"symbol": "R$", "full": "Real Brasileiro"},
-    {"symbol": "C$", "full": "Canadian Dollar"},
-    {"symbol": "$", "full": "Peso Chileno"},
-    {"symbol": "¥", "full": "Chinese Yuan"},
-    {"symbol": "COP", "full": "Peso Colombiano"},
-    {"symbol": "¥", "full": "Japanese Yen"},
-    {"symbol": "$", "full": "Peso Mexicano"}
-  ]
+  public currency: Array<currency>;
+  public activeCurrencyId;
 
-  constructor(http: Http) { }
+  constructor(private http: Http, private cookie: CookieService) {
+    this.activeCurrencyId = this.cookie.getCookie('pAc');
+  }
 
   getAllCurrency(){
-    return this.currency;
+    return this.http.get(`${host}currency.json`)
+      .map((res)=>{
+        this.currency = res.json();
+
+        if(this.activeCurrencyId !== ""){
+          this.currency.map(c=>{
+            c.active ? c.active = false: null;
+
+            if(c.id == this.activeCurrencyId)
+              c.active = true;
+          })
+        }
+
+        return this.currency;
+      })
   }
 
   getActiveCurrency(){

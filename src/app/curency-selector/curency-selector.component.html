@@ -1,6 +1,6 @@
 <div id="currency-selector-wrapper">
   <p id="active-currency">
-    {{activeCurrency.symbol}}
+    {{activeCurrency?.symbol}}
       <i class="fa fa-caret-down"></i>
     </p>
     <div id="all-currency">
@@ -9,7 +9,7 @@
         
         <li *ngFor="let currency of allCurrency" [class.active]="currency.active" (click)="changeCurrency(currency)">
           <a>
-            {{currency.symbol}}<span class="currencyFull">{{currency.full}}</span>
+            {{currency?.symbol}}<span class="currencyFull">{{currency?.full}}</span>
           </a>
         </li>
         

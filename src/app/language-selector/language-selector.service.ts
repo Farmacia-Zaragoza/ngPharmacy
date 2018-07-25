@@ -1,35 +1,42 @@
+import { CookieService } from './../global/cookie.service';
+import { host } from './../global/configuration';
 import { language } from './../model/language.model';
 import { Http } from '@angular/http';
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
+
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class LanguageSelectorService {
-  allLanguage: Array<language> = [
-    {"flag": "assets/images/flags/brqx_flag_china_2016_320_200.png", "name": "Spain"},
-    {"flag": "assets/images/flags/brqx_flag_china_2016_320_200.png", "name": "Australia", "active": true},
-    {"flag": "assets/images/flags/brqx_flag_china_2016_320_200.png", "name": "Spain"},
-    {"flag": "assets/images/flags/brqx_flag_china_2016_320_200.png", "name": "Spain"},
-    {"flag": "assets/images/flags/brqx_flag_china_2016_320_200.png", "name": "Spain"},
-    {"flag": "assets/images/flags/brqx_flag_china_2016_320_200.png", "name": "Spain"},
-    {"flag": "assets/images/flags/brqx_flag_china_2016_320_200.png", "name": "Spain"},
-    {"flag": "assets/images/flags/brqx_flag_china_2016_320_200.png", "name": "Spain"},
-    {"flag": "assets/images/flags/brqx_flag_china_2016_320_200.png", "name": "Spain"},
-    {"flag": "assets/images/flags/brqx_flag_china_2016_320_200.png", "name": "Spain"},
-    {"flag": "assets/images/flags/brqx_flag_china_2016_320_200.png", "name": "Spain"},
-    {"flag": "assets/images/flags/brqx_flag_china_2016_320_200.png", "name": "Spain"},
-    {"flag": "assets/images/flags/brqx_flag_china_2016_320_200.png", "name": "Spain"},
-    {"flag": "assets/images/flags/brqx_flag_china_2016_320_200.png", "name": "Spain"},
-    {"flag": "assets/images/flags/brqx_flag_china_2016_320_200.png", "name": "Spain"},
-    {"flag": "assets/images/flags/brqx_flag_china_2016_320_200.png", "name": "Spain"},
-  ]
-  constructor(private http: Http) { }
+  public allLanguage: Array<language>;
+  public activeLangId;
+
+  
+  constructor(private http: Http, private cookie: CookieService) {
+    this.activeLangId = this.cookie.getCookie('pAl');
+  }
 
   getAllLanguage(){
-    return this.allLanguage;
+    return this.http.get(`${host}language.json`)
+      .map( res => {
+        this.allLanguage = res.json();
+        
+        if(this.activeLangId !== ""){
+          this.allLanguage.map(l=>{
+            l.active ? l.active = false: null;
+
+            if(l.id == this.activeLangId)
+              l.active = true;
+          })
+        }
+
+        return this.allLanguage;
+      });
+  
   }
 
-  getActiveLanguage(){
-    let l = this.allLanguage.filter((c)=> c.active);
-    return l[0];
-  }
+  // activeLanguage(){
+  //   return this.active;
+  // }
+
 }

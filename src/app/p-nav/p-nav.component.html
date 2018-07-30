@@ -4,7 +4,7 @@
   </div>
 
   <div class="logo">
-    <a href="">Pharmachy</a>
+    <a [routerLink]='["/"]'>Pharmachy</a>
   </div>
 
   <div class="mainMenu">
@@ -17,7 +17,7 @@
     <ul class="sliderContainer">
 
       <li #mainMenu *ngFor="let menu of menus" [class.pullDownItem]="menu.pulldown">
-        <a href="{{menu.link}}">{{menu.item}}</a>
+        <a [routerLink]='[menu.link]'>{{menu.item}}</a>
 
         <div *ngIf="menu.pulldown" class="pullDown">
           <div class="pullDownContainer">

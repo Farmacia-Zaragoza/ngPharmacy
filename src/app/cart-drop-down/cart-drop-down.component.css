@@ -1,0 +1,107 @@
+/* Currency */
+
+#currency-selector-wrapper{
+    position: relative;
+    padding: 2px 8px 5px 5px;
+    border-radius: 4px 4px 0 0;
+}
+
+#currency-selector-wrapper:hover{
+    background: #F36438;
+}
+
+#currency-selector-wrapper:hover #active-currency{
+    color: #fff;
+}
+
+
+#active-currency{
+    margin: 0;
+}
+
+
+#active-currency span, .currencyContainer span{
+    margin-left: 7px;
+}
+
+#all-currency{
+    position: absolute;
+    left: 0;
+    top: 28px;
+    height: 250px;
+    width: max-content;
+    z-index: 5;
+    display: none;
+    flex-direction: column;
+    background-color: #fff;
+    border: 3px solid #F36438;
+    border-radius: 0 4px 4px 4px;
+}
+#currency-selector-wrapper:hover #all-currency{
+    display: flex;
+}
+
+#all-currency i{
+    margin: 0 auto;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+
+.currencyContainer{
+    overflow: hidden;
+    padding: 0 2px;
+}
+
+
+.currencyContainer li a {
+    padding: 5px 8px;
+    display: block;
+    color: #000;
+    margin: 2px 0;
+    border-radius: 4px;
+    transition: .3s;
+}
+
+.currencyContainer li:hover a, .currencyContainer li.active a{
+    background-color: #ddd;
+    color: #F36438;
+    cursor: pointer;
+}
+
+
+
+/* 4k */
+@media only screen and (min-width: 2049px) {
+    #all-currency{
+        top: 52px;
+        height: 460px;
+    }
+
+    #all-currency i {
+        font-size: 65px
+    }
+}
+
+@media only screen and (max-width: 1700px) {
+    /* #active-currency span{
+        display: none;
+    } */
+    
+    
+}
+
+/* tablet */
+@media only screen and (max-width:1024px) {
+    
+}
+
+/* mobile */
+@media only screen and (max-width: 767px){
+    .currencyFull{
+        display: none;
+    }
+    #currency-selector-wrapper{
+        padding: 2px 5px 5px 5px;
+    }
+}

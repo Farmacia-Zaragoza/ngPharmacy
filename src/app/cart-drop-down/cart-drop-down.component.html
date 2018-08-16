@@ -1,0 +1,20 @@
+<div id="currency-selector-wrapper">
+  <p id="active-currency">
+    {{activeCurrency?.symbol}}
+    <i class="fa fa-caret-down"></i>
+  </p>
+  <div id="all-currency">
+    <i (mouseleave)="slideStop(upbtn)" (mouseover)="slideUp(upbtn)" #upbtn class="fa fa-angle-up"></i>
+    <ul class="currencyContainer sliderContainer">
+
+      <li *ngFor="let currency of allCurrency" [class.active]="currency.active" (click)="changeCurrency(currency)">
+        <a>
+          {{currency?.symbol}}
+          <span class="currencyFull">{{currency?.full}}</span>
+        </a>
+      </li>
+
+    </ul>
+    <i (mouseleave)="slideStop(downbtn)" (mouseover)="slideDown(downbtn)" #downbtn class="fa fa-angle-down"></i>
+  </div>
+</div>

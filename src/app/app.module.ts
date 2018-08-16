@@ -30,6 +30,7 @@ import { LanguageSelectorComponent } from './language-selector/language-selector
 import { CurencySelectorComponent } from './curency-selector/curency-selector.component';
 import { CurrencySelectorService } from './curency-selector/currency-selector.service';
 import { CookieService } from './global/cookie.service';
+import { CartDropDownComponent } from './cart-drop-down/cart-drop-down.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { CookieService } from './global/cookie.service';
     ScrollToTopComponent,
     LabeledProductComponent,
     LanguageSelectorComponent,
-    CurencySelectorComponent
+    CurencySelectorComponent,
+    CartDropDownComponent
   ],
   imports: [
   BrowserModule,

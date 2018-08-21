@@ -31,6 +31,7 @@ import { CurencySelectorComponent } from './curency-selector/curency-selector.co
 import { CurrencySelectorService } from './curency-selector/currency-selector.service';
 import { CookieService } from './global/cookie.service';
 import { CartDropDownComponent } from './cart-drop-down/cart-drop-down.component';
+import { UserDropDownComponent } from './user-drop-down/user-drop-down.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { CartDropDownComponent } from './cart-drop-down/cart-drop-down.component
     LabeledProductComponent,
     LanguageSelectorComponent,
     CurencySelectorComponent,
-    CartDropDownComponent
+    CartDropDownComponent,
+    UserDropDownComponent
   ],
   imports: [
   BrowserModule,

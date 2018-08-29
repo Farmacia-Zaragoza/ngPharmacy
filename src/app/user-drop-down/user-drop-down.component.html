@@ -8,17 +8,27 @@
     <ul class="optionsContainer sliderContainer">
 
       <li>
-        <a>
-          Login
-          <!-- <span class="currencyFull">{{currency?.full}}</span> -->
+        <a *ngIf="!isLogedIn">
+          <i class="fa fa-sign-in"></i>
+          <span>Login</span>
+        </a>
+        <a *ngIf="isLogedIn">
+          <i class="fa fa-sign-out"></i>
+          <span>Log-Out</span>
         </a>
       </li>
 
       <li>
-        <a href="">Register</a>
+        <a href="">
+          <i class="fa fa-user-plus"></i>
+          <span>Register</span>
+        </a>
       </li>
       <li>
-        <a href="">Option3</a>
+        <a href="">
+          <i class="fa fa-question"></i>
+          <span>Help</span>
+        </a>
       </li>
 
     </ul>

@@ -43,7 +43,7 @@
 
 #all-options i{
     margin: 0 auto;
-    font-size: 25px;
+    font-size: 16px;
     cursor: pointer;
 }
 
@@ -61,6 +61,10 @@
     margin: 2px 0;
     border-radius: 4px;
     transition: .3s;
+}
+
+.optionsContainer li a i {
+    
 }
 
 .optionsContainer li:hover a, .optionsContainer li.active a{
@@ -93,7 +97,9 @@
 
 /* tablet */
 @media only screen and (max-width:1024px) {
-    
+    .optionsContainer li a span{
+        display: none;
+    }
 }
 
 /* mobile */

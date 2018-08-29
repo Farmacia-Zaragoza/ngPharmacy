@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-drop-down.component.css']
 })
 export class UserDropDownComponent implements OnInit {
+  isLogedIn = false;
 
   constructor() { }
 

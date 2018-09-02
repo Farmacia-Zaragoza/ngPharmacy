@@ -2,7 +2,7 @@ import { Http } from '@angular/http';
 import { Component, OnInit, ViewEncapsulation, AfterViewInit, QueryList, ViewChildren } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CategoryService } from './category.service';
-declare var $:any;
+declare var $: any;
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
@@ -16,37 +16,42 @@ export class CategoryComponent implements OnInit, AfterViewInit {
   products = [];
   loaderVisible = true;
   numberOfProducts = 32;
-  
 
-  @ViewChildren("singleProduct") singleProduct : QueryList<any>;
+  dualPanel = false;
+  leftPanelProducts = [];
+  rightPanelProducts = [];
+
+
+
+  @ViewChildren("singleProduct") singleProduct: QueryList<any>;
 
   constructor(
     private route: ActivatedRoute,
     private service: CategoryService
   ) { }
 
-  checkAll(input: HTMLInputElement){
-    if(input.checked){
+  checkAll(input: HTMLInputElement) {
+    if (input.checked) {
       $('.allProductCheckbox').prop('checked', true);
     } else {
       $('.allProductCheckbox').prop('checked', false);
     }
   }
 
-  rangeValueChange(){
+  rangeValueChange() {
     let lenght = this.products.length;
-    this.products = this.allProducts.slice(0,this.numberOfProducts);
+    this.products = this.allProducts.slice(0, this.numberOfProducts);
   }
 
-  mainAddtoCart(){
+  mainAddtoCart() {
     var checkedProducts = $(".allProductCheckbox:checked");
 
-    checkedProducts.each(function() {
+    checkedProducts.each(function () {
       $(this).closest('.single_product').find('.cartfilled input').prop("checked", "true");
     });
   }
 
-  filterBy(e){
+  filterBy(e) {
     let filter = e.target.value;
     this.loaderVisible = true;
 
@@ -54,37 +59,49 @@ export class CategoryComponent implements OnInit, AfterViewInit {
       .subscribe(response => {
         this.allProducts = response.json();
         this.loaderVisible = false;
-        this.products = this.allProducts.slice(0,32);
+        this.products = this.allProducts.slice(0, 32);
       })
   }
 
-  loadProduct(){
+  loadProduct() {
     let allLenght = this.allProducts.length;
     let pLength = this.products.length;
     let left = allLenght - pLength;
     let products = [];
-    
-    if(allLenght == pLength) { //fake end of file implementation
-      console.log('end of allProduct');
+
+    if (allLenght == pLength) { //fake end of file implementation
+      // console.log('end of allProduct');
       products = this.allProducts.slice();
-      products.forEach((product, index, array)=>{
+      products.forEach((product, index, array) => {
         this.allProducts.push(product);
       })
     } else { // shouldn't be this else clause when loading from a json file.
-      let toBeAdded = left > 16 ? pLength+16 : pLength+left;
-      this.numberOfProducts+=toBeAdded;
-      products = this.allProducts.slice(pLength-1,toBeAdded-1);
-      products.forEach((product)=>{
+      let toBeAdded = left > 16 ? pLength + 16 : pLength + left;
+      this.numberOfProducts += toBeAdded;
+      products = this.allProducts.slice(pLength - 1, toBeAdded - 1);
+      products.forEach((product) => {
         this.products.push(product);
       })
     }
 
-    
+
 
   }
 
-  changeView(toBe){
+  changeView(toBe) {
     this.view = toBe;
+  }
+
+  changeDualPanel() {
+    this.dualPanel = !this.dualPanel;
+
+    // let length = this.products.length;
+    // let mid = length / 2;
+
+    // if (this.dualPanel) {
+    //   this.leftPanelProducts = this.products.slice(0, mid);
+    //   this.rightPanelProducts = this.products.slice(mid, length);
+    // }
   }
 
   ngOnInit() {
@@ -92,49 +109,55 @@ export class CategoryComponent implements OnInit, AfterViewInit {
       .subscribe(response => {
         this.allProducts = response.json();
         this.loaderVisible = false;
-        this.products = this.allProducts.slice(0,32);
+        this.products = this.allProducts.slice(0, 32);
       });
-    
-    
+
+
 
     this.route.queryParamMap
-      .subscribe( params => {
+      .subscribe(params => {
         let viewType = params.get("view");
-        if(viewType)
+        if (viewType)
           this.view = viewType;
       })
   }
 
-  ngAfterViewInit(){
-    this.singleProduct.changes.subscribe( t => {
+  ngAfterViewInit() {
+    this.singleProduct.changes.subscribe(t => {
       this.responsiveTextInit();
       let that = this;
 
       // let controlsContainerTop = $('.controlsContainer').offset().top;
       // infinite loading....
       window.onscroll = () => {
+
+        //return if the view is on dual panel
+        if (this.dualPanel && this.view === 'list')
+          return;
+
+
         let scrollHeight = $('body').prop('scrollHeight');
         let clientHeight = $(window).height();
         let scrollTop = $(window).scrollTop();
         let singleProductHeight = $('.single_product').prop('clientHeight');
         // console.log(scrollHeight, clientHeight, scrollTop, singleProductHeight);
-        
+
         // if(scrollTop >= controlsContainerTop){ // sticky controls
         //   $('.controlsContainer').css('position','fixed')
         // }else{
         //   $('.controlsContainer').css('position','static')
         // }
 
-        if(clientHeight + scrollTop >= scrollHeight - singleProductHeight) {
+        if (clientHeight + scrollTop >= scrollHeight - singleProductHeight) {
           that.loadProduct();
         }
       };
 
     })
-    
+
   }
 
-  responsiveTextInit () {
+  responsiveTextInit() {
     var responsiveTexts = $(".responsiveText");
     responsiveTexts.each(function (index, responsiveText) {
       var rTextConainerWidth = $(responsiveText).width();
@@ -142,8 +165,8 @@ export class CategoryComponent implements OnInit, AfterViewInit {
         $(responsiveText).addClass('rCollaps').append("<i class='fa fa-plus-circle responsiveTextExpandButton'></i>");
       }
     });
-  
-  
+
+
     $(".responsiveText.rCollaps .responsiveTextExpandButton").click(function () {
       var parentContainer = $(this).closest('.responsiveText');
       var rInner = $(parentContainer).find('p').detach();
@@ -160,7 +183,7 @@ export class CategoryComponent implements OnInit, AfterViewInit {
         $(".rTinner").remove();
         $(parentContainer).prepend(rInner);
       }
-  
+
       $(".responsiveText > i.responsiveText_controls").mouseenter(function () {
         let rTinner = $(this).siblings('.rTinner');
         let scrollLength = $(rTinner).scrollLeft() + $(rTinner)[0].scrollWidth - $(rTinner).width();
@@ -176,7 +199,7 @@ export class CategoryComponent implements OnInit, AfterViewInit {
           }, 500);
         }
       });
-  
+
       $(".responsiveText > i.responsiveText_controls").mouseleave(function () {
         $('.rTinner').stop();
       });

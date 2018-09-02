@@ -472,7 +472,7 @@
 		/* bg color = bg color under block */
 		background: white;
 	}
-	.product_list.gridView{
+	.product_list.gridView .listWrapper{
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-between;

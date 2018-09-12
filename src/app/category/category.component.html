@@ -194,84 +194,27 @@
 
 
     <ng-template #dualPanelView>
-      <div style="width: 50%; float: left;">
-        <!-- Single Product -->
-        <div #singleProduct class="single_product" *ngFor="let product of products | slice:0:products.length/2">
-          <div class="checkboxWithPimage">
-            <div class="boxedCheckbox">
-              <input class="allProductCheckbox" type="checkbox" name="productID-{{product.id}}-selectBox" id="productID-{{product.id}}">
-              <label for="productID-{{product.id}}"></label>
-            </div>
-            <img src="{{product.pImage}}" alt="" />
-          </div>
-
-          <div class="productText">
-            <div class="pName responsiveText">
-              <p>
-                <a href="">{{product.name}}</a>
-              </p>
-            </div>
-
-            <div class="pDescription responsiveText">
-              <p>{{product.pDes}}</p>
-            </div>
-            <div class="TextField1 responsiveText">
-              <p>{{product.textField1}}</p>
-            </div>
-            <div class="TextField2 responsiveText">
-              <p>{{product.textField2}}</p>
-            </div>
-            <div class="mainCart">
-              <label for="cartfilled-id-{{product.id}}">
-                <p>
-                  <i class="fa fa-opencart" aria-hidden="true"></i>
-                  <span>ADD TO CART</span>
-                </p>
-              </label>
-            </div>
-            <div class="pQuantity">
-              <select name="quantity-{{product.id}}" id="quantity-{{product.id}}">
-                <option value="1">01</option>
-                <option value="2">02</option>
-                <option value="5">05</option>
-                <option value="10">10</option>
-              </select>
-            </div>
-            <div class="pPrice">
-              <p>
-                <span>{{product.price}}</span>$</p>
-            </div>
-          </div>
-          <!-- productText -->
-
-          <div class="gridViewText">
-            <div class="normalView">
-              <p class="pNname" [TextLimit]="28">{{product.name}}</p>
-              <p>
-                <span class="pNoldPrice">{{product.oldPrice}}$</span>
-                <span class="pNnewPrice">{{product.price}}$</span>
-              </p>
-            </div>
-            <div class="extendedView">
-              <p class="pEname">
-                <a href="">{{product.name}}</a>
-              </p>
-              <p class="pEprice">
-                <span class="pEoldPrice">{{product.oldPrice}} $</span>
-                <span class="pEnewPrice">{{product.price}} $</span>
-              </p>
-              <div class="pErating">
-                <!-- <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <span>{{product.rating}}</span> -->
-                <star-rating [starType]="'svg'" [rating]="(product.rating/20).toFixed(2)" [showHalfStars]="true" [readOnly]="true" staticColor="ok"
-                  labelText="{{product.rating}}" labelPosition="right">
-                </star-rating>
+      <div class="dualWrapper">
+        <div class="dual-half">
+          <!-- Single Product -->
+          <div #singleProduct class="single_product" *ngFor="let product of products | slice:0:products.length/2">
+            <div class="checkboxWithPimage">
+              <div class="boxedCheckbox">
+                <input class="allProductCheckbox" type="checkbox" name="productID-{{product.id}}-selectBox" id="productID-{{product.id}}">
+                <label for="productID-{{product.id}}"></label>
               </div>
-              <div class="pEaddToCart">
+              <img src="{{product.pImage}}" alt="" />
+            </div>
+
+            <div class="productText">
+              <div class="pName responsiveText">
+                <p>
+                  <a href="">{{product.name}}</a>
+                </p>
+              </div>
+
+
+              <div class="mainCart">
                 <label for="cartfilled-id-{{product.id}}">
                   <p>
                     <i class="fa fa-opencart" aria-hidden="true"></i>
@@ -279,99 +222,44 @@
                   </p>
                 </label>
               </div>
-            </div>
-          </div>
-
-          <div class="checkedImage">
-            <div class="cartfilled">
-              <input type="checkbox" name="cartfilled-id-{{product.id}}" id="cartfilled-id-{{product.id}}">
-              <img src="assets/images/brqx_2017_cart_filled_256.png" alt="" />
-            </div>
-
-            <i class="fa fa-pencil-square-o editButton" aria-hidden="true"></i>
-
-          </div>
-        </div>
-        <!-- Single Product -->
-      </div>
-      <div style="width: 50%; float: left;">
-        <!-- Single Product -->
-        <div #singleProduct class="single_product" *ngFor="let product of products | slice:products.length/2">
-          <div class="checkboxWithPimage">
-            <div class="boxedCheckbox">
-              <input class="allProductCheckbox" type="checkbox" name="productID-{{product.id}}-selectBox" id="productID-{{product.id}}">
-              <label for="productID-{{product.id}}"></label>
-            </div>
-            <img src="{{product.pImage}}" alt="" />
-          </div>
-
-          <div class="productText">
-            <div class="pName responsiveText">
-              <p>
-                <a href="">{{product.name}}</a>
-              </p>
-            </div>
-
-            <div class="pDescription responsiveText">
-              <p>{{product.pDes}}</p>
-            </div>
-            <div class="TextField1 responsiveText">
-              <p>{{product.textField1}}</p>
-            </div>
-            <div class="TextField2 responsiveText">
-              <p>{{product.textField2}}</p>
-            </div>
-            <div class="mainCart">
-              <label for="cartfilled-id-{{product.id}}">
+              <div class="pPrice">
                 <p>
-                  <i class="fa fa-opencart" aria-hidden="true"></i>
-                  <span>ADD TO CART</span>
-                </p>
-              </label>
+                  <span>{{product.price}}</span>$</p>
+              </div>
             </div>
-            <div class="pQuantity">
-              <select name="quantity-{{product.id}}" id="quantity-{{product.id}}">
-                <option value="1">01</option>
-                <option value="2">02</option>
-                <option value="5">05</option>
-                <option value="10">10</option>
-              </select>
-            </div>
-            <div class="pPrice">
-              <p>
-                <span>{{product.price}}</span>$</p>
+
+
+            <div class="checkedImage">
+              <div class="cartfilled">
+                <input type="checkbox" name="cartfilled-id-{{product.id}}" id="cartfilled-id-{{product.id}}">
+                <img src="assets/images/brqx_2017_cart_filled_256.png" alt="" />
+              </div>
+
+              <!-- <i class="fa fa-pencil-square-o editButton" aria-hidden="true"></i> -->
+
             </div>
           </div>
-          <!-- productText -->
-
-          <div class="gridViewText">
-            <div class="normalView">
-              <p class="pNname" [TextLimit]="28">{{product.name}}</p>
-              <p>
-                <span class="pNoldPrice">{{product.oldPrice}}$</span>
-                <span class="pNnewPrice">{{product.price}}$</span>
-              </p>
-            </div>
-            <div class="extendedView">
-              <p class="pEname">
-                <a href="">{{product.name}}</a>
-              </p>
-              <p class="pEprice">
-                <span class="pEoldPrice">{{product.oldPrice}} $</span>
-                <span class="pEnewPrice">{{product.price}} $</span>
-              </p>
-              <div class="pErating">
-                <!-- <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <span>{{product.rating}}</span> -->
-                <star-rating [starType]="'svg'" [rating]="(product.rating/20).toFixed(2)" [showHalfStars]="true" [readOnly]="true" staticColor="ok"
-                  labelText="{{product.rating}}" labelPosition="right">
-                </star-rating>
+          <!-- Single Product -->
+        </div>
+        <div class="dual-half">
+          <!-- Single Product -->
+          <div #singleProduct class="single_product" *ngFor="let product of products | slice:products.length/2">
+            <div class="checkboxWithPimage">
+              <div class="boxedCheckbox">
+                <input class="allProductCheckbox" type="checkbox" name="productID-{{product.id}}-selectBox" id="productID-{{product.id}}">
+                <label for="productID-{{product.id}}"></label>
               </div>
-              <div class="pEaddToCart">
+              <img src="{{product.pImage}}" alt="" />
+            </div>
+
+            <div class="productText">
+              <div class="pName responsiveText">
+                <p>
+                  <a href="">{{product.name}}</a>
+                </p>
+              </div>
+
+              <div class="mainCart">
                 <label for="cartfilled-id-{{product.id}}">
                   <p>
                     <i class="fa fa-opencart" aria-hidden="true"></i>
@@ -379,20 +267,25 @@
                   </p>
                 </label>
               </div>
-            </div>
-          </div>
 
-          <div class="checkedImage">
-            <div class="cartfilled">
-              <input type="checkbox" name="cartfilled-id-{{product.id}}" id="cartfilled-id-{{product.id}}">
-              <img src="assets/images/brqx_2017_cart_filled_256.png" alt="" />
+              <div class="pPrice">
+                <p>
+                  <span>{{product.price}}</span>$</p>
+              </div>
             </div>
 
-            <i class="fa fa-pencil-square-o editButton" aria-hidden="true"></i>
+            <div class="checkedImage">
+              <div class="cartfilled">
+                <input type="checkbox" name="cartfilled-id-{{product.id}}" id="cartfilled-id-{{product.id}}">
+                <img src="assets/images/brqx_2017_cart_filled_256.png" alt="" />
+              </div>
 
+              <!-- <i class="fa fa-pencil-square-o editButton" aria-hidden="true"></i> -->
+
+            </div>
           </div>
+          <!-- Single Product -->
         </div>
-        <!-- Single Product -->
       </div>
     </ng-template>
 

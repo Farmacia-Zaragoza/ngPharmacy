@@ -186,14 +186,14 @@
 		.viewAs span:focus, .viewAs span:active{
 			outline: none;
 		}
-		/*
+		
 		.viewAs input[type="radio"], .dualPanel input[type="radio"]{
 			position: absolute;
 			left: -99999px;
 		}
 		.viewAs input[type="radio"]:checked + label{
 			color: #F36438;
-		} */
+		}
 	/* view as end */
 
 	/* ZoomRange Start */
@@ -230,7 +230,8 @@
 		.dualPanel{
 			display: flex;
 			box-sizing: border-box;
-		    width: 52px;
+			width: 52px;
+			padding: 3px 6px !important;
 		}
 		.dualPanel span{
 			margin: auto;
@@ -272,7 +273,19 @@
 /* Controls Section end */
 
 /* List Start */
+
+	.dualWrapper{
+		display: flex;
+	}
 	
+	.dual-half{
+		width: 50%;
+	}
+	.dual-half:last-child{
+		width: calc(50% - 2px);
+		border-left: 2px solid #00D5DF;
+	}
+
 	.product_list .boxedCheckbox [type="checkbox"]:not(:checked) + label, .product_list .boxedCheckbox [type="checkbox"]:checked + label{
 		border-color: #F3B24A;
 	}

@@ -1,1 +1,1 @@
-export let host = "http://farma.vbrqx.com/ang/";
+export let host = "https://farma.vbrqx.com/ang/";

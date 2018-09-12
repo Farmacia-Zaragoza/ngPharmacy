@@ -94,14 +94,6 @@ export class CategoryComponent implements OnInit, AfterViewInit {
 
   changeDualPanel() {
     this.dualPanel = !this.dualPanel;
-
-    // let length = this.products.length;
-    // let mid = length / 2;
-
-    // if (this.dualPanel) {
-    //   this.leftPanelProducts = this.products.slice(0, mid);
-    //   this.rightPanelProducts = this.products.slice(mid, length);
-    // }
   }
 
   ngOnInit() {
@@ -132,14 +124,14 @@ export class CategoryComponent implements OnInit, AfterViewInit {
       window.onscroll = () => {
 
         //return if the view is on dual panel
-        if (this.dualPanel && this.view === 'list')
-          return;
+        // if (this.dualPanel && this.view === 'list')
+        //   return;
 
 
         let scrollHeight = $('body').prop('scrollHeight');
         let clientHeight = $(window).height();
         let scrollTop = $(window).scrollTop();
-        let singleProductHeight = $('.single_product').prop('clientHeight');
+        // let singleProductHeight = $('.single_product').prop('clientHeight');
         // console.log(scrollHeight, clientHeight, scrollTop, singleProductHeight);
 
         // if(scrollTop >= controlsContainerTop){ // sticky controls
@@ -148,8 +140,9 @@ export class CategoryComponent implements OnInit, AfterViewInit {
         //   $('.controlsContainer').css('position','static')
         // }
 
-        if (clientHeight + scrollTop >= scrollHeight - singleProductHeight) {
+        if (clientHeight + scrollTop == scrollHeight) {
           that.loadProduct();
+          // console.log("now")
         }
       };
 

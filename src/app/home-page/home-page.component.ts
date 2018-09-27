@@ -1,9 +1,9 @@
-import { Component, OnInit, ViewEncapsulation, AfterViewInit, QueryList, ViewChildren } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, AfterViewInit, QueryList, ViewChildren, Inject } from '@angular/core';
 import { PromoGalary } from '../model/promoGalary.model';
 import '../../assets/slick/slick.min.js';
 import { HomePageService } from './home-page.service';
-declare var $:any;
-declare var jquery:any;
+declare var $: any;
+declare var jquery: any;
 
 @Component({
   selector: 'home-page',
@@ -15,9 +15,11 @@ export class HomePageComponent implements OnInit, AfterViewInit {
 
   promoGalary: Array<PromoGalary>;
   @ViewChildren('promoSlider') promoSlider: QueryList<any>;
-  
 
-  constructor( private service: HomePageService ) {}
+
+  constructor(private service: HomePageService, @Inject('AppData') appData) {
+    console.log(appData);
+  }
 
 
 
@@ -28,14 +30,14 @@ export class HomePageComponent implements OnInit, AfterViewInit {
       .subscribe(response => {
         this.promoGalary = response.json();
       })
-    
+
   }
 
-  ngAfterViewInit(){
-    this.promoSlider.changes.subscribe( t => {
+  ngAfterViewInit() {
+    this.promoSlider.changes.subscribe(t => {
       this.initPromoSlider();
     })
-    
+
     $('.productSlider').slick({
       slidesToShow: 3,
       slidesToScroll: 3,
@@ -60,12 +62,12 @@ export class HomePageComponent implements OnInit, AfterViewInit {
       ]
     });
 
-    $(".productSlider .slick-arrow").mouseenter(function(){
+    $(".productSlider .slick-arrow").mouseenter(function () {
       $(this).trigger("click");
     });
   }
 
-  initPromoSlider(){
+  initPromoSlider() {
     $('#promoSliderNav').slick({
       slidesToShow: 7,
       slidesToScroll: 1,
@@ -95,7 +97,7 @@ export class HomePageComponent implements OnInit, AfterViewInit {
           }
         }
       ]
-      
+
     });
 
     $('#promoSliderGalery').slick({
@@ -106,13 +108,13 @@ export class HomePageComponent implements OnInit, AfterViewInit {
       asNavFor: '#promoSliderNav',
       autoplay: true,
       autoplaySpeed: 5000,
-      
 
-      onAfterChange:function(slickSlider,i){
+
+      onAfterChange: function (slickSlider, i) {
         //remove all active class
         $('.slider-nav .slick-slide').removeClass('slick-active');
         //set active class for current slide
-        $('.slider-nav .slick-slide').eq(i).addClass('slick-active');  
+        $('.slider-nav .slick-slide').eq(i).addClass('slick-active');
       }
     });
   }

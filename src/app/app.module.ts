@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, Http } from '@angular/http';
 import { RouterModule } from '@angular/router';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StarRatingModule } from 'angular-star-rating';
 
 
@@ -24,7 +24,7 @@ import { PFooterService } from './p-footer/p-footer.service';
 import { CategoryService } from './category/category.service';
 
 //material
-import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { LabeledProductComponent } from './labeled-product/labeled-product.component';
 import { LanguageSelectorComponent } from './language-selector/language-selector.component';
 import { CurencySelectorComponent } from './curency-selector/curency-selector.component';
@@ -51,7 +51,7 @@ import { UserDropDownComponent } from './user-drop-down/user-drop-down.component
     UserDropDownComponent
   ],
   imports: [
-  BrowserModule,
+    BrowserModule,
     FormsModule,
     HttpModule,
     BrowserAnimationsModule,
@@ -69,7 +69,8 @@ import { UserDropDownComponent } from './user-drop-down/user-drop-down.component
     CategoryService,
     CurrencySelectorService,
     LanguageSelectorService,
-    CookieService
+    CookieService,
+    { provide: 'AppData', useValue: (<any>window).APP_DATA }
   ],
   bootstrap: [AppComponent]
 })

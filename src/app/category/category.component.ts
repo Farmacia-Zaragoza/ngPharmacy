@@ -1,5 +1,6 @@
+import { ToolboxModalComponent } from './../toolbox-modal/toolbox-modal.component';
 import { Http } from '@angular/http';
-import { Component, OnInit, ViewEncapsulation, AfterViewInit, QueryList, ViewChildren } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, AfterViewInit, QueryList, ViewChildren, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CategoryService } from './category.service';
 declare var $: any;
@@ -24,6 +25,13 @@ export class CategoryComponent implements OnInit, AfterViewInit {
 
 
   @ViewChildren("singleProduct") singleProduct: QueryList<any>;
+
+  @ViewChild(ToolboxModalComponent) private toolboxModal: ToolboxModalComponent;
+
+  toolboxModalInit() {
+    console.log('working')
+    this.toolboxModal.show()
+  }
 
   constructor(
     private route: ActivatedRoute,

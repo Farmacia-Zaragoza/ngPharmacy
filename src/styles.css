@@ -17,6 +17,22 @@ body {
     font-family: 'Open Sans', 'sans-serif';
     font-size: 14px;
 }
+body.backdrop{
+    overflow: hidden;
+}
+body.backdrop::before{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    content: "";
+    left: 0;
+    background-color: black;
+    opacity: 0.6;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+}
 ul{
     list-style-type: none;
     margin: 0;
@@ -46,4 +62,10 @@ a:hover{
         max-width: 85%;
     }
 }
+
+/* @media (min-width: 1024px){ //dynamic font size
+    body{
+        font-size: 14px !important;
+    }
+} */
 

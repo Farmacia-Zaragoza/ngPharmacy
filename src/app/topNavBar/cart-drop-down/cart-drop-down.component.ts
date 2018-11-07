@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import * as jqMethods from '../global/global-jquery-methods';
+import * as jqMethods from '../../global/global-jquery-methods';
 
 @Component({
   selector: 'app-cart-drop-down',

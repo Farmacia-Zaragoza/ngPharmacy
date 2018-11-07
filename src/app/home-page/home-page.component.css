@@ -85,6 +85,7 @@
  #promoSliderNav{
      display: flex;
      border: 1px solid #Fff;
+     height: 47px;
  }
 
  #promoSliderNav > .slick-list{

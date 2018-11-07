@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit, ViewChildren, QueryList, ViewEncapsulation } from '@angular/core';
 import { footerNav } from '../model/footerNav.model';
-import { PFooterService } from './p-footer.service';
-declare var $:any;
+import { PageService } from '../../page.service';
+declare var $: any;
 
 @Component({
   selector: 'p-footer',
@@ -12,26 +12,26 @@ export class PFooterComponent implements OnInit, AfterViewInit {
   menuItems: Array<footerNav>;
   visible = false;
 
-  constructor(private service: PFooterService) { }
+  constructor(private service: PageService) { }
 
   @ViewChildren('footerMenu') footerMenu: QueryList<any>;
 
 
-  toggleFooter(){
+  toggleFooter() {
     this.visible = !this.visible;
   }
 
   ngOnInit() {
 
-    this.service.getFooterNav()
-      .subscribe(response => {
-        this.menuItems = response.json();
+    this.service.done
+      .subscribe(content => {
+        this.menuItems = content.footer;
       })
 
   }
 
-  ngAfterViewInit(){
-    this.footerMenu.changes.subscribe(t=>{
+  ngAfterViewInit() {
+    this.footerMenu.changes.subscribe(t => {
       // this.menuInit();
     })
   }
@@ -66,10 +66,10 @@ export class PFooterComponent implements OnInit, AfterViewInit {
           }
         }
       ]
-      
+
     });
 
-    $(".footernav .slick-arrow").mouseenter(function(){
+    $(".footernav .slick-arrow").mouseenter(function () {
       $(this).trigger("click");
     });
   }

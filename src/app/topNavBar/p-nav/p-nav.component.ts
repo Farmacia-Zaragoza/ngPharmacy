@@ -1,6 +1,6 @@
 import { Component, OnInit, HostListener, ViewChildren, QueryList, AfterViewInit } from '@angular/core';
-import * as jqMethods from '../global/global-jquery-methods';
-import { PNavService } from './p-nav.service';
+import * as jqMethods from '../../global/global-jquery-methods';
+import { PageService } from '../../../page.service';
 
 declare var $: any;
 
@@ -16,7 +16,7 @@ export class PNavComponent implements OnInit, AfterViewInit {
 
   @ViewChildren('mainMenu') mainMenu: QueryList<any>;
 
-  constructor(private service: PNavService) {
+  constructor(private service: PageService) {
     this.isDesktop = window.innerWidth >= 1025 ? true : false;
   }
 
@@ -25,19 +25,19 @@ export class PNavComponent implements OnInit, AfterViewInit {
     this.isDesktop = event.target.innerWidth >= 1025 ? true : false;
   }
 
-  ngAfterViewInit(){
-    this.mainMenu.changes.subscribe( t => {
+  ngAfterViewInit() {
+    this.mainMenu.changes.subscribe(t => {
       this.mainMenuInit();
       // console.log("changed")
     })
 
-    
+
   }
 
   ngOnInit() {
-    this.service.getMenus()
-      .subscribe( response => {
-        this.menus = response.json()
+    this.service.done
+      .subscribe(content => {
+        this.menus = content.topMenu;
       });
   }
 
@@ -49,7 +49,7 @@ export class PNavComponent implements OnInit, AfterViewInit {
           return;
 
         //preventing other event if any dropdown is sticky already
-        if($('.pullDown').hasClass('sticky'))
+        if ($('.pullDown').hasClass('sticky'))
           return;
 
         // dropdown position fixing
@@ -67,13 +67,13 @@ export class PNavComponent implements OnInit, AfterViewInit {
           return;
 
         //preventing other event if any dropdown is sticky already
-        if($('.pullDown').hasClass('sticky'))
+        if ($('.pullDown').hasClass('sticky'))
           return;
 
         $('.pullDown', this).stop(true, true).slideUp("400");
       }
     );
-    
+
     $("i.sliderControls").hover( // menu slider slide behaviour
       function () {
         if ($(this).hasClass("fa-angle-up")) {
@@ -106,33 +106,33 @@ export class PNavComponent implements OnInit, AfterViewInit {
       }
     })
 
-    $(".pullDownMeta>i.fa-asterisk").click(function(){ //Sticky Button Behaviour
+    $(".pullDownMeta>i.fa-asterisk").click(function () { //Sticky Button Behaviour
       let pullDown = $(this).closest('.pullDown');
 
       // $(this).toggleClass("extended");      
       $(pullDown).toggleClass("sticky");
     });
 
-    $(".responsiveMenuHeader > i, #mainMenuToggleButton > i").click(function(){ //main menu toggle in mobile device
+    $(".responsiveMenuHeader > i, #mainMenuToggleButton > i").click(function () { //main menu toggle in mobile device
       $(".mainMenu").toggleClass("mView");
     })
 
-    $(".pullDownItem > i").click(function(){ // pullDown menu toggle in mobile device
-      if($(this).hasClass("fa-plus-circle")){
+    $(".pullDownItem > i").click(function () { // pullDown menu toggle in mobile device
+      if ($(this).hasClass("fa-plus-circle")) {
         $(this).parent(".pullDownItem").toggleClass("mExpanded");
         $(this).removeClass("fa-plus-circle").addClass("fa-minus-circle");
-        $(this).siblings('.pullDown').stop(true, true).slideDown("400", "swing", function(){
+        $(this).siblings('.pullDown').stop(true, true).slideDown("400", "swing", function () {
           $(this).siblings("a").toggleClass("titled");
         }).css('display', 'flex');
       } else {
         $(this).removeClass("fa-minus-circle").addClass("fa-plus-circle");
         $(this).siblings("a").toggleClass("titled");
-        $(this).siblings('.pullDown').stop(true, true).slideUp("400",'swing',function(){
+        $(this).siblings('.pullDown').stop(true, true).slideUp("400", 'swing', function () {
           $(this).parent(".pullDownItem").toggleClass("mExpanded");
         });
         // .siblings("a").css("display", "block")
       }
-      
+
       // $(this).parent(".pullDown"Item"").toggleClass("mExpanded");
     })
   }

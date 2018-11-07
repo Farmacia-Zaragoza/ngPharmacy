@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation, AfterViewInit, QueryList, ViewChildren, Inject } from '@angular/core';
 import { PromoGalary } from '../model/promoGalary.model';
 import '../../assets/slick/slick.min.js';
-import { HomePageService } from './home-page.service';
+import { PageService } from '../../page.service';
 declare var $: any;
 declare var jquery: any;
 
@@ -16,9 +16,9 @@ export class HomePageComponent implements OnInit, AfterViewInit {
   promoGalary: Array<PromoGalary>;
   @ViewChildren('promoSlider') promoSlider: QueryList<any>;
 
-
-  constructor(private service: HomePageService, @Inject('AppData') appData) {
-    console.log(appData);
+  constructor(private service: PageService) {
+    // let jsonUrl = appData.json_path + appData.lang + '/' + appData.json_file;
+    // console.log(appData);
   }
 
 
@@ -26,10 +26,12 @@ export class HomePageComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
 
-    this.service.getPromoGalary()
-      .subscribe(response => {
-        this.promoGalary = response.json();
+    this.service.done
+      .subscribe(content => {
+        this.promoGalary = content.promoGalary;
       })
+
+
 
   }
 

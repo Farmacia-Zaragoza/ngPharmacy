@@ -1,58 +1,60 @@
+<p-nav></p-nav>
 <div class="homePage">
   <div class="overlay">
 
-    
-    <div class="verticalLeftSlider"> <!-- Left Vertical Slider start -->
 
-        <i class="fa fa-angle-up sliderControls" aria-hidden="true"></i>
-        <ul class="sliderContainer">
-          <li>
-            <a href="#">
-              <i class="fa fa-heart-o" aria-hidden="true"></i>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa fa-wheelchair" aria-hidden="true"></i>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa fa-stethoscope" aria-hidden="true"></i>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa fa-globe" aria-hidden="true"></i>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa fa-heart-o" aria-hidden="true"></i>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa fa-wheelchair" aria-hidden="true"></i>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa fa-stethoscope" aria-hidden="true"></i>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa fa-globe" aria-hidden="true"></i>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa fa-heart-o" aria-hidden="true"></i>
-            </a>
-          </li>
-        </ul>
-        <i class="fa fa-angle-down sliderControls" aria-hidden="true"></i>
+    <div class="verticalLeftSlider">
+      <!-- Left Vertical Slider start -->
+
+      <i class="fa fa-angle-up sliderControls" aria-hidden="true"></i>
+      <ul class="sliderContainer">
+        <li>
+          <a href="#">
+            <i class="fa fa-heart-o" aria-hidden="true"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-wheelchair" aria-hidden="true"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-stethoscope" aria-hidden="true"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-globe" aria-hidden="true"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-heart-o" aria-hidden="true"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-wheelchair" aria-hidden="true"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-stethoscope" aria-hidden="true"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-globe" aria-hidden="true"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-heart-o" aria-hidden="true"></i>
+          </a>
+        </li>
+      </ul>
+      <i class="fa fa-angle-down sliderControls" aria-hidden="true"></i>
 
     </div> <!-- Left Vertical Slider End -->
 
@@ -62,23 +64,18 @@
         <div class="col-md-12">
           <div *ngIf="promoGalary" class="promoSlider">
             <div id="promoSliderNav">
-              <div  
-                *ngFor="let menu of promoGalary"
-                class="promoNavItem"
-              ><p>{{ menu.item }}</p></div>
+              <div *ngFor="let menu of promoGalary" class="promoNavItem">
+                <p>{{ menu.item }}</p>
+              </div>
             </div>
-      
+
             <div id="promoSliderGalery">
-              <div
-                #promoSlider
-                *ngFor="let menu of promoGalary"
-                class="galleryImgContiner" 
-                [ngStyle]="{'background-image': 'url(' + menu.imageURL +')'}">
+              <div #promoSlider *ngFor="let menu of promoGalary" class="galleryImgContiner" [ngStyle]="{'background-image': 'url(' + menu.imageURL +')'}">
                 <p>{{ menu.metaP }}</p>
                 <h2>{{ menu.metaH2 }}</h2>
                 <span>{{ menu.metaSpan }}</span>
               </div>
-        
+
             </div>
           </div>
         </div>
@@ -294,6 +291,7 @@
 
   </div>
 </div>
+<p-footer></p-footer>
 
 <!-- <star-rating [starType]="'svg'" [rating]="3.5" [showHalfStars]="true" [readOnly]="true"></star-rating> -->
 

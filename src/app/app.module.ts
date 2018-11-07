@@ -1,4 +1,4 @@
-import { LanguageSelectorService } from './language-selector/language-selector.service';
+import { LanguageSelectorService } from './topNavBar/language-selector/language-selector.service';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -8,30 +8,28 @@ import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StarRatingModule } from 'angular-star-rating';
 
+//material
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 import { AppComponent } from './app.component';
 import { TempComponent } from './temp/temp.component';
-import { PNavComponent } from './p-nav/p-nav.component';
+import { PNavComponent } from './topNavBar/p-nav/p-nav.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { CategoryComponent } from './category/category.component';
-import { HomePageService } from './home-page/home-page.service';
-import { PNavService } from './p-nav/p-nav.service';
+import { PageService } from '../page.service';
 import { ResponsiveTextComponent } from './responsive-text/responsive-text.component';
 import { TextLimitDirective } from './directives/text-limit.directive';
 import { PFooterComponent } from './p-footer/p-footer.component';
 import { ScrollToTopComponent } from './scroll-to-top/scroll-to-top.component';
 import { PFooterService } from './p-footer/p-footer.service';
 import { CategoryService } from './category/category.service';
-
-//material
-import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { LabeledProductComponent } from './labeled-product/labeled-product.component';
-import { LanguageSelectorComponent } from './language-selector/language-selector.component';
-import { CurencySelectorComponent } from './curency-selector/curency-selector.component';
-import { CurrencySelectorService } from './curency-selector/currency-selector.service';
+import { LanguageSelectorComponent } from './topNavBar/language-selector/language-selector.component';
+import { CurencySelectorComponent } from './topNavBar/curency-selector/curency-selector.component';
+import { CurrencySelectorService } from './topNavBar/curency-selector/currency-selector.service';
 import { CookieService } from './global/cookie.service';
-import { CartDropDownComponent } from './cart-drop-down/cart-drop-down.component';
-import { UserDropDownComponent } from './user-drop-down/user-drop-down.component';
+import { CartDropDownComponent } from './topNavBar/cart-drop-down/cart-drop-down.component';
+import { UserDropDownComponent } from './topNavBar/user-drop-down/user-drop-down.component';
 import { ToolboxModalComponent } from './toolbox-modal/toolbox-modal.component';
 
 @NgModule({
@@ -65,8 +63,7 @@ import { ToolboxModalComponent } from './toolbox-modal/toolbox-modal.component';
     ])]
   ],
   providers: [
-    HomePageService,
-    PNavService,
+    PageService,
     PFooterService,
     CategoryService,
     CurrencySelectorService,

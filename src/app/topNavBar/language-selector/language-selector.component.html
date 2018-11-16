@@ -1,20 +1,20 @@
 <div id="flag-selector-wrapper">
-    <p id="active-lang">
-        <img src="{{activeLanguage?.flag}}" alt="">
-        <span>{{activeLanguage?.name}}</span>
-        <i class="fa fa-caret-down"></i>
-      </p>
-      <div id="all-flags">
-        <i (mouseover)="slideUp(upbtn)" (mouseleave)="slideStop(upbtn)" #upbtn class="fa fa-angle-up"></i>
-        <ul class="flagsContainer sliderContainer">
-          
-          <li *ngFor="let language of allLanguage" [class.active]="language.active" (click)="changeLanguage(language)">
-            <a>
-              <img src="{{language.flag}}" alt="{{language.name}}">
-              <span>{{language.name}}</span>
-            </a>
-          </li>
-        </ul>
-        <i (mouseover)="slideDown(downbtn)" (mouseleave)="slideStop(downbtn)" #downbtn class="fa fa-angle-down"></i>
-      </div>      
+  <p id="active-lang">
+    <img src="{{activeLanguage?.flag}}" alt="">
+    <span>{{activeLanguage?.name}}</span>
+    <i class="fa fa-caret-down"></i>
+  </p>
+  <div id="all-flags">
+    <i (mouseover)="slideUp(upbtn)" (mouseleave)="slideStop(upbtn)" #upbtn class="fa fa-angle-up"></i>
+    <ul class="flagsContainer sliderContainer">
+
+      <li *ngFor="let language of allLanguage" [class.active]="language.active" (click)="changeLanguage(language)">
+        <a href="{{language.link}}">
+          <img src="{{language.flag}}" alt="{{language.name}}">
+          <span>{{language.name}}</span>
+        </a>
+      </li>
+    </ul>
+    <i (mouseover)="slideDown(downbtn)" (mouseleave)="slideStop(downbtn)" #downbtn class="fa fa-angle-down"></i>
+  </div>
 </div>

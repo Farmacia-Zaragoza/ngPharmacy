@@ -2,7 +2,7 @@ import { CookieService } from './../../global/cookie.service';
 import { currency } from './../../model/currency.model';
 import { Component, OnInit, Inject } from '@angular/core';
 import * as jqMethods from '../../global/global-jquery-methods';
-import { PageService } from '../../../page.service';
+import { PageService } from '../../page.service';
 
 @Component({
   selector: 'curency-selector',

@@ -1,6 +1,6 @@
 import { Component, OnInit, HostListener, ViewChildren, QueryList, AfterViewInit } from '@angular/core';
 import * as jqMethods from '../../global/global-jquery-methods';
-import { PageService } from '../../../page.service';
+import { PageService } from '../../page.service';
 
 declare var $: any;
 

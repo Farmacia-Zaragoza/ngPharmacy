@@ -16,7 +16,7 @@ import { TempComponent } from './temp/temp.component';
 import { PNavComponent } from './topNavBar/p-nav/p-nav.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { CategoryComponent } from './category/category.component';
-import { PageService } from '../page.service';
+import { PageService } from './page.service';
 import { ResponsiveTextComponent } from './responsive-text/responsive-text.component';
 import { TextLimitDirective } from './directives/text-limit.directive';
 import { PFooterComponent } from './p-footer/p-footer.component';

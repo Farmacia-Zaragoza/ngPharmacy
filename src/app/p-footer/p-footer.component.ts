@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit, ViewChildren, QueryList, ViewEncapsulation } from '@angular/core';
 import { footerNav } from '../model/footerNav.model';
-import { PageService } from '../../page.service';
+import { PageService } from '../page.service';
 declare var $: any;
 
 @Component({

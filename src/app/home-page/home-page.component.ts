@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewEncapsulation, AfterViewInit, QueryList, ViewChildren, Inject } from '@angular/core';
 import { PromoGalary } from '../model/promoGalary.model';
-import '../../assets/slick/slick.min.js';
-import { PageService } from '../../page.service';
+// import '../../assets/slick/slick.min.js';
+import { PageService } from '../page.service';
 declare var $: any;
-declare var jquery: any;
+// declare var jquery: any;
 
 @Component({
   selector: 'home-page',

@@ -1,5 +1,6 @@
 import { Injectable, Inject, EventEmitter } from '@angular/core';
 import { Http } from '@angular/http';
+declare var window: any;
 
 @Injectable()
 export class PageService {
@@ -10,7 +11,7 @@ export class PageService {
 
   constructor(private http: Http, @Inject('AppData') private appData) {
     this.jsonUrl = appData.json_path + appData.lang + '/' + appData.json_file;
-    console.log(this.jsonUrl)
+    console.log(window.location.hostname)
     this.getPageContent()
 
   }

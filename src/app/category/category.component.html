@@ -45,15 +45,16 @@
         </div>
         <div class="viewAs">
           <span>View as</span>
-          <span [class.active]="view === 'grid'" routerLink="/category/new" [queryParams]="{view: 'grid'}">
+          <span [class.active]="view === 'grid'" (click)="view = 'grid'">
             <i class="fa fa-th-large" aria-hidden="true"></i>
           </span>
-          <span [class.active]="view === 'list'" routerLink="/category/new" [queryParams]="{view: 'list'}">
+          <span [class.active]="view === 'list'" (click)="view = 'list'">
             <i class="fa fa-list" aria-hidden="true"></i>
           </span>
         </div>
         <div class="zoomRange">
-          <input (input)="rangeValueChange()" type="range" id="zoomRangeInput" [(ngModel)]="numberOfProducts" min="5" max="{{allProducts?.length}}">
+          <input (input)="rangeValueChange()" type="range" id="zoomRangeInput" [(ngModel)]="numberOfProducts" min="5"
+            max="{{allProducts?.length}}">
           <!-- <span id="zoomRangeValue">10</span> -->
           <input (keyup)="rangeValueChange()" type="text" name="zoomRangeValue" id="zoomRangeValue" [(ngModel)]="numberOfProducts">
         </div>
@@ -165,8 +166,8 @@
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
                     <span>{{product.rating}}</span> -->
-              <star-rating [starType]="'svg'" [rating]="(product.rating/20).toFixed(2)" [showHalfStars]="true" [readOnly]="true" staticColor="ok"
-                labelText="{{product.rating}}" labelPosition="right">
+              <star-rating [starType]="'svg'" [rating]="(product.rating/20).toFixed(2)" [showHalfStars]="true"
+                [readOnly]="true" staticColor="ok" labelText="{{product.rating}}" labelPosition="right">
               </star-rating>
             </div>
             <div class="pEaddToCart">

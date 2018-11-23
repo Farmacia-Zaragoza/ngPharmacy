@@ -26,7 +26,7 @@ export class HomePageComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
 
-    this.service.done
+    this.service.getPageContent()
       .subscribe(content => {
         this.promoGalary = content.promoGalary;
       })

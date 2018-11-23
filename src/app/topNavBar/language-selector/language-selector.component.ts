@@ -40,7 +40,7 @@ export class LanguageSelectorComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.service.done
+    this.service.getCommonData()
       .subscribe(content => {
         this.allLanguage = content.languages;
         this.activeLanguage = this.allLanguage.filter(c => c.id === this.appData.lang)[0];

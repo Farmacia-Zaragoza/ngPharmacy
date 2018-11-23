@@ -1,7 +1,5 @@
 import { ToolboxModalComponent } from './../toolbox-modal/toolbox-modal.component';
-import { Http } from '@angular/http';
-import { Component, OnInit, ViewEncapsulation, AfterViewInit, QueryList, ViewChildren, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, ViewEncapsulation, AfterViewInit, QueryList, ViewChildren, ViewChild, Inject } from '@angular/core';
 import { CategoryService } from './category.service';
 declare var $: any;
 @Component({
@@ -12,7 +10,7 @@ declare var $: any;
 })
 export class CategoryComponent implements OnInit, AfterViewInit {
 
-  view = "list";
+  view: string;
   allProducts = [];
   products = [];
   loaderVisible = true;
@@ -29,14 +27,16 @@ export class CategoryComponent implements OnInit, AfterViewInit {
   @ViewChild(ToolboxModalComponent) private toolboxModal: ToolboxModalComponent;
 
   toolboxModalInit() {
-    console.log('working')
+    // console.log('working')
     this.toolboxModal.show()
   }
 
   constructor(
-    private route: ActivatedRoute,
-    private service: CategoryService
-  ) { }
+    private service: CategoryService,
+    @Inject('AppData') private appData
+  ) {
+    this.view = appData.page.view || 'list';
+  }
 
   checkAll(input: HTMLInputElement) {
     if (input.checked) {
@@ -111,15 +111,6 @@ export class CategoryComponent implements OnInit, AfterViewInit {
         this.loaderVisible = false;
         this.products = this.allProducts.slice(0, 32);
       });
-
-
-
-    this.route.queryParamMap
-      .subscribe(params => {
-        let viewType = params.get("view");
-        if (viewType)
-          this.view = viewType;
-      })
   }
 
   ngAfterViewInit() {

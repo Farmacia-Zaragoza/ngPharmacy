@@ -6,5 +6,5 @@ declare var window: any;
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(@Inject('AppData') private appData) { }
+  constructor(@Inject('AppData') public appData) { }
 }

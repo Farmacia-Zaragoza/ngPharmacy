@@ -1,6 +1,6 @@
+import { PageService } from './../page.service';
 import { Component, OnInit, AfterViewInit, ViewChildren, QueryList } from '@angular/core';
-import { Http } from '@angular/http';
-declare var $:any;
+declare var $: any;
 
 @Component({
   selector: 'labeled-product',
@@ -10,27 +10,27 @@ declare var $:any;
 export class LabeledProductComponent implements OnInit, AfterViewInit {
 
   products = [];
-  constructor(private http: Http) { }
-  @ViewChildren('labeledSlider') labeledSlider: QueryList <any>;
+  constructor(private service: PageService) { }
+  @ViewChildren('labeledSlider') labeledSlider: QueryList<any>;
 
-  slideRight(){
+  slideRight() {
     $('.prevButton').trigger("click");
   }
 
-  slideLeft(){
+  slideLeft() {
     $('.nextButton').trigger("click");
   }
 
   ngOnInit() {
-    this.http.get('https://farma.vbrqx.com/ang/labaled_products.json')
-      .subscribe(products=> {
-        this.products = products.json();
+    this.service.getPageContent()
+      .subscribe(content => {
+        this.products = content.labaledProducts;
       })
   }
 
-  ngAfterViewInit(){
+  ngAfterViewInit() {
 
-    this.labeledSlider.changes.subscribe(t=>{
+    this.labeledSlider.changes.subscribe(t => {
       this.slickInit();
     })
 

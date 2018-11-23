@@ -1,10 +1,8 @@
-import { LanguageSelectorService } from './topNavBar/language-selector/language-selector.service';
-
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule, Http } from '@angular/http';
-import { RouterModule } from '@angular/router';
+import { HttpModule } from '@angular/http';
+// import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StarRatingModule } from 'angular-star-rating';
 
@@ -16,6 +14,7 @@ import { TempComponent } from './temp/temp.component';
 import { PNavComponent } from './topNavBar/p-nav/p-nav.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { CategoryComponent } from './category/category.component';
+import { LanguageSelectorService } from './topNavBar/language-selector/language-selector.service';
 import { PageService } from './page.service';
 import { ResponsiveTextComponent } from './responsive-text/responsive-text.component';
 import { TextLimitDirective } from './directives/text-limit.directive';
@@ -56,11 +55,7 @@ import { ToolboxModalComponent } from './toolbox-modal/toolbox-modal.component';
     HttpModule,
     BrowserAnimationsModule,
     MatProgressBarModule,
-    StarRatingModule.forRoot(),
-    [RouterModule.forRoot([
-      { path: '', component: HomePageComponent },
-      { path: 'category/:name', component: CategoryComponent }
-    ])]
+    StarRatingModule.forRoot()
   ],
   providers: [
     PageService,

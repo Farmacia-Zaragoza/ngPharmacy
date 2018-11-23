@@ -37,7 +37,7 @@ export class CurencySelectorComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.service.done
+    this.service.getCommonData()
       .subscribe((content) => {
         this.allCurrency = content.currencies;
         this.activeCurrency = this.allCurrency.filter((c) => c.id == this.appData.currency)[0];

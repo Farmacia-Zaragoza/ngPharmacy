@@ -23,7 +23,7 @@ export class PFooterComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
 
-    this.service.done
+    this.service.getCommonData()
       .subscribe(content => {
         this.menuItems = content.footer;
       })

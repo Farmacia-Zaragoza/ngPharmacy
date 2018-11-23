@@ -1,11 +1,12 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <p-nav></p-nav>
-<router-outlet></router-outlet>
+<!-- <router-outlet></router-outlet> -->
 
-<!-- <div [ngSwitch]="appData.page_type">
+<div [ngSwitch]="appData.page.type">
     <home-page *ngSwitchCase="'home'"></home-page>
+    <app-category *ngSwitchCase="'products'"></app-category>
     <home-page *ngSwitchDefault></home-page>
-</div> -->
+</div>
 
 
 <scroll-to-top></scroll-to-top>

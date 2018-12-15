@@ -76,10 +76,11 @@
 
 
 /* 4k */
-@media only screen and (min-width: 2049px) {
+@media only screen and (min-width: 2100px) {
     #all-options{
         top: 52px;
-        height: 460px;
+        height: auto;
+        padding: 5px 10px;
     }
 
     #all-options i {

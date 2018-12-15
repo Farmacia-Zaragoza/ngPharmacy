@@ -48,8 +48,8 @@ ul.sliderContainer li a{
 
 #footerToggle{
     position: absolute;
-    top: -20px;
-    left: 50%;
+    top: -25px;
+    left: calc(50% - 32px);
     border: none;
     z-index: 100;
     background-color: #E8FCFB;
@@ -71,5 +71,21 @@ ul.sliderContainer li a{
 
 #footer.visible #footerToggle i{
     transform: rotateX(180deg);
+}
+
+@media (min-width: 2100px){
+    #footer{
+        bottom: -50px;
+
+    }
+
+    #footerToggle{
+        top: -40px;
+        padding: 0 5px;
+    }
+
+    #footerToggle i{
+        font-size: 60px;
+    }
 }
 

@@ -35,10 +35,16 @@ export class PNavComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    this.service.getCommonData()
+    // this.service.getCommonData()
+    //   .subscribe(content => {
+    //     this.menus = content.topMenu;
+    //   });
+
+      this.service.done
       .subscribe(content => {
-        this.menus = content.topMenu;
-      });
+          this.menus = content.topMenu;
+          console.log(this.menus);
+        });
   }
 
   mainMenuInit() {

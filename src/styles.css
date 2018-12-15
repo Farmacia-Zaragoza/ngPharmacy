@@ -55,13 +55,13 @@ a:hover{
                                     supported by Chrome and Opera */
   }
 
-@media (min-width: 2049px){
+@media (min-width: 2100px){
     body{
         font-size: 30px;
     }
 
     .container {
-        max-width: 85%;
+        max-width: 75%;
     }
 }
 

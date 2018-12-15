@@ -91,6 +91,7 @@ nav>div{
 .pullDownMeta h2{
     transform: rotate(90deg);
     margin: 5px;
+    font-size: 1.3em;
 }
 .pullDownMeta i.fa{
     font-size: 25px;
@@ -179,15 +180,17 @@ nav>div{
 /* Responsive Code Goes Here */
 
   /* 4K Responsive */
-  @media only screen and (min-width: 2049px){
-      .mainMenu{
+  @media only screen and (min-width: 2100px){
+      nav > .mainMenu{
           font-size: 1.2em;
+          margin-left: 10px;;
       }
       .mainMenu > ul > li{
         padding: 25px;
       }
-      .logo{
+      nav > .logo{
           font-size: 1.3em;
+          margin-right: 10px;
       }
       .mainMenu > i{
           font-size: 1.6em;

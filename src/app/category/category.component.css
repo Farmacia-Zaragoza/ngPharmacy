@@ -637,7 +637,7 @@
 
 /* Responsive Start */
 	/* 4K Responsive */
-	@media (min-width: 2049px){
+	@media (min-width: 2100px){
 		.dualPanel{
 			width: 80px;
 		}

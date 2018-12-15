@@ -43,7 +43,9 @@ export class LanguageSelectorComponent implements OnInit {
     this.service.getCommonData()
       .subscribe(content => {
         this.allLanguage = content.languages;
+        console.log(this.allLanguage)
         this.activeLanguage = this.allLanguage.filter(c => c.id === this.appData.lang)[0];
+        console.log(this.activeLanguage)
       })
 
     // this.activeLanguage = this.service.active;

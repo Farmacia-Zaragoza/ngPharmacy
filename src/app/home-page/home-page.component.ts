@@ -15,6 +15,11 @@ export class HomePageComponent implements OnInit, AfterViewInit {
 
   promoGalary: Array<PromoGalary>;
   @ViewChildren('promoSlider') promoSlider: QueryList<any>;
+  
+  leftNav = [];
+  promoProducts=[];
+  @ViewChildren('promoProducts') promoProductsSlider: QueryList<any>;
+
 
   constructor(private service: PageService) {
     // let jsonUrl = appData.json_path + appData.lang + '/' + appData.json_file;
@@ -29,6 +34,8 @@ export class HomePageComponent implements OnInit, AfterViewInit {
     this.service.getPageContent()
       .subscribe(content => {
         this.promoGalary = content.promoGalary;
+        this.leftNav = content.leftNav;
+        this.promoProducts = content.promoProducts;
       })
 
 
@@ -40,33 +47,9 @@ export class HomePageComponent implements OnInit, AfterViewInit {
       this.initPromoSlider();
     })
 
-    $('.productSlider').slick({
-      slidesToShow: 3,
-      slidesToScroll: 3,
-      infinite: true,
-      prevArrow: `<i class="fa fa-angle-left prevButton" aria-hidden="true"></i>`,
-      nextArrow: `<i class="fa fa-angle-right nextButton" aria-hidden="true"></i>`,
-      responsive: [
-        {
-          breakpoint: 767,
-          settings: {
-            slidesToShow: 2,
-            slidesToScroll: 2
-          }
-        },
-        {
-          breakpoint: 500,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1
-          }
-        }
-      ]
-    });
-
-    $(".productSlider .slick-arrow").mouseenter(function () {
-      $(this).trigger("click");
-    });
+    this.promoProductsSlider.changes.subscribe(t=>{
+      this.initPromoProductsSlider();
+    })
   }
 
   initPromoSlider() {
@@ -78,8 +61,26 @@ export class HomePageComponent implements OnInit, AfterViewInit {
       focusOnSelect: true,
       prevArrow: `<i class="fa fa-angle-left"></i>`,
       nextArrow: `<i class="fa fa-angle-right"></i>`,
-      autoPlay: true,
+      autoPlay: false,
       responsive: [
+        {
+          breakpoint: 3400,
+          settings: {
+            // slidesToShow: 5
+          }
+        },
+        {
+          breakpoint: 2500,
+          settings: {
+            slidesToShow: 5
+          }
+        },
+        {
+          breakpoint: 2099,
+          settings: {
+            // slidesToShow: 'auto'
+          }
+        },
         {
           breakpoint: 1024,
           settings: {
@@ -108,7 +109,7 @@ export class HomePageComponent implements OnInit, AfterViewInit {
       arrows: false,
       fade: true,
       asNavFor: '#promoSliderNav',
-      autoplay: true,
+      autoplay: false,
       autoplaySpeed: 5000,
 
 
@@ -118,6 +119,36 @@ export class HomePageComponent implements OnInit, AfterViewInit {
         //set active class for current slide
         $('.slider-nav .slick-slide').eq(i).addClass('slick-active');
       }
+    });
+  }
+
+  initPromoProductsSlider(){
+    $('.productSlider').slick({
+      slidesToShow: 3,
+      slidesToScroll: 3,
+      infinite: true,
+      prevArrow: `<i class="fa fa-angle-left prevButton" aria-hidden="true"></i>`,
+      nextArrow: `<i class="fa fa-angle-right nextButton" aria-hidden="true"></i>`,
+      responsive: [
+        {
+          breakpoint: 767,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2
+          }
+        },
+        {
+          breakpoint: 500,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+      ]
+    });
+
+    $(".productSlider .slick-arrow").mouseenter(function () {
+      $(this).trigger("click");
     });
   }
 

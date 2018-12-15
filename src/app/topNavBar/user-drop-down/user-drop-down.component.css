@@ -36,6 +36,7 @@
     background-color: #fff;
     border: 3px solid #F36438;
     border-radius: 0 4px 4px 4px;
+    
 }
 #wrapper:hover #all-options{
     display: flex;
@@ -72,10 +73,11 @@
 
 
 /* 4k */
-@media only screen and (min-width: 2049px) {
+@media only screen and (min-width: 2100px) {
     #all-options{
         top: 52px;
-        height: 460px;
+        height: auto;
+        padding: 8px;
     }
 
     #all-options i {

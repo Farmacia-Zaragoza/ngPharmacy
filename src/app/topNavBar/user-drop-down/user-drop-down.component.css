@@ -2,7 +2,7 @@
 
 #wrapper{
     position: relative;
-    padding: 2px 8px 5px 5px;
+    padding: 2px 8px 8px 5px;
     border-radius: 4px 4px 0 0;
 }
 
@@ -27,7 +27,7 @@
 #all-options{
     position: absolute;
     left: 0;
-    top: 28px;
+    top: 24px;
     height: auto;
     width: max-content;
     z-index: 5;
@@ -75,7 +75,7 @@
 /* 4k */
 @media only screen and (min-width: 2100px) {
     #all-options{
-        top: 52px;
+        top: 46px;
         height: auto;
         padding: 8px;
     }

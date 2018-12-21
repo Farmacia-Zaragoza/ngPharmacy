@@ -1,43 +1,46 @@
-import { Component, OnInit, AfterViewInit, ViewChildren, QueryList, ViewEncapsulation } from '@angular/core';
-import { footerNav } from '../model/footerNav.model';
-import { PageService } from '../page.service';
+import {
+  Component,
+  OnInit,
+  AfterViewInit,
+  ViewChildren,
+  QueryList,
+  ViewEncapsulation
+} from "@angular/core";
+import { footerNav } from "../model/footerNav.model";
+import { PageService } from "../page.service";
 declare var $: any;
 
 @Component({
-  selector: 'p-footer',
-  templateUrl: './p-footer.component.html',
-  styleUrls: ['./p-footer.component.css']
+  selector: "p-footer",
+  templateUrl: "./p-footer.component.html",
+  styleUrls: ["./p-footer.component.css"]
 })
 export class PFooterComponent implements OnInit, AfterViewInit {
   menuItems: Array<footerNav>;
   visible = false;
 
-  constructor(private service: PageService) { }
+  constructor(private service: PageService) {}
 
-  @ViewChildren('footerMenu') footerMenu: QueryList<any>;
-
+  @ViewChildren("footerMenu") footerMenu: QueryList<any>;
 
   toggleFooter() {
     this.visible = !this.visible;
   }
 
   ngOnInit() {
-
-    this.service.getCommonData()
-      .subscribe(content => {
-        this.menuItems = content.footer;
-      })
-
+    this.service.globalCommon.subscribe((content: any) => {
+      this.menuItems = content.footer;
+    });
   }
 
   ngAfterViewInit() {
     this.footerMenu.changes.subscribe(t => {
       // this.menuInit();
-    })
+    });
   }
 
   menuInit() {
-    $('#footerNav').slick({
+    $("#footerNav").slick({
       slidesToShow: 7,
       slidesToScroll: 4,
       speed: 3000,
@@ -66,12 +69,10 @@ export class PFooterComponent implements OnInit, AfterViewInit {
           }
         }
       ]
-
     });
 
-    $(".footernav .slick-arrow").mouseenter(function () {
+    $(".footernav .slick-arrow").mouseenter(function() {
       $(this).trigger("click");
     });
   }
-
 }

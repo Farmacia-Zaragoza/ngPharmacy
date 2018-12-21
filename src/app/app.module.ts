@@ -8,6 +8,7 @@ import { StarRatingModule } from 'angular-star-rating';
 
 //material
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 import { AppComponent } from './app.component';
 import { TempComponent } from './temp/temp.component';
@@ -30,6 +31,7 @@ import { CookieService } from './global/cookie.service';
 import { CartDropDownComponent } from './topNavBar/cart-drop-down/cart-drop-down.component';
 import { UserDropDownComponent } from './topNavBar/user-drop-down/user-drop-down.component';
 import { ToolboxModalComponent } from './toolbox-modal/toolbox-modal.component';
+
 
 @NgModule({
   declarations: [
@@ -55,6 +57,7 @@ import { ToolboxModalComponent } from './toolbox-modal/toolbox-modal.component';
     HttpModule,
     BrowserAnimationsModule,
     MatProgressBarModule,
+    MatTooltipModule,
     StarRatingModule.forRoot()
   ],
   providers: [

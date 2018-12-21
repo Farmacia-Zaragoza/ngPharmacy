@@ -1,13 +1,13 @@
-import { CookieService } from './../../global/cookie.service';
-import { language } from './../../model/language.model';
-import { Component, OnInit, Inject } from '@angular/core';
-import * as jqMethods from '../../global/global-jquery-methods';
-import { PageService } from '../../page.service';
+import { CookieService } from "./../../global/cookie.service";
+import { language } from "./../../model/language.model";
+import { Component, OnInit, Inject } from "@angular/core";
+import * as jqMethods from "../../global/global-jquery-methods";
+import { PageService } from "../../page.service";
 
 @Component({
-  selector: 'language-selector',
-  templateUrl: './language-selector.component.html',
-  styleUrls: ['./language-selector.component.css']
+  selector: "language-selector",
+  templateUrl: "./language-selector.component.html",
+  styleUrls: ["./language-selector.component.css"]
 })
 export class LanguageSelectorComponent implements OnInit {
   allLanguage: Array<language>;
@@ -16,11 +16,11 @@ export class LanguageSelectorComponent implements OnInit {
   constructor(
     private service: PageService,
     private cookie: CookieService,
-    @Inject('AppData') private appData) { }
+    @Inject("AppData") private appData
+  ) {}
 
   slideUp(btn) {
     jqMethods.slideUp(btn);
-
   }
 
   slideDown(btn) {
@@ -36,21 +36,21 @@ export class LanguageSelectorComponent implements OnInit {
     this.activeLanguage = language;
     language.active = true;
 
-    this.cookie.setCookie('pAl', language.id, 2);
+    this.cookie.setCookie("pAl", language.id, 2);
   }
 
   ngOnInit() {
-    this.service.getCommonData()
-      .subscribe(content => {
-        this.allLanguage = content.languages;
-        console.log(this.allLanguage)
-        this.activeLanguage = this.allLanguage.filter(c => c.id === this.appData.lang)[0];
-        console.log(this.activeLanguage)
-      })
+    this.service.globalCommon.subscribe((content: any) => {
+      this.allLanguage = content.languages;
+      console.log(this.allLanguage);
+      if (!this.allLanguage) return;
+      this.activeLanguage = this.allLanguage.filter(
+        c => c.id === this.appData.lang
+      )[0];
+      console.log(this.activeLanguage);
+    });
 
     // this.activeLanguage = this.service.active;
     //   .subscribe((active: language) => this.activeLanguage = active);
-
   }
-
 }

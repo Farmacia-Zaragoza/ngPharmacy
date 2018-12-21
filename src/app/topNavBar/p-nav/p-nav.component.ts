@@ -11,6 +11,7 @@ declare var $: any;
 })
 export class PNavComponent implements OnInit, AfterViewInit {
   isDesktop: boolean;
+  visibleArrow: boolean = false;
 
   menus = [];
 
@@ -23,6 +24,8 @@ export class PNavComponent implements OnInit, AfterViewInit {
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     this.isDesktop = event.target.innerWidth >= 1025 ? true : false;
+
+    this.mainMenuArrowVisibility();
   }
 
   ngAfterViewInit() {
@@ -47,7 +50,17 @@ export class PNavComponent implements OnInit, AfterViewInit {
         });
   }
 
+  mainMenuArrowVisibility(){
+    let sliderContainer = $(".mainMenu>.sliderContainer");
+    let remLength = $(sliderContainer)[0].scrollWidth - $(sliderContainer).width();
+    let scrollable = remLength - $(sliderContainer).scrollLeft();
+
+    this.visibleArrow = scrollable > 5 ? false: true;
+  }
+
   mainMenuInit() {
+    this.mainMenuArrowVisibility();
+
     $(".pullDownItem").hover( //Pull Down on hover
       function () {
         //return if it's mobile or tablet device

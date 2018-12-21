@@ -65,6 +65,7 @@ nav>div{
 }
 .pullDownContainer{
     padding: 10px;
+    min-width: 200px;
     display: flex;
     flex-direction: column;
     border-right: 5px solid transparent;
@@ -231,7 +232,7 @@ nav>div{
         top: 0;
         left: -350px;
         flex-direction: column;
-        height: 500px;
+        height: 325px;
         width: 350px;
         transition: left .5s ease-in-out;
         z-index: 10;

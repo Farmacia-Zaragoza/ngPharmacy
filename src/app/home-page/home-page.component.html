@@ -8,7 +8,10 @@
       <i class="fa fa-angle-up sliderControls" aria-hidden="true"></i>
       <ul class="sliderContainer">
         <li *ngFor="let item of leftNav">
-          <a href="{{item?.link}}">
+          <a 
+            href="{{item?.link}}" 
+            matTooltip="{{item.comment}}" 
+            [matTooltipPosition]="'right'">
             <i class="fa {{item.icon}}" aria-hidden="true"></i>
           </a>
         </li>
@@ -52,12 +55,22 @@
               <a href='{{item.link}}' class="productTitle">{{item.name}}</a>
               <div class="ValuableInfo">
                 <div class="rating">
+                  <!-- <i class="fa fa-star"></i>
                   <i class="fa fa-star"></i>
                   <i class="fa fa-star"></i>
                   <i class="fa fa-star"></i>
                   <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <span>37</span>
+                  <span>37</span> -->
+                  <star-rating 
+                    [starType]="'svg'" 
+                    [rating]="(item.rating/20).toFixed(2)" 
+                    [showHalfStars]="true" 
+                    [readOnly]="true" 
+                    staticColor="ok"
+                    labelText="{{item.rating}}"
+                    labelPosition="right"
+                    >
+                  </star-rating>
                 </div>
                 <p class="price"><s class="old">{{item.oldPrice}}$</s><span class="new">{{item.oldPrice}}$</span></p>
               </div>

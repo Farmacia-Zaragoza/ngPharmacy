@@ -12,7 +12,7 @@
       <h4>Pharmachy Menu</h4>
       <i class="fa fa-times-circle-o" aria-hidden="true"></i>
     </div>
-    <i [hidden]="!isDesktop" class="sliderControls fa fa-angle-left"></i>
+    <i [hidden]="visibleArrow" class="sliderControls fa fa-angle-left"></i>
     <i [hidden]="isDesktop" class="sliderControls fa fa-angle-up"></i>
     <ul class="sliderContainer">
 
@@ -52,7 +52,7 @@
       </li>
 
     </ul>
-    <i [hidden]="!isDesktop" class="sliderControls fa fa-angle-right"></i>
+    <i [hidden]="visibleArrow" class="sliderControls fa fa-angle-right"></i>
     <i [hidden]="isDesktop" class="sliderControls fa fa-angle-down"></i>
   </div>
 

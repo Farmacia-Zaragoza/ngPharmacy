@@ -1,49 +1,55 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>NgPharmacy</title>
+    <base href="/" />
 
-<head>
-  <meta charset="utf-8">
-  <title>NgPharmacy</title>
-  <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <!-- Updated on 5th December -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous"
+    />
+  </head>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <!-- Updated on 5th December -->
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-    crossorigin="anonymous">
-  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
-    crossorigin="anonymous">
+  <body>
+    <app-root></app-root>
 
-</head>
-
-<body>
-  <app-root></app-root>
-
-  <script>
-    window.APP_DATA = {
-      lang: "en",
-      currency: 1,
-      json_path: 'https://farma.vbrqx.com/ang/json/',
-      json_file: 'home.json',
-      page: {
-        type: 'home'
-        // view: 'grid',
-        // filtered_by: 'name',
-        // jsons: [
-        //   "links_or_name_of_filtered_product_json_file.json",
-        //   "links_or_name_of_filtered_product_json_file.json",
-        //   "links_or_name_of_filtered_product_json_file.json",
-        //   "links_or_name_of_filtered_product_json_file.json",
-        //   "links_or_name_of_filtered_product_json_file.json",
-        // ]
-      }
-    }
-  </script>
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js"></script>
-
-
-</body>
-
+    <script>
+      window.APP_DATA = {
+        lang: "en",
+        currency: 1,
+        json_path: "https://farma.vbrqx.com/ang/json/",
+        json_file: "home.json",
+        page: {
+          type: "products",
+          view: "grid",
+          filtered_by: "name",
+          jsons: [
+            "links_or_name_of_filtered_product_json_file.json",
+            "links_or_name_of_filtered_product_json_file.json",
+            "links_or_name_of_filtered_product_json_file.json",
+            "links_or_name_of_filtered_product_json_file.json",
+            "links_or_name_of_filtered_product_json_file.json"
+          ]
+        }
+      };
+    </script>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js"></script>
+  </body>
 </html>

@@ -42,12 +42,12 @@ export class LanguageSelectorComponent implements OnInit {
   ngOnInit() {
     this.service.globalCommon.subscribe((content: any) => {
       this.allLanguage = content.languages;
-      console.log(this.allLanguage);
+      // console.log(this.allLanguage);
       if (!this.allLanguage) return;
       this.activeLanguage = this.allLanguage.filter(
         c => c.id === this.appData.lang
       )[0];
-      console.log(this.activeLanguage);
+      // console.log(this.activeLanguage);
     });
 
     // this.activeLanguage = this.service.active;

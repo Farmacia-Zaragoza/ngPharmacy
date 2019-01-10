@@ -1,36 +1,14 @@
 <div id="wrapper">
-  <p id="activateIcon">
-    <i class="fa fa-user"></i>
-  </p>
+  <p id="activateIcon"><i class="fa fa-user"></i></p>
 
   <div id="all-options">
     <!-- <i (mouseleave)="slideStop(upbtn)" (mouseover)="slideUp(upbtn)" #upbtn class="fa fa-angle-up"></i> -->
     <ul class="optionsContainer sliderContainer">
-
-      <li>
-        <a *ngIf="!isLogedIn">
-          <i class="fa fa-sign-in"></i>
-          <span>Login</span>
-        </a>
-        <a *ngIf="isLogedIn">
-          <i class="fa fa-sign-out"></i>
-          <span>Log-Out</span>
+      <li *ngFor="let item of userDropDown">
+        <a href="item.link">
+          <i class="fa {{ item.icon }}"></i> <span>{{ item.item }}</span>
         </a>
       </li>
-
-      <li>
-        <a href="">
-          <i class="fa fa-user-plus"></i>
-          <span>Register</span>
-        </a>
-      </li>
-      <li>
-        <a href="">
-          <i class="fa fa-question"></i>
-          <span>Help</span>
-        </a>
-      </li>
-
     </ul>
     <!-- <i (mouseleave)="slideStop(downbtn)" (mouseover)="slideDown(downbtn)" #downbtn class="fa fa-angle-down"></i> -->
   </div>

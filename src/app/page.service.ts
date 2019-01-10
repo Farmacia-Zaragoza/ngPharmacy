@@ -7,32 +7,42 @@ declare var window: any;
 export class PageService {
   pageContentUrl: string;
   commonDataUrl: string;
+  langCommonDataUrl: string;
+
   done = new EventEmitter();
+
   private globalCommonDataSource = new BehaviorSubject({});
   globalCommon = this.globalCommonDataSource.asObservable();
+
+  private langCommonDataSource = new BehaviorSubject({});
+  _LangCommon = this.langCommonDataSource.asObservable();
+
   public content: any;
 
   constructor(private http: Http, @Inject("AppData") private appData) {
-    this.pageContentUrl =
-      appData.json_path + "langs/" + appData.lang + "/" + appData.json_file;
+    this.pageContentUrl = `${appData.json_path}langs/${appData.lang}/${
+      appData.json_file
+    }`;
     this.commonDataUrl = appData.json_path + "common.json";
+    this.langCommonDataUrl = `${appData.json_path}langs/${
+      appData.lang
+    }/common.json`;
     console.log(window.location.hostname);
     this.getPageContent();
-    this.getCommonData();
+    this.getGlobalCommonData();
+    this.getLangCommonData();
   }
 
-  getCommonData() {
-    return (
-      this.http
-        .get(this.commonDataUrl)
-        // .map(res => {
-        //   // console.log(res.json());
-        //   return res.json();
-        // })
-        .subscribe(res => {
-          this.globalCommonDataSource.next(res.json());
-        })
-    );
+  getGlobalCommonData() {
+    return this.http.get(this.commonDataUrl).subscribe(res => {
+      this.globalCommonDataSource.next(res.json());
+    });
+  }
+
+  getLangCommonData() {
+    return this.http.get(this.langCommonDataUrl).subscribe(res => {
+      this.langCommonDataSource.next(res.json());
+    });
   }
 
   getPageContent() {

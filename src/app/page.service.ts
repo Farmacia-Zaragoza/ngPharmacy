@@ -20,13 +20,9 @@ export class PageService {
   public content: any;
 
   constructor(private http: Http, @Inject("AppData") private appData) {
-    this.pageContentUrl = `${appData.json_path}langs/${appData.lang}/${
-      appData.json_file
-    }`;
-    this.commonDataUrl = appData.json_path + "common.json";
-    this.langCommonDataUrl = `${appData.json_path}langs/${
-      appData.lang
-    }/common.json`;
+    this.pageContentUrl = appData.lang_page_json;
+    this.commonDataUrl = appData.common_json;
+    this.langCommonDataUrl = appData.lang_common_json;
     console.log(window.location.hostname);
     this.getPageContent();
     this.getGlobalCommonData();

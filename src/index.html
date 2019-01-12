@@ -29,19 +29,14 @@
       window.APP_DATA = {
         lang: "en",
         currency: 1,
-        json_path: "https://farma.vbrqx.com/ang/json/",
-        json_file: "home.json",
+        common_json: "https://farma.vbrqx.com/ang/json/common.json",
+        lang_common_json:
+          "https://farma.vbrqx.com/ang/json/langs/en/common.json",
+        lang_page_json: "https://farma.vbrqx.com/ang/json/langs/en/home.json",
+
         page: {
-          type: "products",
-          view: "grid",
-          filtered_by: "name",
-          jsons: [
-            "links_or_name_of_filtered_product_json_file.json",
-            "links_or_name_of_filtered_product_json_file.json",
-            "links_or_name_of_filtered_product_json_file.json",
-            "links_or_name_of_filtered_product_json_file.json",
-            "links_or_name_of_filtered_product_json_file.json"
-          ]
+          type: "home"
+          //page_extra_json goes here (homepage doesn't have any)
         }
       };
     </script>

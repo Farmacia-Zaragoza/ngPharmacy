@@ -11,10 +11,10 @@ export class PageService {
 
   done = new EventEmitter();
 
-  private globalCommonDataSource = new BehaviorSubject({});
+  globalCommonDataSource = new BehaviorSubject({});
   globalCommon = this.globalCommonDataSource.asObservable();
 
-  private langCommonDataSource = new BehaviorSubject({});
+  langCommonDataSource = new BehaviorSubject({});
   _LangCommon = this.langCommonDataSource.asObservable();
 
   public content: any;

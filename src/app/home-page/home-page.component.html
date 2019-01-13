@@ -1,26 +1,30 @@
-<div class="homePage" style="background: url('assets/images/bg.jpg') center no-repeat; background-size: cover;">
+<div
+  class="homePage"
+  style="background: url('assets/images/bg.jpg') center no-repeat; background-size: cover;"
+>
+  <div class="verticalLeftSlider">
+    <!-- Left Vertical Slider start -->
+    <i class="fa fa-angle-up sliderControls" aria-hidden="true"></i>
+    <ul class="sliderContainer">
+      <li *ngFor="let item of leftNav">
+        <a
+          href="{{ item?.link }}"
+          (mouseover)="showInnerMenu($event)"
+          (mouseout)="hideInnerMenu($event)"
+        >
+          <i class="fa {{ item.icon }}" aria-hidden="true"></i>
+          <div class="left-inner-menu">
+            <div class="layer-bg">
+              <a href="#">Test</a> <span>|</span> <a href="#">Test2</a>
+            </div>
+          </div>
+        </a>
+      </li>
+    </ul>
+    <i class="fa fa-angle-down sliderControls" aria-hidden="true"></i>
+  </div>
+  <!-- Left Vertical Slider End -->
   <div class="overlay">
-
-
-    <div class="verticalLeftSlider">
-      <!-- Left Vertical Slider start -->
-
-      <i class="fa fa-angle-up sliderControls" aria-hidden="true"></i>
-      <ul class="sliderContainer">
-        <li *ngFor="let item of leftNav">
-          <a 
-            href="{{item?.link}}" 
-            matTooltip="{{item.comment}}" 
-            [matTooltipPosition]="'right'">
-            <i class="fa {{item.icon}}" aria-hidden="true"></i>
-          </a>
-        </li>
-      </ul>
-      <i class="fa fa-angle-down sliderControls" aria-hidden="true"></i>
-
-    </div> <!-- Left Vertical Slider End -->
-
-
     <div class="container responsiveGlitch">
       <div class="row">
         <div class="col-md-12">
@@ -32,27 +36,38 @@
             </div>
 
             <div id="promoSliderGalery">
-              <div #promoSlider *ngFor="let menu of promoGalary" class="galleryImgContiner" [ngStyle]="{'background-image': 'url(' + menu.imageURL +')'}">
+              <div
+                #promoSlider
+                *ngFor="let menu of promoGalary"
+                class="galleryImgContiner"
+                [ngStyle]="{ 'background-image': 'url(' + menu.imageURL + ')' }"
+              >
                 <p>{{ menu.metaP }}</p>
                 <h2>{{ menu.metaH2 }}</h2>
                 <span>{{ menu.metaSpan }}</span>
               </div>
-
             </div>
           </div>
         </div>
       </div>
 
       <div class="productSlider row">
-        <div #promoProducts *ngFor="let item of promoProducts" class="col-sm-4 singleProduct">
+        <div
+          #promoProducts
+          *ngFor="let item of promoProducts"
+          class="col-sm-4 singleProduct"
+        >
           <div class="singleProductInner">
-            <img class="productImage" src="{{item.pImage}}" alt="">
+            <img class="productImage" src="{{ item.pImage }}" alt="" />
             <div class="shortDescription">
-              <p class="productTitle">{{item.name}}</p>
-              <p class="price"><s class="old">{{item.oldPrice}}$</s><span class="new">{{item.price}}$</span></p>
+              <p class="productTitle">{{ item.name }}</p>
+              <p class="price">
+                <s class="old">{{ item.oldPrice }}$</s
+                ><span class="new">{{ item.price }}$</span>
+              </p>
             </div>
             <div class="longDescription">
-              <a href='{{item.link}}' class="productTitle">{{item.name}}</a>
+              <a href="{{ item.link }}" class="productTitle">{{ item.name }}</a>
               <div class="ValuableInfo">
                 <div class="rating">
                   <!-- <i class="fa fa-star"></i>
@@ -61,23 +76,25 @@
                   <i class="fa fa-star"></i>
                   <i class="fa fa-star"></i>
                   <span>37</span> -->
-                  <star-rating 
-                    [starType]="'svg'" 
-                    [rating]="(item.rating/20).toFixed(2)" 
-                    [showHalfStars]="true" 
-                    [readOnly]="true" 
+                  <star-rating
+                    [starType]="'svg'"
+                    [rating]="(item.rating / 20).toFixed(2)"
+                    [showHalfStars]="true"
+                    [readOnly]="true"
                     staticColor="ok"
-                    labelText="{{item.rating}}"
+                    labelText="{{ item.rating }}"
                     labelPosition="right"
-                    >
+                  >
                   </star-rating>
                 </div>
-                <p class="price"><s class="old">{{item.oldPrice}}$</s><span class="new">{{item.oldPrice}}$</span></p>
+                <p class="price">
+                  <s class="old">{{ item.oldPrice }}$</s
+                  ><span class="new">{{ item.oldPrice }}$</span>
+                </p>
               </div>
               <div class="atcButton">
-                <a href="{{item.cartLink}}">
-                  <i class="fa fa-shopping-cart"></i>
-                  <span>Add to Cart</span>
+                <a href="{{ item.cartLink }}">
+                  <i class="fa fa-shopping-cart"></i> <span>Add to Cart</span>
                 </a>
               </div>
             </div>
@@ -85,11 +102,8 @@
         </div>
       </div>
     </div>
-
-
   </div>
 </div>
-
 
 <!-- <star-rating [starType]="'svg'" [rating]="3.5" [showHalfStars]="true" [readOnly]="true"></star-rating> -->
 

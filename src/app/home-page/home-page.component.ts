@@ -32,6 +32,20 @@ export class HomePageComponent implements OnInit, AfterViewInit {
     // console.log(appData);
   }
 
+  showInnerMenu($event) {
+    let target = $event.currentTarget;
+    $(target)
+      .children(".left-inner-menu")
+      .css({ display: "flex", top: $(target).position().top + 25 + "px" });
+  }
+
+  hideInnerMenu($event) {
+    let target = $event.currentTarget;
+    $(target)
+      .children(".left-inner-menu")
+      .css({ display: "none" });
+  }
+
   ngOnInit() {
     this.service.getPageContent().subscribe(content => {
       this.promoGalary = content.promoGalary;

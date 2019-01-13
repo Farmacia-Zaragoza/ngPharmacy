@@ -1,11 +1,7 @@
 <nav>
-  <div id="mainMenuToggleButton">
-    <i class="fa fa-bars"></i>
-  </div>
+  <div id="mainMenuToggleButton"><i class="fa fa-bars"></i></div>
 
-  <div class="logo">
-    <a href="http://farma.vbrqx.com">Pharmachy</a>
-  </div>
+  <div class="logo"><a href="http://farma.vbrqx.com">Pharmachy</a></div>
 
   <div class="mainMenu">
     <div class="responsiveMenuHeader">
@@ -15,24 +11,30 @@
     <i [hidden]="visibleArrow" class="sliderControls fa fa-angle-left"></i>
     <i [hidden]="isDesktop" class="sliderControls fa fa-angle-up"></i>
     <ul class="sliderContainer">
+      <li
+        #mainMenu
+        *ngFor="let menu of menus"
+        [class.pullDownItem]="menu.childrens"
+      >
+        <a href="{{ menu.link }}">{{ menu.item }}</a>
 
-      <li #mainMenu *ngFor="let menu of menus" [class.pullDownItem]="menu.childrens">
-        <a href='{{menu.link}}'>{{menu.item}}</a>
-
-        <div *ngIf="menu.childrens" class="pullDown">
+        <div
+          *ngIf="menu.childrens"
+          class="pullDown"
+          [style.background-color]="menu.bgColor ? menu.bgColor : '#000'"
+        >
           <div class="pullDownContainer">
             <i class="sliderControls fa fa-angle-up"></i>
             <i class="sliderControls fa fa-angle-left"></i>
             <ul class="sliderContainer">
-
               <li *ngFor="let seclvl of menu.pulldown">
-                <a href="{{seclvl.link}}">{{seclvl.item}}</a>
+                <a href="{{ seclvl.link }}">{{ seclvl.item }}</a>
 
                 <div *ngIf="seclvl.childrens" class="third-lvl-menu">
                   <i class="sliderControls fa fa-angle-up"></i>
                   <ul class="sliderContainer">
                     <li *ngFor="let thrdlvl of seclvl.pull03">
-                      <a href="{{thrdlvl.link}}">{{thrdlvl.item}}</a>
+                      <a href="{{ thrdlvl.link }}">{{ thrdlvl.item }}</a>
                     </li>
                   </ul>
                   <i class="sliderControls fa fa-angle-down"></i>
@@ -43,14 +45,18 @@
             <i class="sliderControls fa fa-angle-right"></i>
           </div>
           <div class="pullDownMeta">
-            <i [style.visibility]="menu.pulldown[0].childrens ? 'visible' : 'hidden'" class="expandButton fa fa-plus-circle"></i>
+            <i
+              [style.visibility]="
+                menu.pulldown[0].childrens ? 'visible' : 'hidden'
+              "
+              class="expandButton fa fa-plus-circle"
+            ></i>
             <i class="fa fa-asterisk"></i>
-            <h2>{{menu.item}}</h2>
+            <h2>{{ menu.item }}</h2>
           </div>
         </div>
         <i *ngIf="menu.childrens" class="fa fa-plus-circle"></i>
       </li>
-
     </ul>
     <i [hidden]="visibleArrow" class="sliderControls fa fa-angle-right"></i>
     <i [hidden]="isDesktop" class="sliderControls fa fa-angle-down"></i>
@@ -58,24 +64,15 @@
 
   <div class="nav-right">
     <ul>
-      <li>
-        <curency-selector></curency-selector>
-      </li>
+      <li><curency-selector></curency-selector></li>
       <!-- <li>
         <a href="#">
           <i class="fa fa-search"></i>
         </a>
       </li> -->
-      <li>
-        <app-cart-drop-down></app-cart-drop-down>
-      </li>
-      <li>
-        <user-drop-down></user-drop-down>
-      </li>
-      <li id="lang">
-        <language-selector></language-selector>
-      </li>
+      <li><app-cart-drop-down></app-cart-drop-down></li>
+      <li><user-drop-down></user-drop-down></li>
+      <li id="lang"><language-selector></language-selector></li>
     </ul>
   </div>
-
 </nav>

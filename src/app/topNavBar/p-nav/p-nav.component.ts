@@ -8,6 +8,7 @@ import {
 } from "@angular/core";
 import * as jqMethods from "../../global/global-jquery-methods";
 import { PageService } from "../../page.service";
+import { merge } from "lodash";
 
 declare var $: any;
 
@@ -42,8 +43,18 @@ export class PNavComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    this.service.langCommonDataSource.subscribe(content => {
-      this.menus = content["topMenu"];
+    this.service.done.subscribe(data => {
+      console.log(data);
+      // if (!data) return;
+
+      // // const common_topMenu = data.common_json.topMenu;
+      // // const lang_common_topMenu = data.lang_common_json?.topMenu;
+
+      // this.menus = merge(
+      //   data.common_json.topMenu,
+      //   data.lang_common_json.topMenu
+      // );
+      // console.log(this.menus);
     });
   }
 

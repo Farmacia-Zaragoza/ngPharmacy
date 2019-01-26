@@ -1,9 +1,7 @@
-import {
-  Component,
-  OnInit
-} from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { footerNav } from "../model/footerNav.model";
 import { PageService } from "../page.service";
+import { merge } from "lodash";
 declare var $: any;
 
 @Component({
@@ -24,8 +22,10 @@ export class PFooterComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.service.globalCommon.subscribe((content: any) => {
-      this.menuItems = content.footer;
+    this.service.done.subscribe((data: any) => {
+      this.menuItems = data.common_json.footer.map((item, index) => {
+        return merge(item, data.lang_common_json.footer[index]);
+      });
     });
   }
 

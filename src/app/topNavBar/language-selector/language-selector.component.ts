@@ -3,6 +3,7 @@ import { language } from "./../../model/language.model";
 import { Component, OnInit, Inject } from "@angular/core";
 import * as jqMethods from "../../global/global-jquery-methods";
 import { PageService } from "../../page.service";
+import { merge } from "lodash";
 
 @Component({
   selector: "language-selector",
@@ -40,8 +41,10 @@ export class LanguageSelectorComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.service.globalCommon.subscribe((content: any) => {
-      this.allLanguage = content.languages;
+    this.service.done.subscribe((data: any) => {
+      this.allLanguage = data.common_json.languages.map((item, index) => {
+        return merge(item, data.lang_common_json.languages[index]);
+      });
       // console.log(this.allLanguage);
       if (!this.allLanguage) return;
       this.activeLanguage = this.allLanguage.filter(

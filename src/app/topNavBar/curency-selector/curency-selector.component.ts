@@ -3,6 +3,7 @@ import { currency } from "./../../model/currency.model";
 import { Component, OnInit, Inject } from "@angular/core";
 import * as jqMethods from "../../global/global-jquery-methods";
 import { PageService } from "../../page.service";
+import { merge } from "lodash";
 
 @Component({
   selector: "curency-selector",
@@ -40,12 +41,18 @@ export class CurencySelectorComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.service.globalCommon.subscribe((content: any) => {
-      this.allCurrency = content.currencies;
+    this.service.done.subscribe((data: any) => {
+      this.allCurrency = data.common_json.currencies.map((item, index) => {
+        return merge(item, data.lang_common_json.currencies[index]);
+      });
+      // console.log(this.allCurrency);
+
+      // this.allCurrency = content.currencies;
       if (!this.allCurrency) return;
       this.activeCurrency = this.allCurrency.filter(
         c => c.id == this.appData.currency
       )[0];
+      // console.log(this.activeCurrency);
     });
   }
 }

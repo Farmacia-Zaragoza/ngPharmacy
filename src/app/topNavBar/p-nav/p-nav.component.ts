@@ -45,15 +45,18 @@ export class PNavComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.service.done.subscribe(data => {
       console.log(data);
-      // if (!data) return;
+      if (!data) return;
 
-      // // const common_topMenu = data.common_json.topMenu;
+      // const common_topMenu = data.common_json.topMenu;
       // // const lang_common_topMenu = data.lang_common_json?.topMenu;
 
       // this.menus = merge(
       //   data.common_json.topMenu,
       //   data.lang_common_json.topMenu
       // );
+      this.menus = data.common_json.topMenu.map((item, index) => {
+        return merge(item, data.lang_common_json.topMenu[index]);
+      });
       // console.log(this.menus);
     });
   }

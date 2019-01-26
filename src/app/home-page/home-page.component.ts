@@ -10,6 +10,7 @@ import {
 import { PromoGalary } from "../model/promoGalary.model";
 // import '../../assets/slick/slick.min.js';
 import { PageService } from "../page.service";
+import { merge } from "lodash";
 declare var $: any;
 // declare var jquery: any;
 
@@ -47,10 +48,24 @@ export class HomePageComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    this.service.getPageContent().subscribe(content => {
-      this.promoGalary = content.promoGalary;
-      this.leftNav = content.leftNav;
-      this.promoProducts = content.promoProducts;
+    this.service.done.subscribe(data => {
+      // console.log(data);
+
+      if (!data) return;
+
+      this.promoGalary = data.spec_json.PromoGallery.map((item, index) => {
+        return merge(item, data.lang_spec_json.PromoGallery[index]);
+      });
+
+      this.leftNav = data.common_json.leftNav.map((item, index) => {
+        return merge(item, data.lang_common_json.leftNav[index]);
+      });
+
+      this.promoProducts = data.spec_json.PromoProducts.map((item, index) => {
+        return merge(item, data.lang_spec_json.PromoProducts[index]);
+      });
+
+      // this.promoProducts = content.promoProducts;
     });
   }
 

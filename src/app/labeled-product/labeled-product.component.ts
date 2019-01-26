@@ -1,43 +1,45 @@
-import { PageService } from './../page.service';
-import { Component, OnInit, AfterViewInit, ViewChildren, QueryList } from '@angular/core';
+import { PageService } from "./../page.service";
+import {
+  Component,
+  OnInit,
+  AfterViewInit,
+  ViewChildren,
+  QueryList
+} from "@angular/core";
 declare var $: any;
 
 @Component({
-  selector: 'labeled-product',
-  templateUrl: './labeled-product.component.html',
-  styleUrls: ['./labeled-product.component.css']
+  selector: "labeled-product",
+  templateUrl: "./labeled-product.component.html",
+  styleUrls: ["./labeled-product.component.css"]
 })
 export class LabeledProductComponent implements OnInit, AfterViewInit {
-
   products = [];
-  constructor(private service: PageService) { }
-  @ViewChildren('labeledSlider') labeledSlider: QueryList<any>;
+  constructor(private service: PageService) {}
+  @ViewChildren("labeledSlider") labeledSlider: QueryList<any>;
 
   slideRight() {
-    $('.prevButton').trigger("click");
+    $(".prevButton").trigger("click");
   }
 
   slideLeft() {
-    $('.nextButton').trigger("click");
+    $(".nextButton").trigger("click");
   }
 
   ngOnInit() {
-    this.service.getPageContent()
-      .subscribe(content => {
-        this.products = content.labaledProducts;
-      })
+    this.service.getPageContent().subscribe(content => {
+      // this.products = content.labaledProducts;
+    });
   }
 
   ngAfterViewInit() {
-
     this.labeledSlider.changes.subscribe(t => {
       this.slickInit();
-    })
-
+    });
   }
 
   slickInit() {
-    $('#labeled-product-slider').slick({
+    $("#labeled-product-slider").slick({
       slidesToShow: 4,
       slidesToScroll: 3,
       infinite: true,
@@ -61,5 +63,4 @@ export class LabeledProductComponent implements OnInit, AfterViewInit {
       ]
     });
   }
-
 }

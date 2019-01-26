@@ -43,7 +43,7 @@ export class PageService {
         lang_spec_json: res[3].json()
       };
 
-      console.log(this.allData);
+      // console.log(this.allData);
       this.done.emit(this.allData);
     });
   }

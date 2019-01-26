@@ -1,5 +1,6 @@
 import { PageService } from "./../../page.service";
 import { Component, OnInit } from "@angular/core";
+import { merge } from "lodash";
 
 @Component({
   selector: "user-drop-down",
@@ -13,9 +14,11 @@ export class UserDropDownComponent implements OnInit {
   constructor(private service: PageService) {}
 
   ngOnInit() {
-    this.service._LangCommon.subscribe((content: any) => {
-      if (!content) return;
-      this.userDropDown = content.user;
+    this.service.done.subscribe((data: any) => {
+      // this.userDropDown = data.common_json.languages.map((item, index) => {
+      //   return merge(item, data.lang_common_json.languages[index]);
+      // });
+      // console.log(this.userDropDown)
     });
   }
 }

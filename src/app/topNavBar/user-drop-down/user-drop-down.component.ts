@@ -15,10 +15,10 @@ export class UserDropDownComponent implements OnInit {
 
   ngOnInit() {
     this.service.done.subscribe((data: any) => {
-      // this.userDropDown = data.common_json.languages.map((item, index) => {
-      //   return merge(item, data.lang_common_json.languages[index]);
-      // });
-      // console.log(this.userDropDown)
+      this.userDropDown = data.common_json.user.map((item, index) => {
+        return merge(item, data.lang_common_json.user[index]);
+      });
+      // console.log(this.userDropDown);
     });
   }
 }

@@ -1,3 +1,4 @@
+import { merge } from "lodash";
 import { PageService } from "./../../page.service";
 import { Component, OnInit } from "@angular/core";
 
@@ -26,9 +27,11 @@ export class CartDropDownComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.service._LangCommon.subscribe((content: any) => {
-      if (!content) return;
-      this.cart = content.cart;
+    this.service.done.subscribe((data: any) => {
+      this.cart = data.common_json.cart.map((item, index) => {
+        return merge(item, data.lang_common_json.cart[index]);
+      });
+      // console.log(this.cart);
     });
   }
 }

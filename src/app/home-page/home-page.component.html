@@ -4,7 +4,7 @@
 >
   <div class="verticalLeftSlider">
     <!-- Left Vertical Slider start -->
-    <i class="fa fa-angle-up sliderControls" aria-hidden="true"></i>
+    <i class="fas fa-angle-up sliderControls" aria-hidden="true"></i>
     <ul class="sliderContainer">
       <li *ngFor="let item of leftNav">
         <a
@@ -12,7 +12,7 @@
           (mouseover)="showInnerMenu($event)"
           (mouseout)="hideInnerMenu($event)"
         >
-          <i class="fa {{ item.icon }}" aria-hidden="true"></i>
+          <i class="fas fa-xs {{ item.icon }}" aria-hidden="true"></i>
           <div class="left-inner-menu">
             <div class="layer-bg">
               <a href="#">Test</a> <span>|</span> <a href="#">Test2</a>
@@ -21,7 +21,7 @@
         </a>
       </li>
     </ul>
-    <i class="fa fa-angle-down sliderControls" aria-hidden="true"></i>
+    <i class="fas fa-angle-down sliderControls" aria-hidden="true"></i>
   </div>
   <!-- Left Vertical Slider End -->
   <div class="overlay">

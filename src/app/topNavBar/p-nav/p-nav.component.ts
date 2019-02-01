@@ -216,5 +216,35 @@ export class PNavComponent implements OnInit, AfterViewInit {
 
       // $(this).parent(".pullDown"Item"").toggleClass("mExpanded");
     });
+
+    //click on main menu items on touch device
+    $(".pullDownItem > a").click(function(e) {
+      if ($(window).width() > 1024) return true;
+
+      // pullDown menu toggle in mobile device
+      e.preventDefault();
+
+      $(this)
+        .parent(".pullDownItem")
+        .toggleClass("mExpanded");
+      $(this)
+        .siblings("i")
+        .removeClass("fa-plus-circle")
+        .addClass("fa-minus-circle");
+      $(this)
+        .siblings(".pullDown")
+        .stop(true, true)
+        .slideDown("400", "swing", function() {
+          $(this)
+            .siblings("a")
+            .toggleClass("titled");
+        })
+        .css("display", "flex");
+    });
+
+    //doubleclick on main menu item in touch device
+    // $(".pullDownItem > a").dblclick(function(e) {
+    //   console.log($(this).href);
+    // });
   }
 }

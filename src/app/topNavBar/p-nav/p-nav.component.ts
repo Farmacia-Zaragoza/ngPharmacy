@@ -20,8 +20,11 @@ declare var $: any;
 export class PNavComponent implements OnInit, AfterViewInit {
   isDesktop: boolean;
   visibleArrow: boolean = false;
+  timeout: any;
+  isTouch = "ontouchstart" in window || navigator.msMaxTouchPoints > 0;
 
   menus = [];
+  siteInfo: { any };
 
   @ViewChildren("mainMenu") mainMenu: QueryList<any>;
 
@@ -40,6 +43,8 @@ export class PNavComponent implements OnInit, AfterViewInit {
     this.mainMenu.changes.subscribe(t => {
       this.mainMenuInit();
     });
+
+    console.log(this.isTouch);
   }
 
   ngOnInit() {
@@ -57,7 +62,12 @@ export class PNavComponent implements OnInit, AfterViewInit {
       this.menus = data.common_json.topMenu.map((item, index) => {
         return merge(item, data.lang_common_json.topMenu[index]);
       });
-      // console.log(this.menus);
+
+      this.siteInfo = merge(
+        data.common_json.siteInformation,
+        data.lang_common_json.siteInformation
+      );
+      // console.log(this.siteInfo);
     });
   }
 
@@ -71,7 +81,8 @@ export class PNavComponent implements OnInit, AfterViewInit {
   }
 
   mainMenuInit() {
-    this.mainMenuArrowVisibility();
+    const that = this;
+    that.mainMenuArrowVisibility();
 
     $(".pullDownItem").hover(
       //Pull Down on hover
@@ -218,33 +229,46 @@ export class PNavComponent implements OnInit, AfterViewInit {
     });
 
     //click on main menu items on touch device
+    var tout;
     $(".pullDownItem > a").click(function(e) {
-      if ($(window).width() > 1024) return true;
+      if (!that.isTouch && that.isDesktop) return true;
 
       // pullDown menu toggle in mobile device
       e.preventDefault();
-
-      $(this)
-        .parent(".pullDownItem")
-        .toggleClass("mExpanded");
-      $(this)
-        .siblings("i")
-        .removeClass("fa-plus-circle")
-        .addClass("fa-minus-circle");
-      $(this)
-        .siblings(".pullDown")
-        .stop(true, true)
-        .slideDown("400", "swing", function() {
+      // if (!$(this).data("timer")) {
+      $(this).data(
+        "timer",
+        setTimeout(() => {
           $(this)
-            .siblings("a")
-            .toggleClass("titled");
-        })
-        .css("display", "flex");
+            .parent(".pullDownItem")
+            .toggleClass("mExpanded");
+
+          $(this)
+            .siblings("i")
+            .removeClass("fa-plus-circle")
+            .addClass("fa-minus-circle");
+
+          $(this)
+            .siblings(".pullDown")
+            .stop(true, true)
+            .slideDown("400", "swing", function() {
+              $(this)
+                .siblings("a")
+                .toggleClass("titled");
+            })
+            .css("display", "flex");
+        }, 600)
+      );
+      // }
     });
 
-    //doubleclick on main menu item in touch device
-    // $(".pullDownItem > a").dblclick(function(e) {
-    //   console.log($(this).href);
-    // });
+    // doubleclick on main menu item in touch device
+
+    $(".pullDownItem > a").dblclick(function(e) {
+      // console.log($(this).data("timer"));
+      console.log($(this).attr("href"));
+      clearTimeout($(this).data("timer"));
+      $(this).data("timer", null);
+    });
   }
 }

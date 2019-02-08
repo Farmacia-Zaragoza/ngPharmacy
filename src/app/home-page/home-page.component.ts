@@ -37,7 +37,7 @@ export class HomePageComponent implements OnInit, AfterViewInit {
     let target = $event.currentTarget;
     $(target)
       .children(".left-inner-menu")
-      .css({ display: "flex", top: $(target).position().top + 25 + "px" });
+      .css({ display: "flex", top: $(target).position().top + 10 + "px" });
   }
 
   hideInnerMenu($event) {
@@ -60,6 +60,8 @@ export class HomePageComponent implements OnInit, AfterViewInit {
       this.leftNav = data.common_json.leftNav.map((item, index) => {
         return merge(item, data.lang_common_json.leftNav[index]);
       });
+
+      // console.log(this.leftNav);
 
       this.promoProducts = data.spec_json.PromoProducts.map((item, index) => {
         return merge(item, data.lang_spec_json.PromoProducts[index]);

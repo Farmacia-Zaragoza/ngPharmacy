@@ -256,6 +256,9 @@ nav > div {
   .logo > a {
     margin: 0 auto;
   }
+  /* .logo > a img {
+    width: 40px;
+  } */
 
   .nav-right ul li {
     padding: 10px 15px;

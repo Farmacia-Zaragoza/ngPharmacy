@@ -92,6 +92,7 @@
 .verticalLeftSlider .left-inner-menu .layer-bg span {
   font-size: 14px;
   color: #fff;
+  margin: auto 0;
 }
 .verticalLeftSlider .left-inner-menu a {
   font-size: 14px;
@@ -118,11 +119,15 @@
 .verticalLeftSlider ul {
   overflow: hidden;
 }
-
+.verticalLeftSlider > ul > li {
+  text-align: center;
+}
 .verticalLeftSlider ul li a {
-  font-size: 60px;
+  font-size: 5em;
   color: #fff;
   transition: 0.5s;
+  display: inline-flex;
+  margin: 10px auto;
 }
 .verticalLeftSlider ul li a:hover {
   color: #f5774f;
@@ -380,7 +385,7 @@ img.productImage {
     top: calc(50% - 400px);
   }
   .verticalLeftSlider ul li a {
-    font-size: 3em;
+    /* font-size: 3em; */
   }
   .verticalLeftSlider > i {
     background-color: rgba(255, 255, 255, 0.5);

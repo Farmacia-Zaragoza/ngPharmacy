@@ -20,7 +20,7 @@
         *ngFor="let menu of menus"
         [class.pullDownItem]="menu.childrens"
       >
-        <a href="{{ menu.link }}">{{ menu.item }}</a>
+        <a href="{{ menu.link }}" (tap)="handleTap($event)">{{ menu.item }}</a>
 
         <div
           *ngIf="menu.childrens"

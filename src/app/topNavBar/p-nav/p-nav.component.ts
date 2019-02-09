@@ -24,7 +24,7 @@ export class PNavComponent implements OnInit, AfterViewInit {
   isTouch = "ontouchstart" in window || navigator.msMaxTouchPoints > 0;
 
   menus = [];
-  siteInfo: { any };
+  siteInfo = null;
 
   @ViewChildren("mainMenu") mainMenu: QueryList<any>;
 
@@ -70,6 +70,71 @@ export class PNavComponent implements OnInit, AfterViewInit {
       // console.log(this.siteInfo);
     });
   }
+
+  handleTap($event) {
+    if (this.isDesktop) return true;
+    $event.preventDefault();
+    // console.log($event.currentTarget);
+    const that = $event.target;
+    if ($event.tapCount === 2) {
+      window.location.href = $(that).attr("href");
+    } else {
+      setTimeout(() => {
+        $(that)
+          .parent(".pullDownItem")
+          .toggleClass("mExpanded");
+
+        $(that)
+          .siblings("i")
+          .removeClass("fa-plus-circle")
+          .addClass("fa-minus-circle");
+
+        $(that)
+          .siblings(".pullDown")
+          .stop(true, true)
+          .slideDown("400", "swing", function() {
+            $(that)
+              .siblings("a")
+              .toggleClass("titled");
+          })
+          .css("display", "flex");
+      }, 300);
+    }
+  }
+
+  //click on main menu items on touch device
+  // var tout;
+  // $(".pullDownItem > a").click(function(e) {
+  //   if (!that.isTouch && that.isDesktop) return true;
+
+  //   // pullDown menu toggle in mobile device
+  //   e.preventDefault();
+  //   // if (!$(this).data("timer")) {
+  //   $(this).data(
+  //     "timer",
+  //     setTimeout(() => {
+  //       $(this)
+  //         .parent(".pullDownItem")
+  //         .toggleClass("mExpanded");
+
+  //       $(this)
+  //         .siblings("i")
+  //         .removeClass("fa-plus-circle")
+  //         .addClass("fa-minus-circle");
+
+  //       $(this)
+  //         .siblings(".pullDown")
+  //         .stop(true, true)
+  //         .slideDown("400", "swing", function() {
+  //           $(this)
+  //             .siblings("a")
+  //             .toggleClass("titled");
+  //         })
+  //         .css("display", "flex");
+  //     }, 600)
+  //   );
+  //   // }
+  // });
 
   mainMenuArrowVisibility() {
     let sliderContainer = $(".mainMenu>.sliderContainer");
@@ -228,47 +293,20 @@ export class PNavComponent implements OnInit, AfterViewInit {
       // $(this).parent(".pullDown"Item"").toggleClass("mExpanded");
     });
 
-    //click on main menu items on touch device
-    var tout;
     $(".pullDownItem > a").click(function(e) {
-      if (!that.isTouch && that.isDesktop) return true;
+      if (that.isDesktop) return true;
 
       // pullDown menu toggle in mobile device
       e.preventDefault();
-      // if (!$(this).data("timer")) {
-      $(this).data(
-        "timer",
-        setTimeout(() => {
-          $(this)
-            .parent(".pullDownItem")
-            .toggleClass("mExpanded");
-
-          $(this)
-            .siblings("i")
-            .removeClass("fa-plus-circle")
-            .addClass("fa-minus-circle");
-
-          $(this)
-            .siblings(".pullDown")
-            .stop(true, true)
-            .slideDown("400", "swing", function() {
-              $(this)
-                .siblings("a")
-                .toggleClass("titled");
-            })
-            .css("display", "flex");
-        }, 600)
-      );
-      // }
     });
 
     // doubleclick on main menu item in touch device
 
-    $(".pullDownItem > a").dblclick(function(e) {
-      // console.log($(this).data("timer"));
-      console.log($(this).attr("href"));
-      clearTimeout($(this).data("timer"));
-      $(this).data("timer", null);
-    });
+    // $(".pullDownItem > a").dblclick(function(e) {
+    //   // console.log($(this).data("timer"));
+    //   console.log($(this).attr("href"));
+    //   clearTimeout($(this).data("timer"));
+    //   $(this).data("timer", null);
+    // });
   }
 }

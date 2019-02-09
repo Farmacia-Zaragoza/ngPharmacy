@@ -380,9 +380,9 @@ img.productImage {
   }
 
   .verticalLeftSlider {
-    height: 800px;
+    height: 1000px;
     padding: 0 0 0 30px;
-    top: calc(50% - 400px);
+    top: calc(50% - 500px);
   }
   .verticalLeftSlider ul li a {
     /* font-size: 3em; */

@@ -8,14 +8,15 @@
     <ul class="sliderContainer">
       <li *ngFor="let item of leftNav">
         <a
-          href="{{ item?.link }}"
+          href="{{ item['common-link'] }}"
           (mouseover)="showInnerMenu($event)"
           (mouseout)="hideInnerMenu($event)"
         >
           <i class="fas fa-xs {{ item.icon }}" aria-hidden="true"></i>
           <div class="left-inner-menu">
             <div class="layer-bg">
-              <a href="#">Test</a> <span>|</span> <a href="#">Test2</a>
+              <a href="{{ item['common-link'] }}">{{ item.item }}</a>
+              <span>|</span> <a href="{{ item?.link }}">Sub</a>
             </div>
           </div>
         </a>

@@ -89,9 +89,12 @@ nav > div {
   flex-direction: column;
 }
 .pullDownMeta h2 {
-  transform: rotate(90deg);
+  transform: translate(-42%, 85px) rotate(90deg);
   margin: 5px;
   font-size: 1.3em;
+  width: 205px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .pullDownMeta i.fa {
   font-size: 25px;
@@ -161,6 +164,7 @@ nav > div {
 .expanded .pullDownMeta h2 {
   transform: rotate(0);
   margin: auto 0;
+  width: auto;
 }
 .expanded .pullDownMeta i {
   margin: auto 0;
@@ -375,6 +379,8 @@ nav > div {
     padding: 10px;
     color: #000;
     font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 

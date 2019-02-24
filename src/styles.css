@@ -1,68 +1,95 @@
 /* You can add global styles to this file, and also import other style files */
 /* @import "~bootstrap/dist/css/bootstrap.min.css"; */
 /* @import 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css'; */
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 /* @import "~font-awesome/css/font-awesome.min.css"; */
 @import "~css-star-rating/css/star-rating.min.css";
 /* @import "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"; */
 
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400, 700);
 
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
-
-
-
-*{
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
 }
 body {
-    font-family: 'Open Sans', 'sans-serif';
-    font-size: 14px;
+  font-family: "Open Sans", "sans-serif";
+  font-size: 14px;
 }
-body.backdrop{
-    overflow: hidden;
+body.backdrop {
+  overflow: hidden;
 }
-body.backdrop::before{
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    content: "";
-    left: 0;
-    background-color: black;
-    opacity: 0.6;
-    width: 100%;
-    height: 100%;
-    z-index: 100;
+body.backdrop::before {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  content: "";
+  left: 0;
+  background-color: black;
+  opacity: 0.6;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
 }
-ul{
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
-a:hover{
-    text-decoration: none;
-    color: inherit;
+a:hover {
+  text-decoration: none;
+  color: inherit;
 }
+
+/* Marquee Text efect start */
+.marquee-text {
+  width: 100%;
+  padding: 0 5px;
+  overflow: hidden;
+  display: block;
+  text-align: center;
+}
+
+.marquee-text marquee {
+  display: none;
+  width: 100%;
+  padding: 0 5px;
+}
+
+.marquee-text p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.marquee-text:hover marquee {
+  display: block;
+}
+
+.marquee-text:hover p {
+  display: none;
+}
+/* Marquee Text efect end */
 
 .noselect {
-    -webkit-touch-callout: none; /* iOS Safari */
-      -webkit-user-select: none; /* Safari */
-       -khtml-user-select: none; /* Konqueror HTML */
-         -moz-user-select: none; /* Firefox */
-          -ms-user-select: none; /* Internet Explorer/Edge */
-              user-select: none; /* Non-prefixed version, currently
-                                    supported by Chrome and Opera */
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                supported by Chrome and Opera */
+}
+
+@media (min-width: 2100px) {
+  body {
+    font-size: 30px;
   }
 
-@media (min-width: 2100px){
-    body{
-        font-size: 30px;
-    }
-
-    .container {
-        max-width: 75%;
-    }
+  .container {
+    max-width: 75%;
+  }
 }
 
 /* @media (min-width: 1024px){ //dynamic font size
@@ -70,4 +97,3 @@ a:hover{
         font-size: 14px !important;
     }
 } */
-

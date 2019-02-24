@@ -15,8 +15,9 @@
           <i class="fas fa-xs {{ item.icon }}" aria-hidden="true"></i>
           <div class="left-inner-menu">
             <div class="layer-bg">
-              <a href="{{ item['common-link'] }}">{{ item.item }}</a>
-              <span>|</span> <a href="{{ item?.link }}">Sub</a>
+              <a href="{{ item['common-link'] }}">{{ item.parent }}</a>
+              <span>|</span>
+              <a href="{{ item?.link }}">{{ item.item || "item" }}</a>
             </div>
           </div>
         </a>
@@ -32,7 +33,15 @@
           <div *ngIf="promoGalary" class="promoSlider">
             <div id="promoSliderNav">
               <div *ngFor="let menu of promoGalary" class="promoNavItem">
-                <p>{{ menu.item }}</p>
+                <!-- <p>{{ menu.item }}</p> -->
+                <div class="marquee-text">
+                  <marquee direction="left" behavior="alternate">{{
+                    menu.item
+                  }}</marquee>
+                  <div>
+                    <p>{{ menu.item }}</p>
+                  </div>
+                </div>
               </div>
             </div>
 

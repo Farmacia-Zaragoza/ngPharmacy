@@ -61,7 +61,7 @@ export class HomePageComponent implements OnInit, AfterViewInit {
         return merge(item, data.lang_common_json.leftNav[index]);
       });
 
-      // console.log(this.leftNav);
+      console.log(this.leftNav);
 
       this.promoProducts = data.spec_json.PromoProducts.map((item, index) => {
         return merge(item, data.lang_spec_json.PromoProducts[index]);
